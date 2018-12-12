@@ -1,5 +1,6 @@
 Members
 =======
 
-  1. B590000 Mr. Firstname Lastname
-  2. B5716326 Ms. Sasita Wongphayak
+
+  1. B5716326 Ms. Sasita Wongphayak
+  2. B5711598 Ms. Nawarat Kaewkamla
