@@ -6,3 +6,4 @@ Members
   2. B5711598 Ms. Nawarat Kaewkamla
   3. B5716173 Mr. Wachira Kwanjai
   4. B5710041 Ms. Nachanan Phadaungdaen
+  5. B5705368 Mr. Thawatchai Nongruang
