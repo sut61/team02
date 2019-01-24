@@ -1,0 +1,99 @@
+<mat-toolbar  class="nav-color " >
+  <span>ระบบคลินิกรักษาสัตว์</span>
+</mat-toolbar>
+
+<!--Treatment Page-->
+
+
+<div class="container">
+  <br>
+  <h1 ><mat-icon>assignment</mat-icon> ระบบบันทึกอาการ </h1>  
+  <hr>
+  <br>
+
+<mat-card >
+  <mat-toolbar class="body">
+      <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลทั่วไป</span>
+  </mat-toolbar>
+  <br>
+  
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สัตวแพทย์ :
+  &nbsp;&nbsp;&nbsp;
+  <mat-form-field appearance="outline">
+    <mat-label>Doctor</mat-label>
+    <mat-select placeholder="Doctor" [(ngModel)]="nameDoctorSelect" name="nameDoctor" type="text">
+      <mat-option *ngFor="let doctor of nameDoctor" [value]="doctor.doctorId">
+        {{doctor.nameDoctor}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ชื่อสัตว์ :
+  &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Animal</mat-label>
+      <mat-select placeholder="PetInfo" [(ngModel)]="namePetInfoSelect" name="petName">
+        <mat-option *ngFor="let PetInfo of petName" [value]="PetInfo.petId">
+          {{PetInfo.petName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ชื่อเจ้าของสัตว์ :
+  &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Owner</mat-label>
+      <mat-select placeholder="Owner"[(ngModel)]="nameOwnerSelect" name="nameOwner">
+        <mat-option *ngFor="let owner of nameOwner" [value]="owner.ownerId">
+          {{owner.ownerName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  
+  
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อาการ :
+  &nbsp;&nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Symptom</mat-label>
+    <input matInput placeholder="Symptom" [(ngModel)]="symptom" name="symptom"  > 
+  </mat-form-field>
+  </p>
+
+  <mat-toolbar class="body">
+    <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลการรักษา</span>
+  </mat-toolbar>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ชื่อยา :
+      <mat-form-field appearance="outline">
+    <mat-label>Medicine</mat-label>
+    <mat-select placeholder="Medicine"[(ngModel)]="nameMedicineSelect" name="nameMedicine">
+      <mat-option *ngFor="let medicine of nameMedicine" [value]="medicine.id">
+        {{medicine.nameMed}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  พักฟื้น :
+  &nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width1">
+    <mat-label>AmoutD</mat-label>
+    <input matInput placeholder="AmoutD" [(ngModel)]="dcon" name="dcon"  >
+  </mat-form-field>
+  &nbsp;&nbsp;/คืน
+</p>
+
+<br>
+<mat-card-actions align="center" >
+  
+  <button mat-raised-button class="button-color " (click)="save()"><mat-icon>dvr</mat-icon>&nbsp;&nbsp;&nbsp;บันทึก</button>&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button class="button-color " routerLink="/Pagemenu"><mat-icon>home</mat-icon>&nbsp;&nbsp;&nbsp;กลับสู่หน้าหลัก</button>
+</mat-card-actions>
+</mat-card>
+
+
+</div>
+
