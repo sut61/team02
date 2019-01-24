@@ -1,0 +1,85 @@
+<html>
+<form>
+  <h2 style = "text-align:center">ระบบบันทึกประวัติ</h2>
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+      <div  >
+
+        <br>
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="ownerName" [ngModelOptions]="{standalone: true}" placeholder="ชือ - นามกุล "  name="OwnerN">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <br>
+
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="ownerTel" [ngModelOptions]="{standalone: true}" placeholder="เบอร์"  name="TeL">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <br>
+
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="petName" [ngModelOptions]="{standalone: true}" placeholder="ชื่อสัตว์เลี้ยง"  name="PetN">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <br>
+
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="age" [ngModelOptions]="{standalone: true}" placeholder="อายุ"  name="AgE">
+        </mat-form-field>
+        &nbsp;&nbsp;
+        <br>
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="weight" [ngModelOptions]="{standalone: true}" placeholder="weight"  name="We">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field >
+          <input matInput [(ngModel)]="height" [ngModelOptions]="{standalone: true}" placeholder="height"  name="Hi">
+        </mat-form-field>
+
+
+        <br>
+
+
+
+        <mat-form-field>
+          <mat-select [(ngModel)]="breedNameSelect" placeholder ="สายพันธุ์:" name="BreN">
+            <mat-option *ngFor="let breed of breedNames" [value]="breed.id">
+              {{breed.breedName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> <br>
+
+
+        <mat-form-field>
+          <mat-select [(ngModel)]="nurseNameSelect"   placeholder ="พยาบาล:"  name="docN" >
+            <mat-option *ngFor="let TitleNurse of nameNurse" [value]="TitleNurse.nurseId">
+              {{TitleNurse.nameNurse}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> &nbsp;&nbsp;
+
+
+        <br>
+
+
+        <button mat-raised-button size="2" color="primary"  (click)= "insert()"  >Save</button>&nbsp;&nbsp;&nbsp;
+        <button mat-raised-button size="2"  color="primary"    [routerLink]="['/Pagemenu']">กลับสู่หน้าหลัก</button>
+
+
+
+
+      </div>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+</html>
+
