@@ -1,0 +1,106 @@
+<mat-toolbar class="color">
+  <mat-toolbar-row>
+    <span><font size="6"><b>ระบบคลินิกรักษาสัตว์</b></font></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<div class="container">
+  <br>
+
+  <h1 ><mat-icon>dvr</mat-icon>     ระบบนัดหมาย </h1>
+  <hr><br>
+
+  <mat-card>
+
+    <mat-toolbar class="body">
+      <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลการนัดหมาย</span>
+    </mat-toolbar><br>
+
+    ชื่อเจ้าของ &nbsp; &nbsp; : &nbsp; <mat-form-field  appearance="outline" class="example-width">
+    <mat-label>Owner</mat-label>
+    <mat-select [(ngModel)]="nameOwnerSelect" placeholder ="" name="ownerName">
+      <mat-option *ngFor="let Owner of ownerName" [value]="Owner.ownerId">
+        {{Owner.ownerName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    เบอร์ติดต่อ &nbsp; : &nbsp; <mat-form-field  appearance="outline" class="example-width">
+    <mat-label>Telephone</mat-label>
+    <mat-select [(ngModel)]="nameOwnerSelect" placeholder ="" name="ownerName">
+      <mat-option *ngFor="let Owner of ownerName" [value]="Owner.ownerId">
+        {{Owner.ownerTel}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+    ชื่อสัตว์เลี้ยง &nbsp; : &nbsp; <mat-form-field appearance="outline"  class="example-width" >
+    <mat-label>Pet</mat-label>
+    <mat-select [(ngModel)]="nameOwnerSelect" placeholder ="" name="ownerName">
+      <mat-option *ngFor="let Owner of ownerName" [value]="Owner.ownerId">
+        {{Owner.ownerPet}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+
+
+    สัตว์แพทย์ &nbsp; &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
+    <mat-label>Veterinary</mat-label>
+    <mat-select [(ngModel)]="nameDoctorSelect" placeholder ="" name="nameDoctor">
+      <mat-option *ngFor="let Doctor of nameDoctor" [value]="Doctor.doctorId">
+        {{Doctor.nameDoctor}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <mat-toolbar class="body">
+      <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; รายละเอียดช่วงเวลา</span>
+    </mat-toolbar><br>
+
+    วัน/เดือน/ปี &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="" (focus) ="picker.open()" [(ngModel)]="date" name="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    ช่วงเวลา &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
+    <mat-label>Period</mat-label>
+    <mat-select [(ngModel)]="periodsSelect" placeholder =""name="periods">
+      <mat-option *ngFor="let Period of periods" [value]="Period.id">
+        {{Period.periods}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+    หมายเหตุ &nbsp; &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Note</mat-label>
+    <input matInput [(ngModel)]="note"  name="note" type="text">
+  </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+
+
+    พยาบาล &nbsp; &nbsp; &nbsp; : &nbsp; <mat-form-field  appearance="outline" class="example-width">
+    <mat-label>Nurse</mat-label>
+    <mat-select [(ngModel)]="nameNurseSelect" placeholder =""name="nameNurse">
+      <mat-option *ngFor="let Nurse of nameNurse" [value]="Nurse.nurseId">
+        {{Nurse.nameNurse}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+
+
+
+  </mat-card>
+  <br><br>
+  <mat-card-actions align="center">
+    <button mat-raised-button class="color"(click)= "insert()">บันทึกข้อมูล</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="color" routerLink="/Pagemenu">ยกเลิก</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="color" routerLink="/Pagemenu">กลับสู่หน้าหลัก</button>
+  </mat-card-actions>
+  <br>
+
+</div>
+
