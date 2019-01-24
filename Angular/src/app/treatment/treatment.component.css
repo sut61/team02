@@ -1,0 +1,19 @@
+.nav-color{
+    color:#ffffff;
+    background: #E8475B;
+}
+
+.button-color{
+    color:#ffffff;
+    background-color:#E8475B;
+}
+
+.container {
+    max-width: 1300px;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+  }
