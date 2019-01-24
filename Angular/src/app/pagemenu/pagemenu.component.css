@@ -1,0 +1,52 @@
+.color3{
+  background-color: #66FF66;
+  width : 100vw;
+  height: 89.5vh;
+}
+
+.example-header-image {
+  /* background-image: url('src/image/route3.png'); */
+  background-size: cover;
+}
+
+.example-card {
+    /* max-width: 300px; */
+    width:180px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:warn;
+}
+.card-image {
+  width:100px;
+  margin:5px;
+}
+
+.card-display{
+  display:inline-block;
+  /* margin:30px; */
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.service {
+  text-align:center;
+}
+
+.color{
+  color: #FF6600;
+}
+
+.color1{
+  background-color: #FFFF99;
+}
+
+.im{
+
+    width: 90%;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:50px;
+    margin-bottom:20px;
+}
+

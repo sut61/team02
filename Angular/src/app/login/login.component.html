@@ -1,0 +1,92 @@
+<mat-toolbar class="color">
+    <mat-toolbar-row>
+      <span><font size="6"><b>ระบบคลินิกรักษาสัตว์</b></font></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+ <br> <br>
+<div class="container">
+    <div >
+
+                <div  class="container1">
+                     <h1><mat-icon>assignment_ind</mat-icon> เข้าสู่ระบบ </h1>
+                     <hr>
+                     <br>
+        <mat-accordion >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  เข้าสู่ระบบในฐานะ : Doctor
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-card>
+                      <mat-toolbar class="nav-color ">
+                           <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; เข้าสู่ระบบในฐานะ : Doctor </span>
+                      </mat-toolbar>
+                      <br>
+
+                      <mat-card-content align="center">
+                      <mat-form-field class="example-full-width">
+                          Username : <br><br>
+                              <input matInput placeholder=""  [(ngModel)]="Doctor.nameDoctor" name="nameDoctor" >
+                      </mat-form-field>
+                      </mat-card-content>
+
+                      <mat-card-content align="center">
+                          <mat-form-field class="example-full-width">
+                              Password :<br><br>
+                                  <input matInput placeholder="" type="password"  [(ngModel)]="Doctor.passwordDoctor"  name="passwordDoctor">
+                          </mat-form-field>
+                      </mat-card-content>
+                      <br>
+
+
+                      <mat-card-actions align="center">
+                          <button mat-raised-button (click)="login()" type="submit" class="login-button"><b>login</b></button>
+                      </mat-card-actions>
+                  </mat-card>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <mat-accordion >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  เข้าสู่ระบบในฐานะ : Nurse
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-card>
+                      <mat-toolbar class="nav-color ">
+                           <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; เข้าสู่ระบบในฐานะ : Nurse </span>
+                      </mat-toolbar>
+                      <br>
+
+                      <mat-card-content align="center">
+                      <mat-form-field class="example-full-width">
+                          Username : <br><br>
+                              <input matInput placeholder=""  [(ngModel)]="Nurse.nameNurse" name="nameNurse" >
+                      </mat-form-field>
+                      </mat-card-content>
+
+                      <mat-card-content align="center">
+                          <mat-form-field class="example-full-width">
+                              Password :<br><br>
+                                  <input matInput placeholder="" type="password"  [(ngModel)]="Nurse.passwordNurse"  name="passwordNurse">
+                          </mat-form-field>
+                      </mat-card-content>
+                      <br>
+
+
+                      <mat-card-actions align="center">
+                          <button mat-raised-button (click)="login1()" type="submit" class="login-button"><b>login</b></button>
+                      </mat-card-actions>
+                  </mat-card>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+                </div>
+      </div>
+</div>
