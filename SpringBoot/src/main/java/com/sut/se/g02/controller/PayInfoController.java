@@ -87,10 +87,10 @@ public class PayInfoController {
     }
 */
 
-	@GetMapping(path = "PayInfo", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public Collection<PayInfo> PayInfo() {
-	        return payInfoRepository.findAll().stream().collect(Collectors.toList());
-	}
+    @GetMapping(path = "PayInfo", produces = MediaType.APPLICATION_JSON_VALUE)
+        public Collection<PayInfo> PayInfo() {
+            return payInfoRepository.findAll().stream().collect(Collectors.toList());
+    }
 
     @GetMapping("/PayInfo/{id}")
     public Optional<PayInfo> payInfo(@PathVariable Long id){
@@ -101,12 +101,13 @@ public class PayInfoController {
 
 
      
-    @PostMapping(path ="/PayInfo/{ownerNameSelect}/{treatmentIdSelect}/{priceSelect}/{nameNurseSelect}")
+    @PostMapping(path ="/PayInfo/{ownerNameSelect}/{treatmentIdSelect}/{priceSelect}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")  
     public PayInfo payInfo(
                     @PathVariable  Long ownerNameSelect,
                     @PathVariable  Long treatmentIdSelect,
                     @PathVariable  Long priceSelect,
+                    @PathVariable  String note,
                     @PathVariable  Long nameNurseSelect
 
                     ){
@@ -125,6 +126,7 @@ public class PayInfoController {
         payInfo.setOwner(owner);
         payInfo.setTreatment(treatment);
         payInfo.setMedicine(medicine);
+        payInfo.setNote(note);
         payInfo.setNurse(nurse);
         
         payInfoRepository.save(payInfo);
