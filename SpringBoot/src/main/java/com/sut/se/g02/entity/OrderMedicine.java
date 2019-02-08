@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 @Entity
@@ -22,9 +24,13 @@ public class OrderMedicine {
 	@SequenceGenerator(name="orderMedicine_seq",sequenceName="orderMedicine_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="orderMedicine_seq")
 	@Column(name="idOrderMedicine")
-	private @NonNull Long id;
-	private  String note;
-	private  Integer number;
+	private @NotNull Long id;
+
+
+	@Pattern(regexp = "[-0-9ก-๛]+")
+	@Size(min = 1,max = 30)
+	private  @NotNull String note;
+	private  @NotNull Integer number;
 
 
 	public OrderMedicine(){
@@ -91,7 +97,7 @@ public class OrderMedicine {
 			this.number = number;
 			this.note = note;
 			this.nurse = nurse;
-		}
+	}
 
 
 }
