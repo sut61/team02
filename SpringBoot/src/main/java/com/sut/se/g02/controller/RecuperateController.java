@@ -88,7 +88,7 @@ public class RecuperateController {
         return c;
     }*/
 
-    @PostMapping(path ="/Recuperate/{nameCageSelect}/{nameCageTypeSelect}/{treatSelect}/{nameNurseSelect}")
+    @PostMapping(path ="/Recuperate/{nameCageSelect}/{nameCageTypeSelect}/{treatSelect}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Recuperate recuperate(
                                             @PathVariable  Long nameCageSelect,
@@ -96,6 +96,7 @@ public class RecuperateController {
                                           
                                             @PathVariable  Long nameCageTypeSelect,
                                             @PathVariable  Long treatSelect,
+                                            @PathVariable  String note,
                                             @PathVariable  Long nameNurseSelect){
 
 
@@ -111,6 +112,7 @@ public class RecuperateController {
         recuperate.setDate(new Timestamp(System.currentTimeMillis()));
         recuperate.setCageType(cageType);
        recuperate.setTreatment(treatment);
+       recuperate.setNote(note);
         recuperate.setNurse(nurse);
 
         recuperateRepository.save(recuperate);
