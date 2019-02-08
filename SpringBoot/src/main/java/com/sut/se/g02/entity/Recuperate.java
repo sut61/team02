@@ -1,20 +1,20 @@
 package com.sut.se.g02.entity;
 
-
 import lombok.*;
-
 import javax.persistence.Id;
-import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import java.util.List;
-import java.util.Date;
-import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
+import java.util.List;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Collection;
 
 
 @Entity
@@ -25,8 +25,15 @@ public class Recuperate {
 	@SequenceGenerator(name="appointmentsheet_seq",sequenceName="appointmentsheet_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="appointmentsheet_seq")
 	@Column(name="idRecuperate")
-	private @NonNull Long id;
-	private  Timestamp date;
+	private  @NotNull Long id;
+
+    private  @NotNull Timestamp date;
+    
+    @NotNull
+    @Pattern(regexp="[a-zA-Z¡-û]+")
+    @Size(min = 1, max = 20 )
+	private String note;
+	
 	
 
 	public Recuperate(){
@@ -96,6 +103,13 @@ public class Recuperate {
     	return nurse; 
     }
 
+    public void setNote(String note){
+		this.note=note;
+	}
+    public String getNote() { 
+    	return note; 
+    }
+
     
 
 
@@ -106,6 +120,7 @@ public class Recuperate {
 			this.date = date;
 	 		this.cageType = cageType;
 	 		this.treatment = treatment;
+	 		this.note = note;
 			this.nurse = nurse;
 		}
 
