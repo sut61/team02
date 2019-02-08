@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.List;
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,18 +21,22 @@ import java.util.Collection;
 @Data
 @Table(name = "PayInfo")
 public class PayInfo {
-	@Id
-	@SequenceGenerator(name="payInfo_seq",sequenceName="payInfo_seq")
+    @Id
+    @SequenceGenerator(name="payInfo_seq",sequenceName="payInfo_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="payInfo_seq")
     @Column(name="PayInfo_ID")
-	private @NonNull Long id;
-	private @NonNull Timestamp dateandtime;
-    //private Integer sum;
-	
-	public PayInfo() {}
+    private @NotNull Long id;
+    private @NotNull Timestamp dateandtime;
+    
+    @NotNull
+    @Pattern(regexp = "[-a-zA-Z0-9ก-๛\\s\\t]+")
+    @Size(min = 1, max = 30 )
+    private  String note;
+    
+    public PayInfo() {}
 
 
-	@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Nurse_ID", insertable = true)
     private  Nurse nurse;
 
@@ -53,6 +58,14 @@ public class PayInfo {
     }
     public Timestamp getDateandtime() {
         return dateandtime;
+    }
+
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+    public String getNote() {
+        return note;
     }
 
     /*public void setSum(Integer sum) {
@@ -91,11 +104,12 @@ public class PayInfo {
         return medicine; 
     }
 
-    public PayInfo (Long id, Timestamp dateandtime, Owner owner, Treatment treatment, Medicine medicine,  Nurse nurse){
+    public PayInfo (Long id, Timestamp dateandtime, Owner owner, Treatment treatment, Medicine medicine,String note,  Nurse nurse){
             this.dateandtime = dateandtime;
             this.owner = owner;
             this.treatment = treatment;
             this.medicine = medicine;
+            this.note = note;
             this.nurse = nurse;
             
         }
