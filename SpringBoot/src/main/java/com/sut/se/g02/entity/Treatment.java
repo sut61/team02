@@ -1,7 +1,5 @@
 package com.sut.se.g02.entity;
 
-
-
 import lombok.*;
 import javax.persistence.Id;
 import javax.persistence.*;
@@ -11,6 +9,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 import java.util.List;
+import javax.validation.constraints.*;
 
 @Data
 @Entity
@@ -19,12 +18,20 @@ public class Treatment {
     @Id
     @SequenceGenerator(name = "treatment_seq",sequenceName = "treatment_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "treatment_seq")
+    @NotNull  
+    private  Long id;
 
-    private @NonNull   Long id;
-    private @NonNull Timestamp date;
-    private @NonNull String symptom;
-    //private @NonNull Integer amountMed;
-    private @NonNull Integer dCon;
+    @NotNull
+    private  Timestamp date;
+
+    @NotNull
+    @Size(min=1,max=30)
+    @Pattern(regexp="[a-zA-Z0-9ก-๛\\s\\t]+") 
+    private String symptom;
+    
+
+    @NotNull
+    private  Integer dCon;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -74,12 +81,7 @@ public class Treatment {
         return symptom;
     }
 
-    /*public void setAmountMed(Integer amountMed){
-        this.amountMed = amountMed;
-    }
-    public Integer getAmountMed(){
-        return amountMed;
-    }*/
+    
     
     public void setDCon(Integer dCon){
         this.dCon = dCon;
