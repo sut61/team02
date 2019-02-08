@@ -1,6 +1,7 @@
 package com.sut.se.g02.entity;
 import javax.persistence.*;
 import lombok.*;
+import javax.validation.constraints.*;
 import java.util.Date;
 @Getter @Setter
 @Entity
@@ -11,11 +12,24 @@ public class PetInfo {
     @SequenceGenerator(name="petinfo_seq",sequenceName="petinfo_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="petinfo_seq")
     @Column(name="PETINFO_ID")
-    private @NonNull Long petId;
-    private String petName;
-    private Double weight;
-    private Double height;
-    private int age;
+
+    private  Long petId;
+
+    @Size(min=1,max=20)
+    @Pattern(regexp = "[ก-๛a-zA-Z]+")
+    private @NotNull String petName;
+
+    // @Size(min=1,max=5)
+    //  @Pattern(regexp="\\d+")
+    private @NotNull Double weight;
+
+    // @Size(min=1,max=5)
+    //  @Pattern(regexp="\\d+")
+    private @NotNull Double height;
+
+    // @Size(min=1,max=4)
+    // @Pattern(regexp="\\d+")
+    private @NotNull Integer age;
 
 
     public PetInfo() {
@@ -32,7 +46,9 @@ public class PetInfo {
     @JoinColumn(name= "IdNurse",insertable = true)
     private Nurse nurse;
 
-    
+    public void setAge(Integer age){this.age=age;}
+    public int getAge(){return age;}
+
     public void setWeight(Double weight){this.weight=weight;}
     public Double getWeight(){return weight;}
 
@@ -40,7 +56,7 @@ public class PetInfo {
     public Double getheight(){return height;}
 
     public void setPetName(String petName){this.petName=petName;}
-    public String getAnimalName(){return petName;}
+    public String getPetName(){return petName;}
     public void setNurse(Nurse nurse){this.nurse=nurse;}
     public Nurse getNurse() { return nurse; }
     public void setBreed(Breed breed){this.breed=breed;}
@@ -48,7 +64,7 @@ public class PetInfo {
 
 
 
-    public PetInfo(String petName,Double height,Double weight,int age, Nurse nurse,  Breed breed,Owner owner) {
+    public PetInfo(String petName,Double height,Double weight,Integer age, Nurse nurse,  Breed breed,Owner owner) {
 
         this.age=age;
         this.Owner=owner;
