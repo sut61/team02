@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import java.util.Date;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -20,31 +23,35 @@ public class Appointment {
     @SequenceGenerator(name="appointment_seq",sequenceName="appointment_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="appointment_seq")
     @Column(name="Appointment_ID")
-    private @NonNull Long id;
-    private  Date date;
+    @NotNull private Long id;
+    @NotNull private  Date date;
+    @NotNull
+    @Size(min=1,max=40)
+    @Pattern(regexp = "[-a-zA-Z0-9ก-๛\\s\\t]+")
     private  String note;
 
     public Appointment(){
     }
 
-
-    @ManyToOne(fetch = FetchType.LAZY,  targetEntity = Doctor.class)
-    @JoinColumn(name = "IDDoctor")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDDoctor", insertable = true)
     private  Doctor doctor;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDPetInfo", insertable = true)
+    private  PetInfo petInfo;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Period.class)
-    @JoinColumn(name = "IDPeriod")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDPeriod", insertable = true)
     private  Period period;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Owner.class)
-    @JoinColumn(name = "IDOwner")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDOwner", insertable = true)
     private   Owner owner;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Nurse.class)
-    @JoinColumn(name = "IDNurse")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDNurse", insertable = true)
     private   Nurse nurse;
-
 
     public void setDate(Date date) {
         this.date = date;
@@ -77,6 +84,13 @@ public class Appointment {
         return period;
     }
 
+    public void setPetInfo(PetInfo petInfo){
+        this.petInfo=petInfo;
+    }
+    public PetInfo getPetInfo() {
+        return petInfo;
+    }
+
     public void setOwner(Owner owner){
         this.owner=owner;
     }
@@ -91,9 +105,9 @@ public class Appointment {
         return nurse;
     }
 
-    public Appointment (Long id,Doctor doctor,Date date,Period period,String note,
-                             Nurse nurse,Owner owner){
-
+    public Appointment (Long id,Doctor doctor,Date date,Period period,String note,PetInfo petInfo,
+                        Nurse nurse,Owner owner){
+        this.petInfo=petInfo;
         this.doctor = doctor;
         this.date = date;
         this.period = period;
