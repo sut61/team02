@@ -63,7 +63,7 @@ export class RecuperateComponent implements OnInit {
         },
         error => {
           console.log('Error', error);
-          alert('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษและภาษาไทย');
+          alert('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษเท่านั้น');
         }
       );
 
