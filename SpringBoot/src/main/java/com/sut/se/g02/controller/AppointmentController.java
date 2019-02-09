@@ -104,11 +104,11 @@ public class AppointmentController {
         return o;
     }*/
 
-    @PostMapping(path = "/Appointment/{nameOwnerSelect}/{nameDoctorSelect}/{date}/{periodsSelect}/{note}/{nameNurseSelect}")
+    @PostMapping(path = "/Appointment/{nameOwnerSelect}/{namePetSelect}/{nameDoctorSelect}/{date}/{periodsSelect}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Appointment appointment(
             @PathVariable Long nameOwnerSelect,
-            //@PathVariable Long namePetSelect,
+            @PathVariable Long namePetSelect,
             //@PathVariable Long telOwnerSelect,
             @PathVariable Long nameDoctorSelect,
             @PathVariable Date date,
@@ -118,7 +118,7 @@ public class AppointmentController {
 
         Owner owner = ownerRepository.findById(nameOwnerSelect).get();
         //Owner owner1 = ownerRepository.findById(telOwnerSelect).get();
-        //PetInfo petInfo = petInfoRepository.findById(namePetSelect).get();
+        PetInfo petInfo = petInfoRepository.findById(namePetSelect).get();
         Doctor doctor = doctorRepository.findById(nameDoctorSelect).get();
         Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
         Period period = periodRepository.findById(periodsSelect).get();
@@ -126,7 +126,7 @@ public class AppointmentController {
 
         Appointment appointment = new Appointment();
         appointment.setOwner(owner);
-        //appointment.setPetInfo(petInfo);
+        appointment.setPetInfo(petInfo);
         //appointment.setOwner(owner1);
         appointment.setDoctor(doctor);
         appointment.setDate(date);
