@@ -30,26 +30,39 @@ public class CpeApplication {
     @Bean
     ApplicationRunner init(NurseRepository nurseRepository, DoctorRepository doctorRepository,
                            BreedRepository breedRepository,MedicineRepository medicineRepository,
-                           PeriodRepository periodRepository,
+                           PeriodRepository periodRepository,Status1Repository status1Repository,
                            CageRepository cageRepository,CageTypeRepository cageTypeRepository,
-                           CompanyRepository companyRepository) {
+                           CompanyRepository companyRepository, StatusPayRepository statusPayRepository
+            ,TypeRepository typeRepository,TriageLevelRepository triageLevelRepository,CheckStatusRepository checkStatusRepository ) {
         return args ->{
 
             Nurse nurse = new Nurse();
             Nurse nurse1 = new Nurse();
-            nurse.setNameNurse("นางสาวนวรัตน์ แก้วคำลา");
-            nurse.setPasswordNurse("B01");
-            nurse1.setNameNurse("นางสาวนฌานันท์ ผดุงแดน");
-            nurse1.setPasswordNurse("B02");
+            Nurse nurse2 = new Nurse();
+            Nurse nurse3 = new Nurse();
+            Nurse nurse5 = new Nurse();
+            nurse.setNameNurse("นายวชิระ ขวัญใจ");
+            nurse.setPasswordNurse("B5716173");
+            nurse1.setNameNurse("นางสาวฉัตรแก้ว จันทร์กลาง");
+            nurse1.setPasswordNurse("B5713189");
+            nurse2.setNameNurse("นางสาวนฌานันท์ ผดุงแดน");
+            nurse2.setPasswordNurse("B5710041");
+            nurse3.setNameNurse("นางสาวนวรัตน์ แก้วคำลา");
+            nurse3.setPasswordNurse("B5711598");
+            nurse5.setNameNurse("นายธวัชชัย หนองรวง");
+            nurse5.setPasswordNurse("B5705368");
             nurseRepository.save(nurse);
             nurseRepository.save(nurse1);
+            nurseRepository.save(nurse2);
+            nurseRepository.save(nurse3);
+            nurseRepository.save(nurse5);
 
 
             Doctor doctor = new Doctor();
             Doctor doctor1 = new Doctor();
-            doctor.setNameDoctor("สพ.ญ.สสิตา วงษ์พยัคฆ์");
+            doctor.setNameDoctor("แพทย์หญิงสสิตา วงษ์พยัคฆ์");
             doctor.setPasswordDoctor("D01");
-            doctor1.setNameDoctor("สพ.ญ.ปภานัน เสาวิชิต");
+            doctor1.setNameDoctor("แพทย์หญิงปภานัน เสาวิชิต");
             doctor1.setPasswordDoctor("D02");
             doctorRepository.save(doctor);
             doctorRepository.save(doctor1);
@@ -114,7 +127,7 @@ public class CpeApplication {
             periodRepository.save(period);
             periodRepository.save(period1);
 
-             CageType cageType = new CageType();
+            CageType cageType = new CageType();
             CageType cageType1 = new CageType();
             cageType.setNameCageType("A:กรงเดี่ยว");
             cageType1.setNameCageType("B:กรงรวม");
@@ -122,7 +135,7 @@ public class CpeApplication {
             cageTypeRepository.save(cageType1);
              
              
-             Cage cage = new Cage();
+            Cage cage = new Cage();
             Cage cage1 = new Cage();
             Cage cage2 = new Cage();
             Cage cage3 = new Cage();
@@ -151,6 +164,64 @@ public class CpeApplication {
             companyRepository.save(company1);
             companyRepository.save(company2);
             companyRepository.save(company3);
+
+
+
+            StatusPay statusPay = new StatusPay();
+            StatusPay statusPay1 = new StatusPay();
+            statusPay.setNameStatusPay("ชำระเงินแล้ว");
+            statusPay1.setNameStatusPay("ยังไม่ชำระเงิน");
+            statusPayRepository.save(statusPay);
+            statusPayRepository.save(statusPay1);
+
+
+            Type type = new Type();
+            type.setList("หมอน");
+            Type type1 = new Type();
+            type1.setList("อาหาร");
+            Type type2 = new Type();
+            type2.setList("ของเล่น");
+            Type type3 = new Type();
+            type3.setList("หวี");
+            Type type4 = new Type();
+            type4.setList("อื่นๆ");
+            typeRepository.save(type);
+            typeRepository.save(type1);
+            typeRepository.save(type2);
+            typeRepository.save(type3);
+            typeRepository.save(type4);
+            
+            TriageLevel triagelevel = new TriageLevel();
+           TriageLevel triagelevel1 = new TriageLevel();
+           TriageLevel triagelevel2 = new TriageLevel();
+           TriageLevel triagelevel3 = new TriageLevel();
+           TriageLevel triagelevel4 = new TriageLevel();
+           
+           triagelevel.setLevelName("R-Resuscitation ผู้ป่วยฉุกเฉินวิกฤต");
+           triagelevel1.setLevelName("E-Emergency ผู้ป่วยฉุกเฉิน");
+           triagelevel2.setLevelName("U-Urgency ผู้ป่วยฉุกเฉินเร่งด่วน");
+           triagelevel3.setLevelName("S-Semi Urgency ผู้ป่วยฉุกเฉินไม่รุนแรง");
+           triagelevel4.setLevelName("N-Non Urgency ผู้ป่วยทั่วไป ");
+
+           triageLevelRepository.save(triagelevel);
+           triageLevelRepository.save(triagelevel1);
+           triageLevelRepository.save(triagelevel2);
+           triageLevelRepository.save(triagelevel3);
+           triageLevelRepository.save(triagelevel4);
+
+            Status1 status1 = new Status1();
+            Status1 status11 = new Status1();
+            status1.setStatus1("ไม่ยกเลิก");
+            status11.setStatus1("ยกเลิก");
+            status1Repository.save(status1);
+            status1Repository.save(status11);
+
+            CheckStatus checkStatus = new CheckStatus();
+            CheckStatus checkStatus1 = new CheckStatus();
+            checkStatus.setCheckStatus("รับยาเรียบร้อย");
+            checkStatus1.setCheckStatus("ยังไม่ได้รับยา");
+            checkStatusRepository.save(checkStatus);
+            checkStatusRepository.save(checkStatus1);
         };
     }
 
