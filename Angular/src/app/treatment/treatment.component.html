@@ -17,9 +17,9 @@
   </mat-toolbar>
   <br>
   
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สัตวแพทย์ :
-  &nbsp;&nbsp;&nbsp;
-  <mat-form-field appearance="outline">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ชื่อสัตวแพทย์ :
+  &nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Doctor</mat-label>
     <mat-select placeholder="Doctor" [(ngModel)]="nameDoctorSelect" name="nameDoctor" type="text">
       <mat-option *ngFor="let doctor of nameDoctor" [value]="doctor.doctorId">
@@ -28,36 +28,38 @@
     </mat-select>
   </mat-form-field>
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  ชื่อสัตว์ :
-  &nbsp;&nbsp;&nbsp;&nbsp;
-    <mat-form-field appearance="outline">
-      <mat-label>Animal</mat-label>
-      <mat-select placeholder="PetInfo" [(ngModel)]="namePetInfoSelect" name="petName">
-        <mat-option *ngFor="let PetInfo of petName" [value]="PetInfo.petId">
-          {{PetInfo.petName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ชื่อสัตว์ :
+      &nbsp;&nbsp;
+        <mat-form-field appearance="outline">
+          <mat-label>Animal</mat-label>
+          <mat-select placeholder="PetInfo" [(ngModel)]="namePetInfoSelect" name="petName">
+            <mat-option *ngFor="let PetInfo of petName" [value]="PetInfo.petId">
+              {{PetInfo.petName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  ชื่อเจ้าของสัตว์ :
-  &nbsp;&nbsp;&nbsp;&nbsp;
-    <mat-form-field appearance="outline">
-      <mat-label>Owner</mat-label>
-      <mat-select placeholder="Owner"[(ngModel)]="nameOwnerSelect" name="nameOwner">
-        <mat-option *ngFor="let owner of nameOwner" [value]="owner.ownerId">
-          {{owner.ownerName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    
   </p>
 
   
   
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อาการ :
-  &nbsp;&nbsp;&nbsp;
-  <mat-form-field appearance="outline" class="example-full-width">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ชื่อเจ้าของสัตว์ :
+      &nbsp;&nbsp;
+        <mat-form-field appearance="outline">
+          <mat-label>Owner</mat-label>
+          <mat-select placeholder="Owner"[(ngModel)]="nameOwnerSelect" name="nameOwner">
+            <mat-option *ngFor="let owner of nameOwner" [value]="owner.ownerId">
+              {{owner.ownerName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;อาการ :
+    &nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width1">
     <mat-label>Symptom</mat-label>
     <input matInput placeholder="Symptom" [(ngModel)]="symptom" name="symptom"  > 
   </mat-form-field>
@@ -66,8 +68,9 @@
   <mat-toolbar class="body">
     <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลการรักษา</span>
   </mat-toolbar>
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ชื่อยา :
-      <mat-form-field appearance="outline">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ชื่อยา : 
+  &nbsp;&nbsp;
+      <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Medicine</mat-label>
     <mat-select placeholder="Medicine"[(ngModel)]="nameMedicineSelect" name="nameMedicine">
       <mat-option *ngFor="let medicine of nameMedicine" [value]="medicine.id">
@@ -75,11 +78,11 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   พักฟื้น :
   &nbsp;&nbsp;
-  <mat-form-field appearance="outline" class="example-full-width1">
+  <mat-form-field appearance="outline" >
     <mat-label>AmoutD</mat-label>
     <input matInput placeholder="AmoutD" [(ngModel)]="dcon" name="dcon"  >
   </mat-form-field>
