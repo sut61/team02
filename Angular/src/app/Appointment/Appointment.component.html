@@ -13,7 +13,7 @@
 
   <mat-card>
 
-    <mat-toolbar class="body">
+    <mat-toolbar class="body" class="color">
       <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลการนัดหมาย</span>
     </mat-toolbar><br>
 
@@ -37,9 +37,9 @@
 
     ชื่อสัตว์เลี้ยง &nbsp; : &nbsp; <mat-form-field appearance="outline"  class="example-width" >
     <mat-label>Pet</mat-label>
-    <mat-select [(ngModel)]="nameOwnerSelect" placeholder ="" name="ownerName">
-      <mat-option *ngFor="let Owner of ownerName" [value]="Owner.ownerId">
-        {{Owner.ownerPet}}
+    <mat-select [(ngModel)]="namePetSelect" placeholder ="" name="petName">
+      <mat-option *ngFor="let PetInfo of petName" [value]="PetInfo.petId">
+        {{PetInfo.petName}}
       </mat-option>
     </mat-select>
   </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
@@ -55,7 +55,7 @@
     </mat-select>
   </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <mat-toolbar class="body">
+    <mat-toolbar class="body" class="color">
       <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; รายละเอียดช่วงเวลา</span>
     </mat-toolbar><br>
 
@@ -97,7 +97,7 @@
   <br><br>
   <mat-card-actions align="center">
     <button mat-raised-button class="color"(click)= "insert()">บันทึกข้อมูล</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button mat-raised-button class="color" routerLink="/Pagemenu">ยกเลิก</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="color" routerLink="/CancelApp">ยกเลิกการนัดหมาย</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button mat-raised-button class="color" routerLink="/Pagemenu">กลับสู่หน้าหลัก</button>
   </mat-card-actions>
   <br>

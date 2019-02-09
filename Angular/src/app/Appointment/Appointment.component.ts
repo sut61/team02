@@ -8,23 +8,24 @@ import { AppointmentService } from 'src/app/Appointment.service';
 })
 export class AppointmentComponent implements OnInit {
 
-  nameNurse: Array<any>;
+    nameNurse: Array<any>;
     nameNurseSelect='';
 
     nameDoctor: Array<any>;
     nameDoctorSelect='';
 
     periods: Array<any>;
-  	periodsSelect='';
+    periodsSelect='';
 
-
+    petName: Array<any>;
+    namePetSelect='';
 
     ownerName: Array<any>;
-  	nameOwnerSelect='';
+    nameOwnerSelect='';
 
 
     note='';
-  	date='';
+    date='';
 
   constructor(private appointmentService: AppointmentService,
               private httpClient: HttpClient) {
@@ -47,26 +48,45 @@ export class AppointmentComponent implements OnInit {
       console.log(this.ownerName);
     });
 
+    this.appointmentService.getPetInfo().subscribe(data => {
+      this.petName = data;
+      console.log(this.petName);
+    });
+
     this.appointmentService.getPeriods().subscribe(data => {
       this.periods = data;
       console.log(this.periods);
     });
     }
   insert() {
-  if (this.nameOwnerSelect === '' || this.nameDoctorSelect === '' || this.date === '' || this.periodsSelect === '' ||
-      this.note === ''||  this.nameNurseSelect === '') {
-        alert('ใส่ข้อมูลไม่ครบจะไม่ถูกบันทึกนะ');
+  if (this.nameOwnerSelect === '') {
+        alert('กรุณาเลือกชื่อเจ้าของสัตว์เลี้ยง');
+    }else if (this.namePetSelect === '') {
+        alert('กรุณาเลือกชื่อสัตวืเลี้ยง');
+    }else if (this.nameDoctorSelect === '') {
+        alert('กรุณาเลือกชื่อสัตว์แพทย์');
+    }else if (this.date === '') {
+        alert('กรุณาเลือกวันเดือนปี');
+    }else if (this.periodsSelect === '') {
+        alert('กรุณาเลือกช่วงเวลา');
+    }else if (this.note === '') {
+        alert('กรุณากรอกหมายเหตุ');
+    }else if (this.nameNurseSelect === '') {
+        alert('กรุณาเลือกชื่อพยาบาล');
     } else {
-         this.httpClient.post('http://localhost:8080/Appointment/' + this.nameOwnerSelect + '/' + this.nameDoctorSelect +'/' + this.date +'/' +this.periodsSelect+'/'  +this.note+'/' +this.nameNurseSelect,{})
+         this.httpClient.post('http://localhost:8080/Appointment/' + this.nameOwnerSelect + '/' + this.namePetSelect +'/'
+         + this.nameDoctorSelect +'/' + this.date +'/' +this.periodsSelect+'/'  +this.note+'/' +this.nameNurseSelect,{})
      .subscribe(
        data => {
          console.log('PUT Request is successful', data);
+          alert('บันทึกข้อมูลสำเร็จ');
         },
         error => {
           console.log('Error', error);
+          alert('กรุณากรอกข้อมูลให้ถูกต้อง ต้องประกอบด้วย a-z, A-Z, 0-9, ก-ฮ');
         }
       );
-    alert('บันทึกข้อมูลเรียบร้อย');
+
   }
 }
 
