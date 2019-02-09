@@ -1,0 +1,33 @@
+.container {             /*กรอบขาวใหญ่*/
+    max-width: 1500px;
+    width: 60%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .example-full-width {   /*dropdown*/
+    width: 30%;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .body{
+    background-color: #FDB4BF;
+  }
+  
+  .login-button{
+    background-color: #FDB4BF;
+  
+  }
+  
+  .size{
+    width: 25%;
+  }
+  
+  
