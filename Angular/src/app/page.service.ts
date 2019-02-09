@@ -27,4 +27,12 @@ export class PageService {
     public  getMedicine(): Observable<any>{
       return this.http.get(this.API+'/Medicine');
     }
+
+    public  getCheckStatus(): Observable<any>{
+          return this.http.get(this.API+'/CheckStatus');
+    }
+
+    public  getOrderMedicine() :  Observable<any>{
+          return this.http.get(this.API+'/OrderMedicine');
+    }
 }

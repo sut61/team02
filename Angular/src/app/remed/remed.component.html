@@ -1,0 +1,124 @@
+
+<div class="container">
+
+  <mat-card-actions align="center">
+    <h1 >ระบบรับยา</h1>
+  </mat-card-actions>
+  <hr><br>
+
+  <mat-card>
+
+    <mat-toolbar class="body">
+      <span>&nbsp;&nbsp;&nbsp;ข้อมูลใบสั่งยา</span>
+    </mat-toolbar><br>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width2">
+        <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
+          <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id">
+            {{OrderMedicine.id}} &nbsp;&nbsp;
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content><br>
+
+    <table matSort (matSortChange)="sortData($event)">
+      <tr align="center">
+        <th >ชื่อยา</th>
+        <th >จำนวน</th>
+        <th >ประเภทยา</th>
+      </tr>
+      <br><br>
+
+      <tr align="center">
+        <td><br>
+          <mat-card-content>
+            <mat-form-field class="example-full-width2">
+              <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
+                <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.medicine.nameMed}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content><br></td>
+
+        <td><mat-form-field class="example-full-width">
+          <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
+            <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.number}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;</td>
+
+        <td><br>
+          <mat-card-content>
+            <mat-form-field class="example-full-width2">
+              <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
+                <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.medicine.type}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content><br></td>
+      </tr>
+    </table>
+
+    <mat-toolbar class="body">
+      <span>&nbsp;&nbsp;&nbsp;ชื่อบริษัท</span>
+    </mat-toolbar><br>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width2">
+        <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
+          <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id">
+            {{OrderMedicine.company.nameCompany}} &nbsp;&nbsp;
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content><br>
+
+    <mat-toolbar class="body">
+      <span>&nbsp;&nbsp;&nbsp;หมายเหตุ</span>
+    </mat-toolbar><br>
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <input matInput  placeholder=" " [(ngModel)]="noteNew" name="noteNew" type="text">
+      </mat-form-field>
+    </mat-card-content><br>
+
+
+    <mat-toolbar class="body">
+      <span>&nbsp;&nbsp;&nbsp;ยืนยันการรับยา</span>
+    </mat-toolbar><br>
+    <mat-card-content>
+      <mat-form-field class="example-full-width2">
+        <mat-select  placeholder="" [(ngModel)]="checkStatusSelect" name="checkStatus">
+          <mat-option *ngFor="let CheckStatus of checkStatus" [value]="CheckStatus.id">
+            {{CheckStatus.checkStatus}} &nbsp;&nbsp;
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content><br>
+
+
+    <mat-toolbar class="body">
+      <span>&nbsp;&nbsp;&nbsp;ชื่อพยาบาล</span>
+    </mat-toolbar><br>
+    <mat-card-content>
+      <mat-form-field class="example-full-width2">
+        <mat-select  placeholder="" [(ngModel)]="nurseNameSelect" name="nameNurse">
+          <mat-option *ngFor="let Nurse of nameNurse" [value]="Nurse.nurseId">
+            {{Nurse.nameNurse}} &nbsp;&nbsp;
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content><br>
+
+    <br><br><br>
+
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" (click)= "save()" >บันทึก</button>
+      &nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" routerLink= "/Pagemenu" >กลับสู่หน้าหลัก</button>
+    </mat-card-actions>
+    <br>
+  </mat-card>
+
+</div>
