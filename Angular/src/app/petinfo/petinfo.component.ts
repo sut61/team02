@@ -39,23 +39,31 @@ export class PetinfoComponent implements OnInit {
     });
     }
   insert() {
-  if (this.petName === '' ||  this.breedNameSelect === ''  || this.nurseNameSelect === ''
-      || this.weight === '' || this.height === '' || this.ownerName === '' ||
-      this.ownerTel === ''||  this.age === '') {
-        alert('ใส่ข้อมูลไม่ครบจะไม่ถูกบันทึกนะ');
-    } else {
+  if (this.ownerName === '' ){  alert('กรุณากรอกชื่อเจ้าของสัตว์'); }
+  else if ( this.ownerTel === ''  ){  alert('กรุณากรอกเบอร์โทรติดต่อ'); }
+  else if ( this.petName === '' ){  alert('กรุณากรอกชื่อสัตว์'); }
+  else if ( this.age === ''  ){  alert('กรุณากรอกอายุสัตว์เลี้ยง'); }
+  else if ( this.weight === '' ){ alert('กรุณากรอกสน้ำหนัก'); }
+  else if ( this.height === '' ){  alert('กรุณากรอกส่วนสูง'); }
+  else if ( this.breedNameSelect === '' ){  alert('กรุณาเลือก สายพันธ์ุ'); }
+  else if (  this.nurseNameSelect === '') {alert('กรุณาเลือก พยาบาล');}
+
+     else {
          this.httpClient.post('http://localhost:8080/PetInfo/' + this.petName + '/' +
       this.breedNameSelect+'/'+ this.nurseNameSelect+'/' + this.weight +'/' +this.height
       +'/' +this.ownerName+'/'  +this.ownerTel+'/' +this.age,{})
      .subscribe(
        data => {
          console.log('PUT Request is successful', data);
+          alert('บันทึกเรียบร้อย');
         },
         error => {
           console.log('Error', error);
+          alert('มีข้อผิดพลาด');
         }
       );
+
     }
-    alert('บันทึกเรียบร้อย');
+
 }
 }
