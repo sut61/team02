@@ -40,7 +40,7 @@ insert() {
   if (this.ownerNameSelect === '' ) {alert('กรุณาเลือกข้อมูล Owner');}
   else if ( this.TypeList === ''  ) {alert('กรุณาเลือกข้อมูล รายการ');}
   else if (  this.nameNurseSelect === '')   {alert('กรุณาเลือกข้อมูล Nurse');}
-  else if (  this.comment === '' ) {alert('กรุณาเลือกข้อมูล Owner'); }
+  else if (  this.comment === '' ) {alert('กรอกข้อมูลเพิ่มเติม'); }
   else if (  this.comment >=  'A' &&  this.comment <= 'Z' ) {alert('กรอกข้อมูลไม่ตรงเงื่อนไข'); }
   else if (  this.comment >=  'a' &&  this.comment <= 'z' ) {alert('กรอกข้อมูลไม่ตรงเงื่อนไข'); }
     else {
