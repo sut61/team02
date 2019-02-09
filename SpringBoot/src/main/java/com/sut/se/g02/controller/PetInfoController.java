@@ -46,11 +46,11 @@ public class PetInfoController {
         return breedRepository.findAll().stream().collect(Collectors.toList());
     }
     //@GetMapping(path = "Owner", produces = MediaType.APPLICATION_JSON_VALUE)
-  //  public Collection<Owner> Owner() {
-      //  return ownerRepository.findAll().stream().collect(Collectors.toList());
-   // }
+    //  public Collection<Owner> Owner() {
+    //  return ownerRepository.findAll().stream().collect(Collectors.toList());
+    // }
 
-   @PostMapping(path ="/PetInfo/{petName}/{breedNameSelect}/{nurseNameSelect}/" +
+    @PostMapping(path ="/PetInfo/{petName}/{breedNameSelect}/{nurseNameSelect}/" +
             "{weight}/{height}/{ownerName}/{ownerTel}/{age}")
     public PetInfo petInfo( @PathVariable String petName,
                             @PathVariable Long breedNameSelect ,
@@ -60,15 +60,15 @@ public class PetInfoController {
                             @PathVariable String ownerName,
                             @PathVariable String ownerTel,
                             @PathVariable int age
-                                              ){
-            Breed  breed = breedRepository.findById(breedNameSelect).get();
-            Nurse nurse = nurseRepository.findById(nurseNameSelect).get();
+    ){
+        Breed  breed = breedRepository.findById(breedNameSelect).get();
+        Nurse nurse = nurseRepository.findById(nurseNameSelect).get();
 
         PetInfo petInfo = new PetInfo();
         Owner owner = new Owner();
         owner.setOwnerName(ownerName);
         owner.setOwnerTel(ownerTel);
-        owner.setOwnerPet(petName);
+
 
         ownerRepository.save(owner);
         petInfo.setPetName(petName);
@@ -80,7 +80,7 @@ public class PetInfoController {
         petInfo.setBreed(breed);
 
         petInfoRepository.save(petInfo);
-         return  petInfo;
+        return  petInfo;
     }
 
 
