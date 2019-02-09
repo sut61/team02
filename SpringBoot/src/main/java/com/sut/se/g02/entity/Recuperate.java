@@ -33,6 +33,8 @@ public class Recuperate {
     @Pattern(regexp="[a-zA-Z¡-û]+")
     @Size(min = 1, max = 20 )
 	private String note;
+
+
 	
 	
 
