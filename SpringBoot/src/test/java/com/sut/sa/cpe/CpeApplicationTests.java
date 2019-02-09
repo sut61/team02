@@ -1,4 +1,4 @@
-package com.sut.sa.cpe;
+package com.sut.se.g02;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
