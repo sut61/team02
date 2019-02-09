@@ -1,0 +1,10 @@
+.example-full-width {
+  width: 50%;
+  left: 25%;
+  text-align: center;
+
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+
