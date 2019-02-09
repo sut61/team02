@@ -48,25 +48,39 @@ export class TreatmentComponent implements OnInit {
   }
 
   save(){
-    if (this.nameDoctorSelect === '' || this.namePetInfoSelect === '' || this.nameOwnerSelect === ''|| this.nameMedicineSelect === ''|| this.symptom === ''|| this.dcon === '') {
-      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+    if(this.nameDoctorSelect === ""){
+      alert('กรุณาเลือกชื่อสัตวแพทย์');
+    }else if(this.namePetInfoSelect === "") {
+      alert('กรุณาเลือกชื่อสัตว์');
+    }else if(this.nameOwnerSelect === "") {
+      alert('กรุณาเลือกชื่อเจ้าของสัตว์');
+    }else if(this.symptom === "") {
+      alert('กรุณากรอกอาการ');
+    }else if(this.nameMedicineSelect === "") {
+      alert('กรุณาเลือกชื่อยา');
+    }else if(this.dcon === "") {
+      alert('กรุณากรอกวันพักฟื้น');
     } else {
     this.httpClient.post('http://localhost:8080/Treatment/' + this.nameDoctorSelect + '/' + this.namePetInfoSelect  + '/' +this.nameOwnerSelect+'/'+this.nameMedicineSelect+'/'+this.symptom+'/'+this.dcon, {})  
     .subscribe(
       data =>{
         console.log('PUT Rrquest successfull',data);
+        alert('บันทึกข้อมูลสำเร็จ');
       },
      
       error =>{
         console.log('Error',error);
+        alert('กรุณากรอกข้อมูลอาการให้ถูกต้อง ประกอบด้วย a-z, A-Z, ก-ฮ และ ตัวเลข 0-9');
       }
       
     );
+    }
+  
   }
-  alert('บันทึกข้อมูลแล้ว');
+
 }
 
   
 
-}
+
 
