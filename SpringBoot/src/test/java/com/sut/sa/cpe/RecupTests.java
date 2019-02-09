@@ -1,4 +1,4 @@
-﻿package com.sut.se.g02;
+package com.sut.se.g02;
 
 import lombok.*;
 
@@ -33,7 +33,7 @@ import com.sut.se.g02.entity.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class RecTests {
+public class RecupTests {
 
 	
     @Autowired
