@@ -17,6 +17,10 @@ export class AppointmentService {
     return this.http.get(this.API +'/Owner');
   }
 
+  public getPetInfo(): Observable<any> {
+    return this.http.get(this.API +'/PetInfo');
+  }
+
   public getPeriods(): Observable<any> {
     return this.http.get(this.API +'/Period');
   }
