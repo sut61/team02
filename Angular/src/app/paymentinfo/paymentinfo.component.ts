@@ -28,6 +28,9 @@ export class PaymentinfoComponent implements OnInit {
 
     priceSelect: any ='';
 
+    
+    note: any='';
+
 
     
   	constructor(private app : KaewService, private httpClient: HttpClient) {
@@ -69,25 +72,46 @@ export class PaymentinfoComponent implements OnInit {
 
 
     save() {
-      if (this.ownerNameSelect === '' || this.treatmentIdSelect === ''  || this.nameNurseSelect === '' ) {
-        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-      } else {
-      this.httpClient.post('http://localhost:8080/PayInfo/' + this.ownerNameSelect + '/' + this.treatmentIdSelect + '/' + this.priceSelect + '/' + this.nameNurseSelect, {})
-       .subscribe(
-        data =>{
-         console.log('PUT Request is successful', data);
-        },
+      if (this.ownerNameSelect === "") {
 
-        error => {
-          console.log('Error', error);
-        }
+	      alert('กรุณาเลือกชื่อเจ้าของสัตว์');
 
-       );
+	    } else if (this.treatmentIdSelect === "") {
 
-      }
+	      alert('กรุณาเลือกข้อมูลบันทึกอาการ');
 
-      alert('ยืนยันการบันทึก');
+	    } else if (this.priceSelect === "") {
 
-    }
+	      alert('กรุณาเลือกราคายา');
+
+	    } else if (this.note === "") {
+
+	      alert('กรุณากรอกหมายเหตุ');
+
+	    } else if (this.nameNurseSelect === "") {
+
+	      alert('กรุณาเลือกชื่อพยาบาล');
+
+	  } else {
+
+	      this.httpClient.post('http://localhost:8080/PayInfo/' + this.ownerNameSelect + '/' + this.treatmentIdSelect + '/' + this.priceSelect + '/' + this.note + '/' + this.nameNurseSelect, {})
+	       .subscribe(
+	        data =>{
+	         console.log('PUT Request is successful', data);
+	         	alert('บันทึกสำเร็จ');
+	        },
+
+	        error => {
+	          console.log('Error', error);
+
+	          	alert('ช่องหมายเหตุ ต้องเป็นภาษาไทย หรือ ภาษาอังกฤษ หรือ 0-9 หรือ - จำนวน 1-30 ตัวเท่านั้น');
+	        }
+
+	       ); 
+
+       }
+
+	}
+	
 
 }

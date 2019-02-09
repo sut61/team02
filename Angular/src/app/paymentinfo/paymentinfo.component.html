@@ -75,6 +75,21 @@
 			      		
 					</mat-card-content>
 		    <br>
+		    <mat-toolbar class="body">
+         	<span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; หมายเหตุ </span>&nbsp;&nbsp;&nbsp;
+          <font size="2">(**กรณีที่ไม่ใส่หมายเหตุ ให้ใส่  -)</font>
+        	</mat-toolbar>
+        	<br>
+
+
+		    	 <mat-card-content>
+				              &nbsp;  หมายเหตุ :  &nbsp;&nbsp;&nbsp;
+				             	<mat-form-field appearance="outline"> 
+				                        <input matInput  [(ngModel)]="note" name="note">
+				         	  	</mat-form-field>
+				</mat-card-content>
+
+		    
 
 		<mat-toolbar class="body">
          	<span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลพยาบาล </span>
@@ -102,7 +117,12 @@
 				  &nbsp;&nbsp;
 			
 				  <button mat-raised-button class="login-button" routerLink="/Pagemenu" >กลับสู่หน้าหลัก</button>
+
+				  <br><br>
+
+				  <button mat-raised-button class="login-button" routerLink="/pay" >ไปหน้า ระบบชำระเงิน</button>
 				</div>
+
 
   </mat-card>
 </div>
