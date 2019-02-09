@@ -53,17 +53,29 @@ import { PaymentinfoComponent } from './paymentinfo/paymentinfo.component';
 import { AppointmentComponent } from './Appointment/Appointment.component';
 import { RecuperateComponent } from './recuperate/recuperate.component';
 import { MedicalComponent } from './medical/medical.component';
+import { PayComponent } from './pay/pay.component';
+import { ServeComponent } from './serve/serve.component';
+import { TriageComponent } from './triage/triage.component';
+import { CancelAppComponent } from './cancel-app/cancel-app.component';
+import { MoveComponent } from './move/move.component';
+import { RemedComponent } from './remed/remed.component';
 
 const appRoutes: Routes = [
   {path:'', redirectTo:'/Login', pathMatch: 'full'},
     {path:'Login',component:LoginComponent},
     {path:'petinfo',component:PetinfoComponent},
     {path:'Pagemenu',component:PagemenuComponent},
+    {path:'triage',component:TriageComponent},
     {path:'treatment',component:TreatmentComponent},
     {path:'paymentinfo',component:PaymentinfoComponent},
     {path:'Appointment',component:AppointmentComponent},
     {path:'Recuperate',component:RecuperateComponent},
-    {path:'Medical',component:MedicalComponent}
+    {path:'Medical',component:MedicalComponent},
+    {path:'pay',component:PayComponent},
+    {path:'Serve',component:ServeComponent},
+    {path:'CancelApp',component:CancelAppComponent},
+    {path:'Move',component:MoveComponent},
+    {path:'remed',component:RemedComponent}
 ];
 
 @NgModule({
@@ -83,7 +95,20 @@ const appRoutes: Routes = [
 
     RecuperateComponent,
 
-    MedicalComponent
+    MedicalComponent,
+
+    PayComponent,
+
+    ServeComponent,
+
+    TriageComponent,
+
+    CancelAppComponent,
+
+    MoveComponent,
+
+    RemedComponent,
+
   ],
   imports: [
     BrowserModule,
