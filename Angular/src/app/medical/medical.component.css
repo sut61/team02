@@ -8,7 +8,7 @@
   }
 
   .container {
-    max-width: 1500px;
+    max-width: 1000px;
   }
 
 .lh-condensed { line-height: 1.25; }
@@ -20,6 +20,7 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 /*.body-width{
   width: 50%;
