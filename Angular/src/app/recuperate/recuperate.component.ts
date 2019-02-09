@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { HelloService } from '../hello.service';
 import {HttpClient} from '@angular/common/http';
 
@@ -15,32 +15,32 @@ export class RecuperateComponent implements OnInit {
    nametreat: Array<any>;
     treatSelect='';
 
-  	nameCage: Array<any>;
-  	nameCageSelect='';
+    nameCage: Array<any>;
+    nameCageSelect='';
 
-  	nameCageType: Array<any>;
+    nameCageType: Array<any>;
     nameCageTypeSelect='';
 
-  	nameNurse: Array<any>;
-  	nameNurseSelect='';
-    
-  	
-  	date='';
-	constructor(private app : HelloService, private httpClient: HttpClient) { }
+    nameNurse: Array<any>;
+    nameNurseSelect='';
 
-  
+    note='';
+    date='';
+  constructor(private app : HelloService, private httpClient: HttpClient) { }
+
+
 
   ngOnInit() {
-  	this.app.getTreatment().subscribe(data=>{
+    this.app.getTreatment().subscribe(data=>{
           this.nametreat =  data;
           console.log(this.nametreat);
       })
 
-  	this.app.getCage().subscribe(data=>{
+    this.app.getCage().subscribe(data=>{
           this.nameCage =  data;
           console.log(this.nameCage);
       })
-	  this.app.getCageType().subscribe(data=>{
+    this.app.getCageType().subscribe(data=>{
           this.nameCageType =  data;
           console.log(this.nameCageType);
       })
@@ -52,21 +52,22 @@ export class RecuperateComponent implements OnInit {
     }
 
     save() {
-    if (this.nameCageSelect === ''      || this.nameCageTypeSelect === '' || this.treatSelect === '' ||  this.nameNurseSelect === '') {
+    if (this.nameCageSelect === ''      || this.nameCageTypeSelect === '' || this.treatSelect === '' || this.note === '' ||  this.nameNurseSelect === '') {
       alert('กรอกข้อมูลให้ครบถ้วน');
     } else {
     this.httpClient.post('http://localhost:8080/Recuperate/' + this.nameCageSelect + '/' +
-      this.nameCageTypeSelect  +'/' + this.treatSelect + '/' + this.nameNurseSelect,{})
+      this.nameCageTypeSelect  +'/' + this.treatSelect +'/' + this.note + '/' + this.nameNurseSelect,{})
      .subscribe(
        data => {
-         console.log('PUT Request is successful', data);
+         console.log('PUT Request is successful', data);alert('บันทึกข้อมูลเรียบร้อย');
         },
         error => {
           console.log('Error', error);
+          alert('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษและภาษาไทย');
         }
       );
-      
+
     }
-    alert('บันทึกข้อมูลเรียบร้อย');
+
   }
 }

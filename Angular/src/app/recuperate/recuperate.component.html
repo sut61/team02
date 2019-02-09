@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+﻿<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
 
   
@@ -76,6 +76,21 @@
       </mat-card-content><br>
   </mat-card>
 
+
+   <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; หมายเหตุ </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                       <input matInput placeholder="Note" [(ngModel)]="note" name="note"  > 
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
  
 
   
@@ -97,10 +112,13 @@
       </mat-card-content><br>
   </mat-card><br><br>
 
+
   <mat-card-actions align="center">
                     <button mat-fab color="accent" (click)= "save()" >ยืนยัน</button>
                     &nbsp;&nbsp;&nbsp;
                     <button mat-fab color="accent" routerLink="/Pagemenu">กลับสู่หน้าหลัก</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" routerLink="/Move">ถัดไป</button>
             </mat-card-actions>
   
 </div>
