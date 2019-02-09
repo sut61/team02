@@ -1,0 +1,77 @@
+<mat-toolbar  class="nav-color " >
+  <span>ระบบคลินิกรักษาสัตว์</span>
+</mat-toolbar>
+
+<!--Triage Page-->
+
+
+<div class="container">
+  <br>
+  <h1 ><mat-icon>assignment</mat-icon> ระบบคัดแยกอาการ </h1>  
+  <hr>
+  <br>
+
+<mat-card >
+  <mat-toolbar class="body">
+      <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลทั่วไป</span>
+  </mat-toolbar>
+  <br>
+  
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พยาบาล :
+  &nbsp;&nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width1">
+    <mat-label>Nurse</mat-label>
+    <mat-select placeholder="Nurse" [(ngModel)]="nameNurseSelect" name="nameNurse" >
+      <mat-option *ngFor="let nurse of nameNurse" [value]="nurse.nurseId">
+        {{nurse.nameNurse}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ชื่อสัตว์ :
+  &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Pet</mat-label>
+      <mat-select placeholder="PetInfo" [(ngModel)]="namePetInfoSelect" name="petName">
+        <mat-option *ngFor="let petInfo of petName" [value]="petInfo.petId">
+          {{petInfo.petName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  <mat-toolbar class="body">
+    <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp;ข้อมูลการคัดแยกอาการ - ระดับความฉุกเฉิน </span>
+  </mat-toolbar>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลักษณะอาการ :
+      &nbsp;&nbsp;
+    <mat-form-field appearance="outline" class="example-full-width1">
+      <mat-label>Symptom</mat-label>
+      <input matInput placeholder="Symptom" [(ngModel)]="symptom" name="symptom"  >
+    </mat-form-field>
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ระดับความฉุกเฉิน :
+  &nbsp;&nbsp;
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>TriageLevel</mat-label>
+    <mat-select placeholder="TriageLevel" [(ngModel)]="triageLevelSelect" name="level" >
+      <mat-option *ngFor="let level of level" [value]="level.levelId">
+        {{level.levelName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+
+<br>
+<mat-card-actions align="center" >
+  
+  <button mat-raised-button class="button-color " (click)="save()"><mat-icon>dvr</mat-icon>&nbsp;&nbsp;&nbsp;บันทึก</button>&nbsp;&nbsp;&nbsp;
+  <button mat-raised-button class="button-color " routerLink="/Pagemenu"><mat-icon>home</mat-icon>&nbsp;&nbsp;&nbsp;กลับสู่หน้าหลัก</button>
+</mat-card-actions>
+</mat-card>
+
+
+</div>
+
