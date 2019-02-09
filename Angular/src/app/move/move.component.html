@@ -1,0 +1,144 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+
+  
+  <h1 align="center"> ระบบย้ายกรง</h1>  
+  <br>
+
+  <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon color="primary">label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลสัตว์ </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                        <mat-select width="80%" placeholder="" [(ngModel)]="recSelect" name="namerec">
+                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.id"> 
+                             {{Recuperate.treatment.petInfo.petName}} &nbsp;&nbsp;
+                            
+                          </mat-option>
+                    </mat-select>
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
+<mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลเจ้าของสัตว์ </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                        <mat-select placeholder="" [(ngModel)]="nameOwnerSelect" name="ownerName">
+                          <mat-option *ngFor="let Owner of ownerName" [value]="Owner.ownerId"> 
+                          	{{Owner.ownerName}}
+                          </mat-option>
+                    </mat-select>
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
+
+  <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; เลือกประเภทกรง </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                        <mat-select placeholder="" [(ngModel)]="nameCageTypeSelect" name="nameCageType">
+                          <mat-option *ngFor="let CageType of nameCageType" [value]="CageType.id"> {{CageType.nameCageType}}
+                          </mat-option>
+                    </mat-select>
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
+  <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon color="primary" >label</mat-icon>&nbsp;&nbsp;&nbsp; เลือกกรง </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                       <mat-select placeholder="" [(ngModel)]="nameCageSelect" name="nameCage">
+                          <mat-option *ngFor="let Cage of nameCage" [value]="Cage.id"> {{Cage.nameCage}}
+                          </mat-option>
+                    </mat-select>
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
+
+  <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon color="primary" >label</mat-icon>&nbsp;&nbsp;&nbsp; วันที่ย้าย </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+
+              	<mat-form-field>
+				  <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="date" name="date">
+				  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				  <mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+
+
+             
+      </mat-card-content><br>
+  </mat-card>
+
+
+   <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; หมายเหตุ </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                       <input matInput placeholder="Note" [(ngModel)]="note" name="note"  > 
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card>
+
+ 
+
+  
+
+  <mat-card>
+    <mat-toolbar color="accent" class="body">
+        
+          <span><mat-icon color="primary" >label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลพยาบาล </span>
+    </mat-toolbar>
+     <br>
+      <mat-card-content>
+              &nbsp;  
+              <mat-form-field >
+                       <mat-select placeholder="" [(ngModel)]="nameNurseSelect" name="nameNurse">
+                          <mat-option *ngFor="let Nurse of nameNurse" [value]="Nurse.nurseId"> {{Nurse.nameNurse}}
+                          </mat-option>
+                    </mat-select>
+         </mat-form-field>
+      </mat-card-content><br>
+  </mat-card><br><br>
+
+  <mat-card-actions align="center">
+                    <button mat-fab color="accent" (click)= "save()" >ยืนยัน</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button mat-fab color="accent" routerLink="/Pagemenu">กลับสู่หน้าหลัก</button>
+            </mat-card-actions>
+  
+</div>
+
