@@ -30,7 +30,7 @@ public class Recuperate {
     private  @NotNull Timestamp date;
     
     @NotNull
-    @Pattern(regexp="[a-zA-Z¡-û]+")
+    @Pattern(regexp = "[¡-ûa-zA-Z]+")
     @Size(min = 1, max = 20 )
 	private String note;
 
