@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+body {
+    margin: 0;
+    font-family: Kanit, sans-serif;
+   }
+
+.nav-color{
+    color:#ffffff;
+    background: #E8475B;
+}
+
+.button-color{
+    color:#ffffff;
+    background-color:#E8475B;
+}
+
+.container {
+    max-width: 1300px;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+  }
+
+  .example-full-width {
+    width: 25%;
+  }
+  .example-full-width1{
+    width: 35%;
+  }
+/*.mat-icon {
+    @include md-icon-size(32px);
+}*/
+  
