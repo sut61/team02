@@ -1,4 +1,4 @@
-package com.sut.se.g02;
+﻿package com.sut.se.g02;
 
 import lombok.*;
 
@@ -57,7 +57,7 @@ public class RecTests {
     public void testSaveAll() {
         Recuperate recuperate = new Recuperate();
         recuperate.setDate(new Timestamp(System.currentTimeMillis()));
-        recuperate.setNote("ย้าย");
+        recuperate.setNote("rec");
         try {
             entityManager.persist(recuperate);
             entityManager.flush();
@@ -103,7 +103,7 @@ public class RecTests {
     public void testRecuperateSizeOver() {
     	Recuperate recuperate = new Recuperate();
         recuperate.setDate(new Timestamp(System.currentTimeMillis()));
-        recuperate.setNote("ย้ายอีกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+        recuperate.setNote("reccccccccccccccccccccccccccccccccccc");
         try {
             entityManager.persist(recuperate);
             entityManager.flush();
@@ -123,7 +123,9 @@ public class RecTests {
    @Test
     public void testRecuperateNotPattern() {
         Recuperate recuperate = new Recuperate();
+
         recuperate.setDate(new Timestamp(System.currentTimeMillis()));
+        recuperate.setNote("****");
         try {
             entityManager.persist(recuperate);
             entityManager.flush();
