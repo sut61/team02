@@ -1,0 +1,146 @@
+<div class="container">
+  <h1 align="center"> ระบบชำระเงิน </h1>  
+  
+
+
+  <mat-card >
+		    
+    <mat-toolbar class="body">
+          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลแจ้งชำระค่ารักษาพยาบาล </span>
+    </mat-toolbar>
+    <br>
+			     	 <mat-card-content>
+			              &nbsp; ID ข้อมูลแจ้งชำระค่ารักษาพยาบาล :  &nbsp;&nbsp;&nbsp;
+			             	<mat-form-field appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
+			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            	{{PayInfo.id}} 
+			                            </mat-option>
+			                		</mat-select>
+			         	  	</mat-form-field>
+			      		<br>
+
+			      	<tr>
+			      		<td>
+			      		&nbsp;
+			      			ชื่อเจ้าของสัตว์ : 	&nbsp;&nbsp;&nbsp;	
+
+
+			      				<mat-form-field appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
+			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            	{{PayInfo.owner.ownerName}} 
+			                            </mat-option>
+			                		</mat-select>
+			         	  		</mat-form-field>
+			         	  		
+			         	</td>
+			         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      		<td>
+
+			      			ชื่อสัตว์ : 	&nbsp;&nbsp;&nbsp;	
+
+
+			      				<mat-form-field appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
+			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            	{{PayInfo.treatment.petInfo.petName}} 
+			                            </mat-option>
+			                		</mat-select>
+			         	  		</mat-form-field>
+			         	</td>
+			        </tr>
+			         	  		
+			        <tr>	  		
+						<td>
+			      		&nbsp;
+			      			ชื่อยา : 	&nbsp;&nbsp;&nbsp;
+
+			      				<mat-form-field  appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
+			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> {{PayInfo.treatment.medicine.nameMed}}
+			                            </mat-option>
+			                		</mat-select>
+			         	  		</mat-form-field>
+
+									
+			         	</td>  	
+			   			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			   			<td>
+			      			ราคายา : 	&nbsp;&nbsp;&nbsp;
+
+			      				<mat-form-field  appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
+			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            	{{PayInfo.medicine.price}}  บาท
+			                            </mat-option>
+			                		</mat-select>
+			         	  		</mat-form-field>
+			         	</td>
+			         </tr>
+						
+					</mat-card-content>
+
+		    <mat-toolbar class="body">
+         	<span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; สถานะการชำระเงิน </span>
+        	</mat-toolbar>
+        	<br>
+
+        			<mat-card-content>
+        					&nbsp;  สถานะการชำระเงิน :  &nbsp;&nbsp;&nbsp;
+        					<mat-form-field appearance="outline">
+			             			<mat-select placeholder="" [(ngModel)]="statusPaySelect" name="nameStatusPay">
+			                            <mat-option *ngFor="let StatusPay of nameStatusPay" [value]="StatusPay.id"> 
+                                    {{StatusPay.nameStatusPay}} 
+			                            </mat-option>
+			                		</mat-select>
+			         	  	</mat-form-field>	
+					</mat-card-content>
+
+
+		    <mat-toolbar class="body">
+         	<span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; หมายเหตุ </span>&nbsp;&nbsp;&nbsp;
+          <font size="2">(**กรณีที่ไม่ใส่หมายเหตุ ให้ใส่  -)</font>
+        	</mat-toolbar>
+        	<br>
+
+
+		    	 <mat-card-content>
+				              &nbsp;  หมายเหตุ :  &nbsp;&nbsp;&nbsp;
+				             	<mat-form-field appearance="outline"> 
+				                        <input matInput  [(ngModel)]="note" name="note">
+				         	  	</mat-form-field>
+				</mat-card-content>
+
+		    
+
+		<mat-toolbar class="body">
+         	<span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; ข้อมูลพยาบาล </span>
+        </mat-toolbar>
+        <br>
+		        <mat-card-content>
+				              &nbsp;  ชื่อ-สกุล :  &nbsp;&nbsp;&nbsp;
+				             	<mat-form-field appearance="outline"> 
+				                        <mat-select placeholder="" [(ngModel)]="nameNurseSelect" name="nameNurse">
+				                            <mat-option *ngFor="let Nurse of nameNurse" [value]="Nurse.nurseId"> {{Nurse.nameNurse}} 
+				                            </mat-option>
+				                		</mat-select>
+				         	  	</mat-form-field>
+				</mat-card-content>
+		<br>
+
+		<mat-toolbar class="body" >
+			<span> </span>
+		</mat-toolbar>
+		<br><br>
+
+				<div class="example-button-row" align="center">
+				  <button mat-raised-button class="login-button" (click)="save()" >บันทึก</button>
+			
+				  &nbsp;&nbsp;
+			
+				  <button mat-raised-button class="login-button" routerLink="/Pagemenu" >กลับสู่หน้าหลัก</button>
+				</div>
+
+  </mat-card>
+</div>

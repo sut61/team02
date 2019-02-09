@@ -36,6 +36,11 @@ export class KaewService {
     return this.http.get(this.API+'/Owner');
     }
 
+
+    public  getStatusPay() :  Observable<any>{
+    return this.http.get(this.API+'/StatusPay');
+    }
+
   
 
 
