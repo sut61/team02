@@ -1,4 +1,4 @@
-package com.sut.se.g02.entity;
+﻿package com.sut.se.g02.entity;
 
 
 import lombok.*;
@@ -42,7 +42,7 @@ public class Move {
 
     
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Recuperatet_ID", insertable = true)
     private  Recuperate recuperate;
 
