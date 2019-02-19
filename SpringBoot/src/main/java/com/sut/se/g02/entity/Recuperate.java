@@ -44,7 +44,7 @@ public class Recuperate {
 
     
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Treatment_ID", insertable = true)
     private  Treatment treatment;
 
