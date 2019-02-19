@@ -1,4 +1,5 @@
 ﻿package com.sut.se.g02.entity;
+
 import lombok.*;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.*;
 import java.util.List;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
 import java.util.Date;
 import java.util.Collection;
 
