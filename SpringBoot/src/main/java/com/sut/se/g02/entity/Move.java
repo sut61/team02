@@ -1,6 +1,4 @@
 ﻿package com.sut.se.g02.entity;
-
-
 import lombok.*;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
