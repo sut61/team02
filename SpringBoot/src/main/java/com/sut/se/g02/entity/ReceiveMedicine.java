@@ -52,7 +52,7 @@ public class ReceiveMedicine {
     @JoinColumn(name = "IDNurse",insertable = true)
     private Nurse nurse;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDOrderMedicine",insertable = true)
     private OrderMedicine orderMedicine;
 
