@@ -21,19 +21,19 @@ import java.util.Collection;
 @Data
 @Table(name = "Pay")
 public class Pay {
-	@Id
-	@SequenceGenerator(name="pay_seq",sequenceName="pay_seq")
+    @Id
+    @SequenceGenerator(name="pay_seq",sequenceName="pay_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pay_seq")
     @Column(name="Pay_ID")
-	private @NotNull Long id;
-	private @NotNull Timestamp dateandtime;
+    private @NotNull Long id;
+    private @NotNull Timestamp dateandtime;
 
     @NotNull
     @Pattern(regexp = "[-a-zA-Z0-9ก-๛\\s\\t]+")
     @Size(min = 1, max = 30 )
     private  String note;
-	
-	public Pay() {}
+    
+    public Pay() {}
 
 
     public void setDateandtime(Timestamp dateandtime) {
@@ -53,7 +53,7 @@ public class Pay {
 
 
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PayInfo_ID", insertable = true)
     private  PayInfo payInfo;
 
