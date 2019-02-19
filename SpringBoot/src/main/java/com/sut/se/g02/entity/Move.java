@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Collection;
 
 
+
 @Entity
 @Data
 @Table(name = "Move")
