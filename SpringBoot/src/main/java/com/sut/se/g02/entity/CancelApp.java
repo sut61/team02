@@ -35,7 +35,7 @@ public class CancelApp {
     @JoinColumn(name = "IDStatus1",insertable = true)
     private  Status1 status1;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDAppointment",insertable = true)
     private   Appointment appointment;
 
