@@ -28,8 +28,7 @@ public class MoveController {
     private OwnerRepository ownerRepository;
     @Autowired
     private CageRepository cageRepository;
-    @Autowired
-    private CageTypeRepository cageTypeRepository;
+    
     @Autowired
     private NurseRepository nurseRepository;
 
@@ -101,7 +100,7 @@ public class MoveController {
         return c;
     }*/
 
-    @PostMapping(path ="/Move/{recSelect}/{nameOwnerSelect}/{nameCageSelect}/{nameCageTypeSelect}/{date}/{note}/{nameNurseSelect}")
+    @PostMapping(path ="/Move/{recSelect}/{nameOwnerSelect}/{nameCageSelect}/{date}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Move move(
                                       
@@ -110,7 +109,7 @@ public class MoveController {
                                             @PathVariable  Long nameCageSelect,
                                             
                                           
-                                            @PathVariable  Long nameCageTypeSelect,
+                                            
                                             
                                             @PathVariable  Date date,
                                             @PathVariable  String note,
@@ -119,7 +118,7 @@ public class MoveController {
             Recuperate recuperate = recuperateRepository.findById(recSelect).get();
             Owner owner = ownerRepository.findById(nameOwnerSelect).get();
             Cage cage = cageRepository.findById(nameCageSelect).get();
-            CageType cageType = cageTypeRepository.findById(nameCageTypeSelect).get();
+            
             
             Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
         
@@ -128,7 +127,7 @@ public class MoveController {
         move.setOwner(owner);
         move.setCage(cage);
         
-        move.setCageType(cageType);
+        
       move.setDate(date);
        move.setNote(note);
         move.setNurse(nurse);

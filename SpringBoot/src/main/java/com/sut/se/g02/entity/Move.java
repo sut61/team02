@@ -1,4 +1,4 @@
-﻿package com.sut.se.g02.entity;
+package com.sut.se.g02.entity;
 
 import lombok.*;
 import javax.persistence.Id;
@@ -12,10 +12,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.*;
 import java.util.List;
 import javax.persistence.*;
-
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Collection;
-
 
 
 @Entity
@@ -55,9 +54,7 @@ public class Move {
     private  Cage cage;
 
  
-	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "IDCageType",insertable = true)
-    private  CageType cageType;
+	
 
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
@@ -93,12 +90,7 @@ public class Move {
     	return cage; 
     }
 
-   public void setCageType(CageType cageType){
-		this.cageType=cageType;
-	}
-    public CageType getCageType() { 
-    	return cageType; 
-    } 
+   
 
     public void setNote(String note){
 		this.note=note;
@@ -115,6 +107,7 @@ public class Move {
     }
 
     public void setOwner (Owner owner) {
+    	this.owner=owner;
 	}
     public Owner getOwner() {
     	return owner;
@@ -123,13 +116,13 @@ public class Move {
     
 
 
-	public Move (Long id,Recuperate recuperate,Owner owner,Cage cage,CageType cageType,Date date, String note,
+	public Move (Long id,Recuperate recuperate,Owner owner,Cage cage,Date date, String note,
 		  Nurse nurse){
 	 		this.recuperate = recuperate;
             this.owner = owner;
 			this.cage = cage;
 			
-	 		this.cageType = cageType;
+	 		
 	 		this.date = date;
 	 		this.note = note;
 			this.nurse = nurse;
