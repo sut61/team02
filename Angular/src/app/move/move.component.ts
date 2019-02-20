@@ -21,8 +21,7 @@ export class MoveComponent implements OnInit {
   	nameCage: Array<any>;
   	nameCageSelect='';
 
-  	nameCageType: Array<any>;
-    nameCageTypeSelect='';
+  	
 
   	nameNurse: Array<any>;
   	nameNurseSelect='';
@@ -48,10 +47,7 @@ export class MoveComponent implements OnInit {
           this.nameCage =  data;
           console.log(this.nameCage);
       })
-	  this.app.getCageType().subscribe(data=>{
-          this.nameCageType =  data;
-          console.log(this.nameCageType);
-      })
+	  
 
     this.app.getNurse().subscribe(data=>{
           this.nameNurse =  data;
@@ -61,10 +57,10 @@ export class MoveComponent implements OnInit {
 
 
     save() {
-      if (this.recSelect === '' || this.nameOwnerSelect === '' || this.nameCageSelect == '' || this.nameCageTypeSelect === '' || this.date === '' || this.note === '' || this.nameNurseSelect === '') {
+      if (this.recSelect === '' || this.nameOwnerSelect === '' || this.nameCageSelect == '' ||  this.date === '' || this.note === '' || this.nameNurseSelect === '') {
         alert('กรุณากรอกข้อมูลให้ครบถ้วน');
       } else {
-      this.httpClient.post('http://localhost:8080/Move/' + this.recSelect + '/' + this.nameOwnerSelect + '/' + this.nameCageSelect + '/' + '/' + this.nameCageTypeSelect + '/' + this.date + '/' + this.note + '/' + this.nameNurseSelect, {})
+      this.httpClient.post('http://localhost:8080/Move/' + this.recSelect + '/' + this.nameOwnerSelect + '/' + this.nameCageSelect + '/' +  this.date + '/' + this.note + '/' + this.nameNurseSelect, {})
        .subscribe(
         data =>{
          console.log('PUT Request is successful', data);alert('บันทึกข้อมูลเรียบร้อย');

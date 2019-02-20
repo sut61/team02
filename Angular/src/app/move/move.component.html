@@ -46,23 +46,6 @@
   <mat-card>
     <mat-toolbar color="accent" class="body">
         
-          <span><mat-icon>label</mat-icon>&nbsp;&nbsp;&nbsp; เลือกประเภทกรง </span>
-    </mat-toolbar>
-     <br>
-      <mat-card-content>
-              &nbsp;  
-              <mat-form-field >
-                        <mat-select placeholder="" [(ngModel)]="nameCageTypeSelect" name="nameCageType">
-                          <mat-option *ngFor="let CageType of nameCageType" [value]="CageType.id"> {{CageType.nameCageType}}
-                          </mat-option>
-                    </mat-select>
-         </mat-form-field>
-      </mat-card-content><br>
-  </mat-card>
-
-  <mat-card>
-    <mat-toolbar color="accent" class="body">
-        
           <span><mat-icon color="primary" >label</mat-icon>&nbsp;&nbsp;&nbsp; เลือกกรง </span>
     </mat-toolbar>
      <br>
