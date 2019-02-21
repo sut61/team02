@@ -26,8 +26,8 @@ public class Move {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="move_seq")
 	@Column(name="idMove")
     @NotNull
-	private  Long id;
-
+	private  Long moveId;
+    @NotNull
     private  Date date;
 
     @NotNull
@@ -43,14 +43,17 @@ public class Move {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Recuperatet_ID", insertable = true)
+    @NotNull
     private  Recuperate recuperate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDOwner",insertable = true)
+    @NotNull
     private Owner owner;
 
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDCage",insertable = true)
+    @NotNull
     private  Cage cage;
 
  
@@ -58,6 +61,7 @@ public class Move {
 
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
+    @NotNull
     private  Nurse nurse;
 
 	
@@ -116,7 +120,7 @@ public class Move {
     
 
 
-	public Move (Long id,Recuperate recuperate,Owner owner,Cage cage,Date date, String note,
+	public Move (Long moveId,Recuperate recuperate,Owner owner,Cage cage,Date date, String note,
 		  Nurse nurse){
 	 		this.recuperate = recuperate;
             this.owner = owner;
