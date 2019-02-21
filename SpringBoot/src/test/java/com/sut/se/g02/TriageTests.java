@@ -42,6 +42,14 @@ public class TriageTests {
 	@Autowired
 	private TriageRepository triageRepository;
 
+
+	@Autowired
+    private PetInfoRepository petInfoRepository;
+    @Autowired
+    private NurseRepository nurseRepository;
+    @Autowired
+    private TriageLevelRepository triageLevelRepository;
+
 	@Autowired
 	private TestEntityManager entityManager;
 
@@ -61,6 +69,12 @@ public class TriageTests {
 	@Test
 	public void triageSaveAll(){
 		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(n);
+		t.setPetInfo(p);
+		t.setTriageLevel(level);
 		t.setSymptom("ไข้ขึ้นสูง ชักเกรง");
 		
 
@@ -84,9 +98,42 @@ public class TriageTests {
 	}
 
 	@Test
-	public void triageSymptomNotNull(){
+	public void NotNullNurse(){
 		Triage t = new Triage();
-		t.setSymptom(null);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(null);
+		t.setPetInfo(p);
+		t.setTriageLevel(level);
+		t.setSymptom("ไข้ขึ้นสูง ชักเกรง");
+
+		try{
+			entityManager.persist(t);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull Nurse--------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void NotNullPetInfo(){
+		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(n);
+		t.setPetInfo(null);
+		t.setTriageLevel(level);
+		t.setSymptom("ไข้ขึ้นสูง ชักเกรง");
 
 		try{
 			entityManager.persist(t);
@@ -99,6 +146,64 @@ public class TriageTests {
 			assertEquals(violations.isEmpty(), false);
 			assertEquals(violations.size(), 1);
 			System.out.println();
+			System.out.println("------------------------ Check NotNull PetInfo --------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void NotNullTriageLevel(){
+		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        
+		t.setNurse(n);
+		t.setPetInfo(p);
+		t.setTriageLevel(null);
+		t.setSymptom("ไข้ขึ้นสูง ชักเกรง");
+
+		try{
+			entityManager.persist(t);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull TriageLevel--------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void triageSymptomNotNull(){
+		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(n);
+		t.setPetInfo(p);
+		t.setTriageLevel(level);
+		t.setSymptom(null);
+
+		try{
+			entityManager.persist(t);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
 			System.out.println("------------------------ Check triageSymptomNotNull --------------------------");
 			System.out.println(e.getMessage());
 			System.out.println("------------------------------------------------------------------------");
@@ -109,6 +214,12 @@ public class TriageTests {
 	@Test
 	public void triageSymptomLongSize(){
 		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(n);
+		t.setPetInfo(p);
+		t.setTriageLevel(level);
 		t.setSymptom("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatttttttttt");
 
 		
@@ -122,7 +233,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			System.out.println();
 			System.out.println("------------------------ Check triageSymptomLongSize ------------------------");
 			System.out.println(e.getMessage());
@@ -135,6 +246,12 @@ public class TriageTests {
 	@Test
 	public void triageSymptomPattern(){
 		Triage t = new Triage();
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+    	PetInfo  p = this.petInfoRepository.findByPetId(1L);
+        TriageLevel  level = this.triageLevelRepository.findByLevelId(1L);
+		t.setNurse(n);
+		t.setPetInfo(p);
+		t.setTriageLevel(level);
 		t.setSymptom("#######################");
 
 		
@@ -148,7 +265,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			System.out.println();
 			System.out.println("------------------------ Check triageSymptomไม่ตรงPattern ------------------------");
 			System.out.println(e.getMessage());
