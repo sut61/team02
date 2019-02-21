@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.Optional;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class ReceiveMedicineController {
@@ -27,27 +29,16 @@ public class ReceiveMedicineController {
 
 
 
-    @GetMapping(path = "ReceiveMedicine", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<ReceiveMedicine> ReceiveMedicine() {
+     @GetMapping("/ReceiveMedicine")
+    public List<ReceiveMedicine> ReceiveMedicine(){
         return receiveMedicineRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/ReceiveMedicine/{id}")
-    public Optional<ReceiveMedicine> receiveMedicine(@PathVariable Long id) {
-        Optional<ReceiveMedicine> r = receiveMedicineRepository.findById(id);
-        return r;
-    }
 
-    @GetMapping(path = "CheckStatus", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<CheckStatus> CheckStatus() {
+
+     @GetMapping("/CheckStatus")
+    public List<CheckStatus> CheckStatus(){
         return checkStatusRepository.findAll().stream().collect(Collectors.toList());
     }
-
-    @GetMapping("/CheckStatus/{id}")
-    public Optional<CheckStatus> checkStatus(@PathVariable Long id)  {
-        Optional<CheckStatus> c = checkStatusRepository.findById(id);
-        return c;
-    }
-
 
     @PostMapping(path ="/ReceiveMedicine/{orderMedicineIdSelect}/{noteNew}/{checkStatusSelect}/{nurseNameSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -58,9 +49,9 @@ public class ReceiveMedicineController {
             @PathVariable  Long nurseNameSelect){
 
 
-        OrderMedicine orderMedicine = orderMedicineRepository.findById(orderMedicineIdSelect).get();
-        CheckStatus checkStatus = checkStatusRepository.findById(checkStatusSelect).get();
-        Nurse nurse = nurseRepository.findById(nurseNameSelect).get();
+        OrderMedicine orderMedicine = orderMedicineRepository.findByOrderMedicineId(orderMedicineIdSelect);
+        CheckStatus checkStatus = checkStatusRepository.findByCheckStatusId(checkStatusSelect);
+        Nurse nurse = nurseRepository.findByNurseId(nurseNameSelect);
 
 
         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
