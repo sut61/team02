@@ -13,8 +13,8 @@
 			              &nbsp; ID ข้อมูลแจ้งชำระค่ารักษาพยาบาล :  &nbsp;&nbsp;&nbsp;
 			             	<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
-			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
-			                            	{{PayInfo.id}} 
+			                            <mat-option *ngFor="let PayInfo of payInfoId" [value]="PayInfo.payInfoId"> 
+			                            	{{PayInfo.payInfoId}} 
 			                            </mat-option>
 			                		</mat-select>
 			         	  	</mat-form-field>
@@ -28,7 +28,7 @@
 
 			      				<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
-			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            <mat-option *ngFor="let PayInfo of payInfoId" [value]="PayInfo.payInfoId"> 
 			                            	{{PayInfo.owner.ownerName}} 
 			                            </mat-option>
 			                		</mat-select>
@@ -43,7 +43,7 @@
 
 			      				<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
-			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            <mat-option *ngFor="let PayInfo of payInfoId" [value]="PayInfo.payInfoId"> 
 			                            	{{PayInfo.treatment.petInfo.petName}} 
 			                            </mat-option>
 			                		</mat-select>
@@ -58,7 +58,7 @@
 
 			      				<mat-form-field  appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
-			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> {{PayInfo.treatment.medicine.nameMed}}
+			                            <mat-option *ngFor="let PayInfo of payInfoId" [value]="PayInfo.payInfoId"> {{PayInfo.treatment.medicine.nameMed}}
 			                            </mat-option>
 			                		</mat-select>
 			         	  		</mat-form-field>
@@ -71,7 +71,7 @@
 
 			      				<mat-form-field  appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="payInfoSelect" name="id">
-			                            <mat-option *ngFor="let PayInfo of id" [value]="PayInfo.id"> 
+			                            <mat-option *ngFor="let PayInfo of payInfoId" [value]="PayInfo.payInfoId"> 
 			                            	{{PayInfo.medicine.price}}  บาท
 			                            </mat-option>
 			                		</mat-select>
@@ -90,7 +90,7 @@
         					&nbsp;  สถานะการชำระเงิน :  &nbsp;&nbsp;&nbsp;
         					<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="statusPaySelect" name="nameStatusPay">
-			                            <mat-option *ngFor="let StatusPay of nameStatusPay" [value]="StatusPay.id"> 
+			                            <mat-option *ngFor="let StatusPay of nameStatusPay" [value]="StatusPay.statusPayId"> 
                                     {{StatusPay.nameStatusPay}} 
 			                            </mat-option>
 			                		</mat-select>

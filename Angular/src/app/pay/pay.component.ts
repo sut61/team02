@@ -11,6 +11,7 @@ export class PayComponent implements OnInit {
 
 
     id: Array<any>;
+    payInfoId: Array<any>;
     payInfoSelect: any ='';
 
 
@@ -33,8 +34,8 @@ export class PayComponent implements OnInit {
   	ngOnInit() {
 
   	  this.app.getPayInfo().subscribe(data=>{
-          this.id =  data;
-          console.log(this.id);
+          this.payInfoId =  data;
+          console.log(this.payInfoId);
       })
 
       this.app.getStatusPay().subscribe(data=>{
