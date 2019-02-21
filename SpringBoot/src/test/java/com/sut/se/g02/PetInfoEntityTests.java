@@ -42,6 +42,10 @@ public class PetInfoEntityTests {
     private OwnerRepository ownerRepository;
     @Autowired
     private PetInfoRepository petInfoRepository;
+    @Autowired
+    private NurseRepository nurseRepository;
+    @Autowired
+    private BreedRepository breedRepository;
 
 
     @Autowired
@@ -58,6 +62,12 @@ public class PetInfoEntityTests {
     @Test
     public void FinishPetInfo() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("pupu");
         petInfo.setWeight(123.0);
         petInfo.setHeight(123.0);
@@ -80,9 +90,16 @@ public class PetInfoEntityTests {
         }
 
     }
+
     @Test
     public void CannotNullPetInfoName() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName(null);
         petInfo.setWeight(123.0);
         petInfo.setHeight(123.0);
@@ -95,7 +112,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull Name PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -106,6 +123,12 @@ public class PetInfoEntityTests {
     @Test
     public void CannotNullPetInfoWeight() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("pupu");
         petInfo.setWeight(null);
         petInfo.setHeight(123.0);
@@ -118,7 +141,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull Weight PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -129,6 +152,12 @@ public class PetInfoEntityTests {
     @Test
     public void CannotNullPetInfoHeight() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("pupu");
         petInfo.setWeight(123.0);
         petInfo.setHeight(null);
@@ -141,7 +170,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull Height PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -152,6 +181,12 @@ public class PetInfoEntityTests {
     @Test
     public void CannotNullPetInfoAge() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("pupu");
         petInfo.setWeight(123.0);
         petInfo.setHeight(123.0);
@@ -164,7 +199,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull Age PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -175,6 +210,12 @@ public class PetInfoEntityTests {
     @Test
     public void testSizePetInfoName() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("pupuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         petInfo.setWeight(123.0);
         petInfo.setHeight(123.0);
@@ -187,7 +228,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Comment Sizelong PetInfoName<--------------------");
             System.out.println(e.getMessage());
@@ -198,6 +239,12 @@ public class PetInfoEntityTests {
     @Test
     public void testPatternePetInfoName() {
         PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(n);
         petInfo.setPetName("1234");
         petInfo.setWeight(123.0);
         petInfo.setHeight(123.0);
@@ -210,7 +257,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Comment Pattern PetInfoName <--------------------");
             System.out.println(e.getMessage());
@@ -218,7 +265,68 @@ public class PetInfoEntityTests {
             System.out.println();
         }
     }
+    @Test
+    public void nullNurse() {
+        PetInfo petInfo = new PetInfo();
+        Breed b = this.breedRepository.findByBreedId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        petInfo.setPetName("pupu");
+        petInfo.setWeight(123.0);
+        petInfo.setHeight(123.0);
+        petInfo.setAge(12);
+        petInfo.setOwner(o);
+        petInfo.setBreed(b);
+        petInfo.setNurse(null);
 
+        try {
+            entityManager.persist(petInfo);
+            entityManager.flush();
+            //fail("Should not pass to this line");
+
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println();
+            System.out.println("----------> fail nullNurse PetInfo<--------------------");
+            System.out.println();
+            System.out.println();
+
+        }
+
+    }
+    @Test
+    public void nullBreed() {
+        PetInfo petInfo = new PetInfo();
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        petInfo.setPetName("pupu");
+        petInfo.setWeight(123.0);
+        petInfo.setHeight(123.0);
+        petInfo.setAge(12);
+        petInfo.setOwner(o);
+        petInfo.setNurse(n);
+        petInfo.setBreed(null);
+
+        try {
+            entityManager.persist(petInfo);
+            entityManager.flush();
+            //fail("Should not pass to this line");
+
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println();
+            System.out.println("----------> fail nullBreed PetInfo<--------------------");
+            System.out.println();
+            System.out.println();
+
+        }
+
+    }
 
 
 

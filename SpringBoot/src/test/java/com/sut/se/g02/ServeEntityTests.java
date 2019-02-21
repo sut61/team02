@@ -42,10 +42,13 @@ public class ServeEntityTests {
     private OwnerRepository ownerRepository;
     @Autowired
     private PetInfoRepository petInfoRepository;
-
-
     @Autowired
     private TestEntityManager entityManager;
+    @Autowired
+    private NurseRepository nurseRepository;
+    @Autowired
+    private TypeRepository typeRepository;
+
 
     private Validator validator;
 
@@ -57,6 +60,12 @@ public class ServeEntityTests {
     @Test
     public void FinishServe() {
         Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(t);
+        serve.setNurse(n);
         serve.setComment("สำเร็จ000-333");
 
 
@@ -81,6 +90,12 @@ public class ServeEntityTests {
     @Test
     public void CannotNullServe() {
         Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(t);
+        serve.setNurse(n);
         serve.setComment(null);
 
 
@@ -92,7 +107,7 @@ public class ServeEntityTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull Comment<--------------------");
             System.out.println(e.getMessage());
@@ -105,6 +120,12 @@ public class ServeEntityTests {
     @Test
     public void testPatternServe() {
         Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(t);
+        serve.setNurse(n);
         serve.setComment("god");
 
         try {
@@ -114,7 +135,7 @@ public class ServeEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Comment Pattern Serve <--------------------");
             System.out.println(e.getMessage());
@@ -128,7 +149,39 @@ public class ServeEntityTests {
     @Test
     public void testSizeServe() {
         Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(t);
+        serve.setNurse(n);
         serve.setComment("กกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+
+        try {
+            entityManager.persist(serve);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Comment Sizelong Serve<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+    @Test
+    public void testServeOwnernull() {
+        Serve serve = new Serve();
+        //Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(null);
+        serve.setType(t);
+        serve.setNurse(n);
+        serve.setComment("เทสจ้า");
 
         try {
             entityManager.persist(serve);
@@ -139,7 +192,61 @@ public class ServeEntityTests {
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
             System.out.println();
-            System.out.println("----------> Comment Sizelong Serve<--------------------");
+            System.out.println("----------> Comment testServeOwnernull Serve<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testServeNursenull() {
+        Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        //Nurse n = this.nurseRepository.findByNurseId(1L);
+        Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(t);
+        serve.setNurse(null);
+        serve.setComment("เทสจ้า");
+
+        try {
+            entityManager.persist(serve);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Comment testServeNursenull Serve<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testServeTypenull() {
+        Serve serve = new Serve();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        //Type t = this.typeRepository.findByTypeId(1L);
+        serve.setOwner(o);
+        serve.setType(null);
+        serve.setNurse(n);
+        serve.setComment("เทสจ้า");
+
+        try {
+            entityManager.persist(serve);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Comment testServeTypenull Serve<--------------------");
             System.out.println(e.getMessage());
             System.out.println();
             System.out.println();
@@ -147,7 +254,8 @@ public class ServeEntityTests {
     }
 
 
-    }
+
+}
 
 
 
