@@ -8,6 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public
 interface NurseRepository extends JpaRepository<Nurse, Long> {
+	Nurse findByNurseId(Long nurseId);
 	Nurse findByNameNurse(String nameNurse);
 	Nurse findByPasswordNurse(String passwordNurse);
 }
