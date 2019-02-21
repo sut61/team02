@@ -12,6 +12,7 @@ export class RemedComponent implements OnInit {
 
 
   	id: Array<any>;
+    orderMedicineId: Array<any>;
   	orderMedicineIdSelect='';
     nameMed: Array<any>;
   	nameMedicineSelect='';
@@ -32,8 +33,8 @@ export class RemedComponent implements OnInit {
   ngOnInit() {
 
   	this.pageService.getOrderMedicine().subscribe(data=>{
-          this.id =  data;
-          console.log(this.id);
+          this.orderMedicineId =  data;
+          console.log(this.orderMedicineId);
       });
 
      this.pageService.getCheckStatus().subscribe(data=>{
