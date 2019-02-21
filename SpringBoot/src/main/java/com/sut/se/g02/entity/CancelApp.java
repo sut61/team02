@@ -23,7 +23,7 @@ public class CancelApp {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cancel_seq")
     @Column(name="CancelApp_ID")
     @NotNull
-    private Long id;
+    private Long cancelId;
     @NotNull
     @Size (min=1,max=40)
     @Pattern(regexp = "[-a-zA-Z0-9ก-๛\\s\\t]+")
@@ -33,14 +33,17 @@ public class CancelApp {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDStatus1",insertable = true)
+    @NotNull
     private  Status1 status1;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDAppointment",insertable = true)
+    @NotNull
     private   Appointment appointment;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
+    @NotNull
     private   Nurse nurse;
 
 
@@ -73,7 +76,7 @@ public class CancelApp {
         return nurse;
     }
 
-    public CancelApp (Long id,Status1 status1,String note,
+    public CancelApp (Long cancelId,Status1 status1,String note,
                         Nurse nurse,Appointment appointment){
 
         this.status1 = status1;
