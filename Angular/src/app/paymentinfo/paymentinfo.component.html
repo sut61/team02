@@ -27,7 +27,7 @@
 			              &nbsp; ID ข้อมูลรักษาอาการ :  &nbsp;&nbsp;&nbsp;
 			             	<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="treatmentIdSelect" name="id">
-			                            <mat-option *ngFor="let Treatment of id" [value]="Treatment.id"> {{Treatment.id}} 
+			                            <mat-option *ngFor="let Treatment of treatmentId" [value]="Treatment.treatmentId"> {{Treatment.treatmentId}} 
 			                            </mat-option>
 			                		</mat-select>
 			         	  	</mat-form-field>
@@ -38,7 +38,7 @@
 
 			      				<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="treatmentIdSelect" name="id">
-			                            <mat-option *ngFor="let Treatment of id" [value]="Treatment.id"> {{Treatment.petInfo.petName}} 
+			                            <mat-option *ngFor="let Treatment of treatmentId" [value]="Treatment.treatmentId"> {{Treatment.petInfo.petName}} 
 			                            </mat-option>
 			                		</mat-select>
 			         	  		</mat-form-field>
@@ -51,7 +51,7 @@
 
 			      				<mat-form-field  appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="treatmentIdSelect" name="id">
-			                            <mat-option *ngFor="let Treatment of id" [value]="Treatment.id"> {{Treatment.medicine.nameMed}}
+			                            <mat-option *ngFor="let Treatment of treatmentId" [value]="Treatment.treatmentId"> {{Treatment.medicine.nameMed}}
 			                            </mat-option>
 			                		</mat-select>
 			         	  		</mat-form-field>
@@ -64,7 +64,7 @@
 
 							<mat-form-field appearance="outline">
 			             			<mat-select placeholder="" [(ngModel)]="priceSelect" name="nameMed">
-			                            <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.id"> 
+			                            <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.medicineId"> 
                                     {{Medicine.nameMed}} : {{Medicine.price}} 
 			                            </mat-option>
 			                		</mat-select>

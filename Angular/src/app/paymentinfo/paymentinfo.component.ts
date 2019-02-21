@@ -20,6 +20,7 @@ export class PaymentinfoComponent implements OnInit {
     ownerNameSelect: any ='';
 
     id: Array<any>;
+    treatmentId: Array<any>;
     treatmentIdSelect: any ='';
 
     nameMed: Array<any>;
@@ -53,8 +54,8 @@ export class PaymentinfoComponent implements OnInit {
       })
 
   	 this.app.getTreatment().subscribe(data=>{
-          this.id =  data;
-          console.log(this.id);
+          this.treatmentId =  data;
+          console.log(this.treatmentId);
       })
 
       this.app.getMedicine().subscribe(data=>{
