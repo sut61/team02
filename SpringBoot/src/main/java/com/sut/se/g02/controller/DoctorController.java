@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 import java.util.Date;
 import java.util.Optional;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class DoctorController {
@@ -34,15 +36,12 @@ public class DoctorController {
         return x.matches(passwordDoctor);
     }
 
-    @GetMapping(path = "Doctor", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Doctor> Doctor() {
+
+
+
+    @GetMapping("/Doctor")
+    public List<Doctor> Doctor(){
         return doctorRepository.findAll().stream().collect(Collectors.toList());
     }
     
-    @GetMapping("/Doctor/{id}")
-    public Optional<Doctor> doctor(@PathVariable Long id) {
-        Optional<Doctor> d = doctorRepository.findById(id);
-        return d;
-    }
-
 }
