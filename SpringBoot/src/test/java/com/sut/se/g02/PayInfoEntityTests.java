@@ -18,8 +18,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.junit.*;
 import org.junit.Before;
-import org.junit.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -35,12 +35,21 @@ import com.sut.se.g02.entity.*;
 @DataJpaTest
 public class PayInfoEntityTests {
 
-	
+    
     @Autowired
     private PayInfoRepository payInfoRepository;
 
+    @Autowired
+    private OwnerRepository ownerRepository;
+    @Autowired
+    private TreatmentRepository treatmentRepository;
+    @Autowired
+    private MedicineRepository medicineRepository;
+    @Autowired
+    private NurseRepository nurseRepository;
 
-	@Autowired
+
+    @Autowired
     private TestEntityManager entityManager;
 
     private Validator validator;
@@ -51,36 +60,21 @@ public class PayInfoEntityTests {
         validator = factory.getValidator();
     }
 
-/*
-    // ทดสอบ PayInfo ความยาวไม่ถึง
-    @Test
-    public void testPaySize() {
-        PayInfo payInfo = new PayInfo();
-        payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
-        payInfo.setNote("-");
-        try {
-            entityManager.persist(payInfo);
-            entityManager.flush();
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-            System.out.println();
-            System.out.println("----------> Note ความสั้น<--------------------");
-            System.out.println(e.getMessage());
-            System.out.println();
-            System.out.println();
-        }
-    }
 
-*/
- 	// ทดสอบ PayInfo ความยาวเกิน
+    // ทดสอบ PayInfo ความยาวเกิน
     @Test
     public void testSizeOver() {
         PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
         payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
-        payInfo.setNote("-ยังไม่พร้อมจ่ายจ้าxxxxxxxxxxxxx");
+        payInfo.setNote("-ยังไม่พร้อมจ่ายจ้าxxxxxxxxxxxxxxxx");
         try {
             entityManager.persist(payInfo);
             entityManager.flush();
@@ -88,7 +82,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 3);
             System.out.println();
             System.out.println("----------> Note ความยาวเกิน<--------------------");
             System.out.println(e.getMessage());
@@ -97,11 +91,143 @@ public class PayInfoEntityTests {
         }
     }
 
-
-    // ทดสอบห้าม PayInfo เป็น notnull
+    // ทดสอบห้าม PayInfo เป็น notnullOwner
     @Test
-    public void testNotNull() {
+    public void testNotNullOwner() {
         PayInfo payInfo = new PayInfo();
+        
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        payInfo.setOwner(null);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
+        payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
+        payInfo.setNote("1234");
+        try {
+            entityManager.persist(payInfo);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Note notnull   Owner<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    // ทดสอบห้าม PayInfo เป็น notnullTreatment
+    @Test
+    public void testNotNullTreatment() {
+        PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+       
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+       
+        payInfo.setTreatment(null);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
+        payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
+        payInfo.setNote("1234");
+        try {
+            entityManager.persist(payInfo);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Note notnull   Treatment<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    // ทดสอบห้าม PayInfo เป็น notnullMedicine
+    @Test
+    public void testNotNullMedicine() {
+        PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+
+        payInfo.setMedicine(null);
+        payInfo.setNurse(n);
+        payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
+        payInfo.setNote("1234");
+        try {
+            entityManager.persist(payInfo);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+            System.out.println();
+            System.out.println("----------> Note notnull   Medicine<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+    // ทดสอบห้าม PayInfo เป็น notnullNurse
+    @Test
+    public void testNotNullNurse() {
+        PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+
+        payInfo.setNurse(null);
+        payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
+        payInfo.setNote("1234");
+        try {
+            entityManager.persist(payInfo);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+            System.out.println();
+            System.out.println("----------> Note notnull  Nurse<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+    }
+
+
+    // ทดสอบห้าม PayInfo เป็น notnull Note
+    @Test
+    public void testNotNullNote() {
+        PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
         payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
         payInfo.setNote(null);
         try {
@@ -111,7 +237,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 3);
             System.out.println();
             System.out.println("----------> Note notnull<--------------------");
             System.out.println(e.getMessage());
@@ -121,10 +247,19 @@ public class PayInfoEntityTests {
     }
 
 
+
     // ทดสอบ PayInfo ไม่ตรง Pattern
     @Test
     public void testNotPattern() {
         PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
         payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
         payInfo.setNote("**");
         try {
@@ -134,7 +269,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 3);
             System.out.println();
             System.out.println("----------> Note ไม่ตรง Pattern<--------------------");
             System.out.println(e.getMessage());
@@ -147,6 +282,14 @@ public class PayInfoEntityTests {
     @Test
     public void testSaveAll() {
         PayInfo payInfo = new PayInfo();
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Treatment t = this.treatmentRepository.findByTreatmentId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        payInfo.setOwner(o);
+        payInfo.setTreatment(t);
+        payInfo.setMedicine(m);
+        payInfo.setNurse(n);
         payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
         payInfo.setNote("--");
         try {
@@ -160,7 +303,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             
         }
         
