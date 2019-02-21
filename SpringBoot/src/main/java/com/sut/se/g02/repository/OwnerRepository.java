@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface OwnerRepository extends JpaRepository<Owner, Long>{
-    Owner findByOwnerId(Long id);
+    Owner findByOwnerId(Long ownerId);
     Owner findByOwnerName(String name);
 }
