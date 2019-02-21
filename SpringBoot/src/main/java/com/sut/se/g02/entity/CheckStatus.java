@@ -23,7 +23,7 @@ public class CheckStatus {
     @SequenceGenerator(name="checkStatus_seq",sequenceName="checkStatus_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="checkStatus_seq")
     @Column(name="idCheckStatus")
-    private @NonNull Long id;
+    private @NonNull Long checkStatusId;
     private  String checkStatus;
 
 
@@ -32,7 +32,7 @@ public class CheckStatus {
 
     }
 
-    public CheckStatus(Long id, String checkStatus){
+    public CheckStatus(Long checkStatusId, String checkStatus){
         this.checkStatus = checkStatus;
 
     }
