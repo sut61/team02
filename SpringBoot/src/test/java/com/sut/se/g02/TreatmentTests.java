@@ -42,6 +42,18 @@ public class TreatmentTests {
 	private TreatmentRepository treatmentRepository;
 
 	@Autowired
+    private PetInfoRepository petInfoRepository;
+
+    @Autowired
+    private DoctorRepository doctorRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
+
+    @Autowired
+    private MedicineRepository medicineRepository;
+
+	@Autowired
 	private TestEntityManager entityManager;
 
 	private Validator validator;
@@ -59,9 +71,17 @@ public class TreatmentTests {
 	@Test
 	public void treatmentSaveAll(){
 		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
 		treat.setDate(new Timestamp(System.currentTimeMillis()));
 		treat.setSymptom("ไข้หวัดH1N1");
-		treat.setDCon(0);
+		treat.setDCon(2);
 
 		try{
 			entityManager.persist(treat);
@@ -77,13 +97,156 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			
 		}
 	}
+
+	@Test
+	public void treatmentNotNullDoctor(){
+		Treatment treat = new Treatment();
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(null);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
+		treat.setDate(new Timestamp(System.currentTimeMillis()));
+		treat.setSymptom("ไข้หวัดH1N1");
+		treat.setDCon(2);
+
+		try{
+			entityManager.persist(treat);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull Doctor --------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+
+
+	@Test
+	public void treatmentNotNullPetInfo(){
+		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(null);
+		treat.setOwner(o);
+		treat.setMedicine(m);
+		treat.setDate(new Timestamp(System.currentTimeMillis()));
+		treat.setSymptom("ไข้หวัดH1N1");
+		treat.setDCon(2);
+
+		try{
+			entityManager.persist(treat);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull PetInfo --------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void treatmentNotNullOwner(){
+		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(null);
+		treat.setMedicine(m);
+		treat.setDate(new Timestamp(System.currentTimeMillis()));
+		treat.setSymptom("ไข้หวัดH1N1");
+		treat.setDCon(2);
+
+		try{
+			entityManager.persist(treat);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull Owner--------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+	
+
+	@Test
+	public void treatmentNotNullMedicine(){
+		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(null);
+		treat.setDate(new Timestamp(System.currentTimeMillis()));
+		treat.setSymptom("ไข้หวัดH1N1");
+		treat.setDCon(2);
+
+		try{
+			entityManager.persist(treat);
+			entityManager.flush();
+
+			fail("Should noy pass to this line");
+
+		}catch(javax.validation.ConstraintViolationException e){
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("------------------------ Check NotNull Medicine--------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------------------------------------");
+			System.out.println();
+		}
+	}
+	
+
+
+
 	@Test
 	public void treatmentพักฟื้นNotNull(){
 		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
 		treat.setDate(new Timestamp(System.currentTimeMillis()));
 		treat.setSymptom("ไข้หวัดH1N1");
 		treat.setDCon(null);
@@ -97,7 +260,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentพักฟื้นNotNull --------------------------");
 			System.out.println(e.getMessage());
@@ -110,6 +273,14 @@ public class TreatmentTests {
 	@Test
 	public void treatmentSymptomNotNull(){
 		Treatment treat = new Treatment();
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
 		treat.setDate(new Timestamp(System.currentTimeMillis()));
 		treat.setSymptom(null);
 		treat.setDCon(0);
@@ -123,7 +294,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomNotNull --------------------------");
 			System.out.println(e.getMessage());
@@ -135,7 +306,14 @@ public class TreatmentTests {
 	@Test
 	public void triageSymptomLongSize(){
 		Treatment treat = new Treatment();
-		
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
 		treat.setDate(new Timestamp(System.currentTimeMillis()));
 		treat.setSymptom("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		treat.setDCon(0);
@@ -151,7 +329,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomLongSize ------------------------");
 			System.out.println(e.getMessage());
@@ -164,7 +342,14 @@ public class TreatmentTests {
 	@Test
 	public void triageSymptomPattern(){
 		Treatment treat = new Treatment();
-		
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+        PetInfo p = this.petInfoRepository.findByPetId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Medicine m = this.medicineRepository.findByMedicineId(1L);
+		treat.setDoctor(d);
+		treat.setPetInfo(p);
+		treat.setOwner(o);
+		treat.setMedicine(m);
 		treat.setDate(new Timestamp(System.currentTimeMillis()));
 		treat.setSymptom("#######################");
 		treat.setDCon(0);
@@ -180,7 +365,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomไม่ตรงPattern ------------------------");
 			System.out.println(e.getMessage());
