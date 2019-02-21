@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.Optional;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -28,25 +30,14 @@ public class OrderMedicineController {
 
 
 
-    @GetMapping(path = "OrderMedicine", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<OrderMedicine> OrderMedicine() {
+    @GetMapping("/OrderMedicine")
+    public List<OrderMedicine> OrderMedicine(){
         return orderMedicineRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/OrderMedicine/{id}")
-    public Optional<OrderMedicine> orderMedicine(@PathVariable Long id) {
-        Optional<OrderMedicine> o = orderMedicineRepository.findById(id);
-        return o;
-    }
 
-    @GetMapping(path = "Company", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Company> Company() {
+    @GetMapping("/Company")
+    public List<Company> Company(){
         return companyRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-    @GetMapping("/Company/{id}")
-    public Optional<Company> company(@PathVariable Long id)  {
-        Optional<Company> c = companyRepository.findById(id);
-        return c;
     }
 
 
@@ -60,9 +51,9 @@ public class OrderMedicineController {
             @PathVariable  Long nurseNameSelect){
 
 
-        Company company = companyRepository.findById(nameCompanySelect).get();
-        Medicine medicine = medicineRepository.findById(nameMedicineSelect).get();
-        Nurse nurse = nurseRepository.findById(nurseNameSelect).get();
+        Company company = companyRepository.findByCompanyId(nameCompanySelect);
+        Medicine medicine = medicineRepository.findByMedicineId(nameMedicineSelect);
+        Nurse nurse = nurseRepository.findByNurseId(nurseNameSelect);
 
 
         OrderMedicine orderMedicine = new OrderMedicine();
