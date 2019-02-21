@@ -15,7 +15,7 @@
               &nbsp;  
               <mat-form-field >
                         <mat-select width="80%" placeholder="" [(ngModel)]="treatSelect" name="nametreat">
-                          <mat-option *ngFor="let Treatment of nametreat" [value]="Treatment.id"> 
+                          <mat-option *ngFor="let Treatment of nametreat" [value]="Treatment.treatmentId"> 
                              {{Treatment.petInfo.petName}} &nbsp;&nbsp;
                             
                           </mat-option>
@@ -34,7 +34,7 @@
               &nbsp;  
               <mat-form-field >
                         <mat-select placeholder="" [(ngModel)]="nameCageTypeSelect" name="nameCageType">
-                          <mat-option *ngFor="let CageType of nameCageType" [value]="CageType.id"> {{CageType.nameCageType}}
+                          <mat-option *ngFor="let CageType of nameCageType" [value]="CageType.cageTypeId"> {{CageType.nameCageType}}
                           </mat-option>
                     </mat-select>
          </mat-form-field>
@@ -51,7 +51,7 @@
               &nbsp;  
               <mat-form-field >
                        <mat-select placeholder="" [(ngModel)]="nameCageSelect" name="nameCage">
-                          <mat-option *ngFor="let Cage of nameCage" [value]="Cage.id"> {{Cage.nameCage}}
+                          <mat-option *ngFor="let Cage of nameCage" [value]="Cage.cageId"> {{Cage.nameCage}}
                           </mat-option>
                     </mat-select>
          </mat-form-field>
@@ -69,7 +69,7 @@
               &nbsp;  
               <mat-form-field >
                        <mat-select placeholder="" [(ngModel)]="treatSelect" name="nametreat">
-                          <mat-option *ngFor="let Treatment of nametreat" [value]="Treatment.id"> {{Treatment.dcon}}
+                          <mat-option *ngFor="let Treatment of nametreat" [value]="Treatment.treatmentId"> {{Treatment.dcon}}
                           </mat-option>
                     </mat-select>
          </mat-form-field>
