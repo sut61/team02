@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.Optional;
 import java.sql.Timestamp;
 
+import java.util.List;
+
 @RestController 
 @CrossOrigin(origins = "http://localhost:4200")
 public class MoveController {
@@ -34,71 +36,11 @@ public class MoveController {
 
 
 
-
-    @GetMapping(path = "Move", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Move> Move() {
+    @GetMapping("/Move")
+    public List<Move> Move(){
         return moveRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Move/{id}")
-    public Optional<Move> move(@PathVariable Long id) {
-        Optional<Move> a = moveRepository.findById(id);
-        return a;
-    }
 
-    /*@GetMapping(path = "Recuperate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Recuperate> Recuperate() {
-        return recuperateRepository.findAll().stream().collect(Collectors.toList());
-    }
-    @GetMapping("/Recuperate/{id}")
-    public Optional<Recuperate> recuperate(@PathVariable Long id) {
-        Optional<Recuperate> a = recuperateRepository.findById(id);
-        return a;
-    }
-
-    /*@GetMapping(path = "PetInfo", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<PetInfo> PetInfo() {
-        return petInfoRepository.findAll().stream().collect(Collectors.toList());
-    }
-    
-     @GetMapping("/PetInfo/{id}")
-    public Optional<PetInfo> petInfo(@PathVariable Long id)  {
-        Optional<PetInfo> pa = petInfoRepository.findById(id);
-        return pa;
-    }*/
-
-   /* @GetMapping(path = "Cage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Cage> Cage() {
-        return cageRepository.findAll().stream().collect(Collectors.toList());
-    }
-    
-    @GetMapping("/Cage/{id}")
-    public Optional<Cage> cage(@PathVariable Long id) {
-        Optional<Cage> d = cageRepository.findById(id);
-        return d;
-    }
-  
-
-    @GetMapping(path = "CageType", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<CageType> CageType() {
-        return cageTypeRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-    @GetMapping("/CageType/{id}")
-    public Optional<CageType> cageType(@PathVariable Long id)  {
-        Optional<CageType> pe = cageTypeRepository.findById(id);
-        return pe;
-    }*/
-
-    /*@GetMapping(path = "Nurse", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Nurse> Nurse() {
-        return nurseRepository.findAll().stream().collect(Collectors.toList());
-    }
-    
-    @GetMapping("/Nurse/{id}")
-    public Optional<Nurse> nurse(@PathVariable Long id) {
-        Optional<Nurse> c = nurseRepository.findById(id);
-        return c;
-    }*/
 
     @PostMapping(path ="/Move/{recSelect}/{nameOwnerSelect}/{nameCageSelect}/{date}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -115,12 +57,12 @@ public class MoveController {
                                             @PathVariable  String note,
                                             @PathVariable  Long nameNurseSelect){
 
-            Recuperate recuperate = recuperateRepository.findById(recSelect).get();
-            Owner owner = ownerRepository.findById(nameOwnerSelect).get();
-            Cage cage = cageRepository.findById(nameCageSelect).get();
+            Recuperate recuperate = recuperateRepository.findByRecuperateId(recSelect);
+            Owner owner = ownerRepository.findByOwnerId(nameOwnerSelect);
+            Cage cage = cageRepository.findByCageId(nameCageSelect);
             
             
-            Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
+            Nurse nurse = nurseRepository.findByNurseId(nameNurseSelect);
         
         Move move = new Move();
         move.setRecuperate(recuperate);
