@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class TypeController {
@@ -20,7 +22,13 @@ public class TypeController {
     private TypeRepository typeRepository;
 
 
-    @GetMapping(path = "Type", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Type> Type() {  return typeRepository.findAll().stream().collect(Collectors.toList());
+
+    @GetMapping("/Type")
+    public List<Type> Type(){
+        return typeRepository.findAll().stream().collect(Collectors.toList());
     }
-    }
+
+
+    
+
+}

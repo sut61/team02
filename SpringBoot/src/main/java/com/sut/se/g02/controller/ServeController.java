@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class ServeController {
@@ -25,16 +27,13 @@ public class ServeController {
     @Autowired
     private TypeRepository typeRepository;
 
-    @GetMapping(path = "Serve", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Serve> Serve() {
+
+
+    @GetMapping("/Serve")
+    public List<Serve> Serve(){
         return serveRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @GetMapping("/Serve/{id}")
-    public Optional<Serve> serve(@PathVariable Long id)  {
-        Optional<Serve> serve = serveRepository.findById(id);
-        return serve;
-    }
     @PostMapping(path ="/Serve/{ownerNameSelect}/{TypeList}/{nameNurseSelect}/{comment}")
     @CrossOrigin(origins = "http://localhost:4200")
     public Serve serve(
@@ -47,9 +46,9 @@ public class ServeController {
 
 
 
-        Owner owner = ownerRepository.findById(ownerNameSelect).get();
-        Type type = typeRepository.findById(TypeList).get();
-        Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
+        Owner owner = ownerRepository.findByOwnerId(ownerNameSelect);
+        Type type = typeRepository.findByTypeId(TypeList);
+        Nurse nurse = nurseRepository.findByNurseId(nameNurseSelect);
 
 
 
