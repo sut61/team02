@@ -66,7 +66,7 @@ public class ServeEntityTests {
         serve.setOwner(o);
         serve.setType(t);
         serve.setNurse(n);
-        serve.setComment("สำเร็จ000-333");
+        serve.setComment("สำเร็จ000-332");
 
 
         try {
