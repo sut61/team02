@@ -11,5 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:4200")
 public
 interface CageTypeRepository extends JpaRepository<CageType,Long> {
+	CageType findByCageTypeId(Long cageTypeId);
 
 }
