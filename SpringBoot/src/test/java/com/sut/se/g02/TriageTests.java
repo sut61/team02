@@ -75,7 +75,7 @@ public class TriageTests {
 		t.setNurse(n);
 		t.setPetInfo(p);
 		t.setTriageLevel(level);
-		t.setSymptom("ไข้ขึ้นสูง ชักเกรง");
+		t.setSymptom("ไข้ขึ้นสูง");
 		
 
 		try{
