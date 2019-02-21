@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.sql.Timestamp;
 
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,18 +28,9 @@ public class StatusPayController {
     private StatusPayRepository statusPayRepository;
 
 
-	@GetMapping(path = "StatusPay", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public Collection<StatusPay> StatusPay() {
-	        return statusPayRepository.findAll().stream().collect(Collectors.toList());
-	}
-
-    @GetMapping("/StatusPay/{id}")
-    public Optional<StatusPay> statusPay(@PathVariable Long id){
-        Optional<StatusPay> statusPay = statusPayRepository.findById(id);
-
-        return statusPay;
+	@GetMapping("/StatusPay")
+    public List<StatusPay> StatusPay(){
+        return statusPayRepository.findAll().stream().collect(Collectors.toList());
     }
-
-
     
 }

@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.Optional;
 import java.sql.Timestamp;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -38,17 +40,11 @@ public class PayController {
 
 
 
-	@GetMapping(path = "Pay", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public Collection<Pay> Pay() {
-	        return payRepository.findAll().stream().collect(Collectors.toList());
-	}
-
-    @GetMapping("/Pay/{id}")
-    public Optional<Pay> payInfo(@PathVariable Long id){
-        Optional<Pay> pay = payRepository.findById(id);
-
-        return pay;
+    @GetMapping("/Pay")
+    public List<Pay> Pay(){
+        return payRepository.findAll().stream().collect(Collectors.toList());
     }
+
 
 
      
@@ -64,9 +60,9 @@ public class PayController {
 
 
 
-            PayInfo payInfo = payInfoRepository.findById(payInfoSelect).get();
-            StatusPay statusPay = statusPayRepository.findById(statusPaySelect).get();
-            Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
+            PayInfo payInfo = payInfoRepository.findByPayInfoId(payInfoSelect);
+            StatusPay statusPay = statusPayRepository.findByStatusPayId(statusPaySelect);
+            Nurse nurse = nurseRepository.findByNurseId(nameNurseSelect);
 
 
         
