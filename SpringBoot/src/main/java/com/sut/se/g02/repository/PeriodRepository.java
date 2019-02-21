@@ -10,4 +10,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:4200")
 public
 interface PeriodRepository extends JpaRepository<Period,Long> {
+	Period findByPeriodId(Long periodId);
 }
