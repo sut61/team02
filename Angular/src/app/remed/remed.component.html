@@ -15,8 +15,8 @@
     <mat-card-content>
       <mat-form-field class="example-full-width2">
         <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
-          <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id">
-            {{OrderMedicine.id}} &nbsp;&nbsp;
+          <mat-option *ngFor="let OrderMedicine of orderMedicineId" [value]="OrderMedicine.orderMedicineId">
+            {{OrderMedicine.orderMedicineId}} &nbsp;&nbsp;
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -35,7 +35,7 @@
           <mat-card-content>
             <mat-form-field class="example-full-width2">
               <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
-                <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.medicine.nameMed}}
+                <mat-option *ngFor="let OrderMedicine of orderMedicineId" [value]="OrderMedicine.orderMedicineId"> {{OrderMedicine.medicine.nameMed}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -43,7 +43,7 @@
 
         <td><mat-form-field class="example-full-width">
           <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
-            <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.number}}
+            <mat-option *ngFor="let OrderMedicine of orderMedicineId" [value]="OrderMedicine.orderMedicineId"> {{OrderMedicine.number}}
           </mat-option>
           </mat-select>
         </mat-form-field>&nbsp;&nbsp;&nbsp;</td>
@@ -52,7 +52,7 @@
           <mat-card-content>
             <mat-form-field class="example-full-width2">
               <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
-                <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id"> {{OrderMedicine.medicine.type}}
+                <mat-option *ngFor="let OrderMedicine of orderMedicineId" [value]="OrderMedicine.orderMedicineId"> {{OrderMedicine.medicine.type}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -67,7 +67,7 @@
     <mat-card-content>
       <mat-form-field class="example-full-width2">
         <mat-select  placeholder="" [(ngModel)]="orderMedicineIdSelect" name="id">
-          <mat-option *ngFor="let OrderMedicine of id" [value]="OrderMedicine.id">
+          <mat-option *ngFor="let OrderMedicine of orderMedicineId" [value]="OrderMedicine.orderMedicineId">
             {{OrderMedicine.company.nameCompany}} &nbsp;&nbsp;
           </mat-option>
         </mat-select>
@@ -90,7 +90,7 @@
     <mat-card-content>
       <mat-form-field class="example-full-width2">
         <mat-select  placeholder="" [(ngModel)]="checkStatusSelect" name="checkStatus">
-          <mat-option *ngFor="let CheckStatus of checkStatus" [value]="CheckStatus.id">
+          <mat-option *ngFor="let CheckStatus of checkStatus" [value]="CheckStatus.checkStatusId">
             {{CheckStatus.checkStatus}} &nbsp;&nbsp;
           </mat-option>
         </mat-select>
