@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface TriageRepository extends JpaRepository<Triage, Long> {
+	Triage findByTriageId(Long triageId);
 }
