@@ -14,6 +14,9 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class TriageController {
@@ -29,18 +32,10 @@ public class TriageController {
    
 
 
-    @GetMapping(path = "Triage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Triage> Triage() {
+    @GetMapping("/Triage")
+    public List<Triage> Triage(){
         return triageRepository.findAll().stream().collect(Collectors.toList());
     }
-
-    @GetMapping("/Triage/{id}")
-    public Optional<Triage> triage(@PathVariable Long id)  {
-        Optional<Triage> triage = triageRepository.findById(id);
-        return triage;
-    }
-
-    
     
 
    @PostMapping(path ="/Triage/{nameNurseSelect}/{namePetInfoSelect}/{symptom}/{triageLevelSelect}")
@@ -52,9 +47,9 @@ public class TriageController {
                             
                                               ){
            
-            Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
-            PetInfo  petInfo = petInfoRepository.findById(namePetInfoSelect).get();
-            TriageLevel  triageLevel = triageLevelRepository.findById(triageLevelSelect).get(); 
+            Nurse nurse = nurseRepository.findByNurseId(nameNurseSelect);
+            PetInfo  petInfo = petInfoRepository.findByPetId(namePetInfoSelect);
+            TriageLevel  triageLevel = triageLevelRepository.findByLevelId(triageLevelSelect); 
 
 
         Triage triage = new Triage();
@@ -67,11 +62,6 @@ public class TriageController {
         triageRepository.save(triage);
          return  triage;
     }
-
-
-
-
-
 
 
 }

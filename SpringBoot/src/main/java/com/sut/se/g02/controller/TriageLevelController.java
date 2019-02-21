@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 import java.util.Date;
 import java.util.Optional;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TriageLevelController {
@@ -24,15 +26,9 @@ public class TriageLevelController {
     private  TriageLevelRepository triageLevelRepository;
 
 
-    @GetMapping(path = "TriageLevel", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<TriageLevel> TriageLevel() {
+
+    @GetMapping("/TriageLevel")
+    public List<TriageLevel> TriageLevel(){
         return triageLevelRepository.findAll().stream().collect(Collectors.toList());
     }
-    
-    @GetMapping("/triageLevel/{id}")
-    public Optional<TriageLevel> triageLevel(@PathVariable Long id) {
-        Optional<TriageLevel> triageLevel = triageLevelRepository.findById(id);
-        return triageLevel;
-    }
-
 }
