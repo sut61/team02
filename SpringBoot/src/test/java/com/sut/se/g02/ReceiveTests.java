@@ -40,6 +40,13 @@ public class ReceiveTests {
     @Autowired
     private ReceiveMedicineRepository receiveMedicineRepository;
 
+    @Autowired
+    private OrderMedicineRepository orderMedicineRepository;
+    @Autowired
+    private NurseRepository nurseRepository;
+    @Autowired
+    private CheckStatusRepository checkStatusRepository;
+
 
     @Autowired
     private TestEntityManager entityManager;
@@ -54,8 +61,15 @@ public class ReceiveTests {
     @Test
     public void FinishReceive() {
         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
-        receiveMedicine.setNoteNew("โอ้พระเจ้า00-7");
 
+        OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(n);
+        receiveMedicine.setNoteNew("มาจ้าาาา");
 
         try {
             entityManager.persist(receiveMedicine);
@@ -77,10 +91,16 @@ public class ReceiveTests {
 
     @Test
     public void CannotNullReceive() {
-        ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+
+         OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(n);
         receiveMedicine.setNoteNew(null);
-
-
         try {
             entityManager.persist(receiveMedicine);
             entityManager.flush();
@@ -89,7 +109,7 @@ public class ReceiveTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Notnull NoteNew<--------------------");
             System.out.println(e.getMessage());
@@ -100,9 +120,107 @@ public class ReceiveTests {
     }
 
     @Test
+    public void OrderMedicinenotNull() {
+        ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+
+        //OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(null);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(n);
+        receiveMedicine.setNoteNew("มาาาา");
+        try {
+            entityManager.persist(receiveMedicine);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println();
+            System.out.println("----------> Notnull OrderMedicine <--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+
+    }
+
+    @Test
+    public void CannotNullCheckStatus() {
+         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+
+         OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        //CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(null);
+        receiveMedicine.setNurse(n);
+        receiveMedicine.setNoteNew("ยาาา");
+        try {
+            entityManager.persist(receiveMedicine);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Notnull CheckStatus<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+
+    }
+
+    @Test
+    public void CannotNullNurse() {
+         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+
+       OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        //Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(null);
+        receiveMedicine.setNoteNew("ยาาา");
+        try {
+            entityManager.persist(receiveMedicine);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("----------> Notnull Nurse<--------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+        }
+
+    }
+
+    @Test
     public void testPatternReceive() {
         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
-        receiveMedicine.setNoteNew("ggyes");
+
+        OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(n);
+        receiveMedicine.setNoteNew("กเดเ้าพ่้ีะร่ื");
 
         try {
             entityManager.persist(receiveMedicine);
@@ -122,7 +240,15 @@ public class ReceiveTests {
     @Test
     public void testSizeReceive() {
         ReceiveMedicine receiveMedicine = new ReceiveMedicine();
-        receiveMedicine.setNoteNew("หหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหห");
+
+        OrderMedicine o = this.orderMedicineRepository.findByOrderMedicineId(1L);
+        CheckStatus c = this.checkStatusRepository.findByCheckStatusId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+
+        receiveMedicine.setOrderMedicine(o);
+        receiveMedicine.setCheckStatus(c);
+        receiveMedicine.setNurse(n);
+        receiveMedicine.setNoteNew("มาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาาา");
 
         try {
             entityManager.persist(receiveMedicine);
@@ -131,7 +257,7 @@ public class ReceiveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             System.out.println();
             System.out.println("----------> Comment Sizelong Receive<--------------------");
             System.out.println(e.getMessage());
