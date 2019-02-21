@@ -24,13 +24,15 @@ public class OrderMedicine {
 	@SequenceGenerator(name="orderMedicine_seq",sequenceName="orderMedicine_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="orderMedicine_seq")
 	@Column(name="idOrderMedicine")
-	private @NotNull Long id;
+	@NotNull
+	private  Long orderMedicineId;
 
-
+	@NotNull
 	@Pattern(regexp = "[-0-9ก-๛]+")
 	@Size(min = 1,max = 30)
-	private  @NotNull String note;
-	private  @NotNull Integer number;
+	private   String note;
+	@NotNull
+	private   Integer number;
 
 
 	public OrderMedicine(){
@@ -39,16 +41,19 @@ public class OrderMedicine {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDCompany",insertable = true)
+    @NotNull
     private Company company;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
+    @NotNull
     private Nurse nurse;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDMedicine",insertable = true)
+    @NotNull
     private Medicine medicine;
 
 
