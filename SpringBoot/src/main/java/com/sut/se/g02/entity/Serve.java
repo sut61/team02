@@ -27,7 +27,7 @@ public class Serve {
     @Column(name="Serve_ID")
 
     @NotNull
-    private  Long id;
+    private  Long serveId;
 
     @NotNull
     @Pattern(regexp = "[-0-9ก-๛]+")
@@ -39,14 +39,17 @@ public class Serve {
     }
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Nurse_ID", insertable = true)
+    @NotNull
     private  Nurse nurse;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "OWNER_ID", insertable = true)
+    @NotNull
     private  Owner owner;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdType",insertable = true)
+    @NotNull
     private Type type;
 
 

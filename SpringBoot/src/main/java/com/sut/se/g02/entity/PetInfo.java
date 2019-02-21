@@ -12,7 +12,7 @@ public class PetInfo {
     @SequenceGenerator(name="petinfo_seq",sequenceName="petinfo_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="petinfo_seq")
     @Column(name="PETINFO_ID")
-
+    @NotNull
     private  Long petId;
 
     @Size(min=1,max=20)
@@ -36,14 +36,17 @@ public class PetInfo {
     }
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdOwner",insertable = true)
+    @NotNull
     private Owner Owner;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdBreed",insertable = true)
+    @NotNull
     private Breed breed;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdNurse",insertable = true)
+    @NotNull
     private Nurse nurse;
 
     public void setAge(Integer age){this.age=age;}

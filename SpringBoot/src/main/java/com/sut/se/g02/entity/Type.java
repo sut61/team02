@@ -20,10 +20,10 @@ public class Type {
     @SequenceGenerator(name="type_seq",sequenceName="type_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="type_seq")
     @Column(name="Type")
+    @NotNull
+    private  Long typeId;
 
-    private  Long Id;
-
-
+    @NonNull
     private String List;
 
 
@@ -31,7 +31,7 @@ public class Type {
 
     public Type() {}
 
-    public Type (Long Id, String List){
+    public Type (Long typeId, String List){
         this.List = List;
 
     }
