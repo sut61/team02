@@ -22,12 +22,13 @@ import java.util.Collection;
 @Table(name = "Recuperate")
 public class Recuperate {
 	@Id
-	@SequenceGenerator(name="appointmentsheet_seq",sequenceName="appointmentsheet_seq")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="appointmentsheet_seq")
+	@SequenceGenerator(name="recuperate_seq",sequenceName="recuperate_seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="recuperate_seq")
 	@Column(name="idRecuperate")
-	private  @NotNull Long id;
-
-    private  @NotNull Timestamp date;
+	@NotNull
+    private   Long recuperateId;
+    @NotNull
+    private   Timestamp date;
     
     @NotNull
     @Pattern(regexp = "[-a-zA-Z]+")
@@ -46,19 +47,23 @@ public class Recuperate {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Treatment_ID", insertable = true)
+    @NotNull
     private  Treatment treatment;
 
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDCage",insertable = true)
+    @NotNull
     private  Cage cage;
 
  
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDCageType",insertable = true)
+    @NotNull
     private  CageType cageType;
 
    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
+    @NotNull
     private  Nurse nurse;
 
 	
