@@ -22,7 +22,7 @@ public class StatusPay {
 	@SequenceGenerator(name="statusPay_seq",sequenceName="statusPay_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="statusPay_seq")
     @Column(name="StatusPay_ID")
-	private @NotNull Long id;
+	private @NotNull Long statusPayId;
 	private @NotNull String nameStatusPay;
 	
 
@@ -31,7 +31,7 @@ public class StatusPay {
 
     }
 
-    public StatusPay(Long id,String nameStatusPay){
+    public StatusPay(Long statusPayId,String nameStatusPay){
         this.nameStatusPay = nameStatusPay;
         
     }
