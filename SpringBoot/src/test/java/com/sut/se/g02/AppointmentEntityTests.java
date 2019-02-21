@@ -38,6 +38,16 @@ public class AppointmentEntityTests {
 
 	@Autowired
 	private AppointmentRepository appointmentRepository;
+	@Autowired
+	private PetInfoRepository petInfoRepository;
+	@Autowired
+	private DoctorRepository doctorRepository;
+	@Autowired
+	private NurseRepository nurseRepository;
+	@Autowired
+	private PeriodRepository periodRepository;
+	@Autowired
+	private OwnerRepository ownerRepository;
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -53,8 +63,218 @@ public class AppointmentEntityTests {
 	//---------------------------------- Test Sprint1------------------------------------------------------
 	//Test Not Null
 	@Test
-	public void testSprint1_NotNull() {
+	public void testSprint1_NotNull_Owner() {
 		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(null);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_Owner --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+
+	}
+	@Test
+	public void testSprint1_NotNull_PetInfo() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(null);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_PetInfo --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+
+	}
+
+	@Test
+	public void testSprint1_NotNull_Doctor() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(null);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_Doctor --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+
+	}
+	@Test
+	public void testSprint1_NotNull_Period() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(null);
+		s.setNurse(n);
+		s.setDate(new Date());
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_Period --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+
+	}
+	@Test
+	public void testSprint1_NotNull_Nurse() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(null);
+		s.setDate(new Date());
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_Nurse --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+	}
+	@Test
+	public void testSprint1_NotNull_Date() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(null);
+		s.setNote("and00And และ");
+
+		try {
+			entityManager.persist(s);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 3);
+			System.out.println();
+			System.out.println("--------------- Note Sprint1 NotNull_Date --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+
+	}
+	@Test
+	public void testSprint1_NotNull_Note() {
+		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
 		s.setNote(null);
 
 		try {
@@ -65,9 +285,9 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 3);
 			System.out.println();
-			System.out.println("--------------- Note Sprint1 Not Null --------------------");
+			System.out.println("--------------- Note Sprint1 NotNull_Note --------------------");
 			System.out.println(e.getMessage());
 			System.out.println();
 		}
@@ -77,6 +297,18 @@ public class AppointmentEntityTests {
 	@Test
 	public void testSprint1_OverSize() {
 		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
 		s.setNote("1and000AND11and000AND11 and000AND11and000AND1");
 
 		try {
@@ -87,7 +319,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 Over Size --------------------");
 			System.out.println(e.getMessage());
@@ -98,6 +330,18 @@ public class AppointmentEntityTests {
 	@Test
 	public void testSprint1_Patten() {
 		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
 		s.setNote("%%andและ&&");
 
 		try {
@@ -108,7 +352,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 3);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 Patten --------------------");
 			System.out.println(e.getMessage());
@@ -119,6 +363,18 @@ public class AppointmentEntityTests {
 	@Test
 	public void testSprint1_SaveAll() {
 		Appointment s = new Appointment();
+		Owner o = this.ownerRepository.findByOwnerId(1L);
+		PetInfo p = this.petInfoRepository.findByPetId(1L);
+		Doctor d = this.doctorRepository.findByDoctorId(1L);
+		Period pe =this.periodRepository.findByPeriodId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		s.setOwner(o);
+		s.setPetInfo(p);
+		s.setDoctor(d);
+		s.setPeriod(pe);
+		s.setNurse(n);
+		s.setDate(new Date());
 		s.setNote("and00And และ");
 
 		try {
@@ -131,7 +387,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 
 		}
 	}
