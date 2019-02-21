@@ -22,12 +22,12 @@ public class Cage {
 	@SequenceGenerator(name="dentist_seq",sequenceName="dentist_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="dentist_seq")
     @Column(name="idCage")
-	private @NonNull Long id;
+	private @NonNull Long cageId;
 	private @NonNull String nameCage;
 
 	public Cage() {}
 
-    public Cage (Long id,String nameCage){
+    public Cage (Long cageId,String nameCage){
         this.nameCage = nameCage;
     }
 
