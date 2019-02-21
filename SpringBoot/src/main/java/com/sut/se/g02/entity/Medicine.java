@@ -18,7 +18,7 @@ public class Medicine {
         @SequenceGenerator(name = "med_seq",sequenceName = "med_seq")
         @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "med_seq")
         @Column(name = "Medicine_ID")
-        private @NonNull Long id;
+        private @NonNull Long medicineId;
         private @NonNull String nameMed;
         private @NonNull Integer amountMed;
         private @NonNull String type;
@@ -27,7 +27,7 @@ public class Medicine {
 
     public Medicine(){}
 
-    public Medicine(Long id,String nameMed,Integer amountMed,String type,Integer price){
+    public Medicine(Long medicineId,String nameMed,Integer amountMed,String type,Integer price){
         
         this.nameMed = nameMed;
         this.amountMed = amountMed;
