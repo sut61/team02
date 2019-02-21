@@ -15,7 +15,7 @@
     <mat-card-content>
       <mat-form-field class="example-full-width2">
         <mat-select  placeholder="" [(ngModel)]="nameCompanySelect" name="nameCompany">
-          <mat-option *ngFor="let Company of nameCompany" [value]="Company.id">
+          <mat-option *ngFor="let Company of nameCompany" [value]="Company.companyId">
             {{Company.nameCompany}} &nbsp;&nbsp;
           </mat-option>
         </mat-select>
@@ -39,7 +39,7 @@
           <mat-card-content>
             <mat-form-field class="example-full-width2">
               <mat-select placeholder="" [(ngModel)]="nameMedicineSelect" name="nameMed">
-                <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.id"> {{Medicine.nameMed}}
+                <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.medicineId"> {{Medicine.nameMed}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -51,7 +51,7 @@
           <mat-card-content>
             <mat-form-field class="example-full-width2">
               <mat-select placeholder="" [(ngModel)]="nameMedicineSelect" name="nameMed">
-                <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.id"> {{Medicine.type}}
+                <mat-option *ngFor="let Medicine of nameMed" [value]="Medicine.medicineId"> {{Medicine.type}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
