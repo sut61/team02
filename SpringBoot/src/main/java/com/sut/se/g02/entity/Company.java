@@ -20,7 +20,7 @@ public class Company {
 	@SequenceGenerator(name="company_seq",sequenceName="company_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="company_seq")
     @Column(name="idCompany")
-	private @NonNull Long id;
+	private @NonNull Long companyId;
 	private  String nameCompany;
 
 
@@ -29,7 +29,7 @@ public class Company {
 
     }
 
-    public Company(Long id, String nameCompany){
+    public Company(Long companyId, String nameCompany){
         this.nameCompany = nameCompany;
 
     }
