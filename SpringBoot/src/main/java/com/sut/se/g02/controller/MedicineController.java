@@ -16,25 +16,20 @@ import java.util.stream.Collectors;
 import java.util.Date;
 import java.util.Optional;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class MedicineController {
     @Autowired
     private  MedicineRepository medicineRepository;
-    //private  final MedicineRepository medicineRepository;
+    
    
 
 
-
-    @GetMapping(path = "Medicine", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Medicine> Medicine() {
+    @GetMapping("/Medicine")
+    public List<Medicine> Medicine(){
         return medicineRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-     @GetMapping("/Medicine/{id}")
-    public Optional<Medicine> medicine(@PathVariable Long id)  {
-        Optional<Medicine> medicine = medicineRepository.findById(id);
-        return medicine;
     }
 
 }
