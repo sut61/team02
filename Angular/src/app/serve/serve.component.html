@@ -21,7 +21,7 @@
 
         <mat-form-field>
           <mat-select [(ngModel)]="TypeList" placeholder ="รายการ:" name="List">
-            <mat-option *ngFor="let Type of list" [value]="Type.id">
+            <mat-option *ngFor="let Type of list" [value]="Type.typeId">
               {{Type.list}}
             </mat-option>
           </mat-select>
