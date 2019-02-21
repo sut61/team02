@@ -22,7 +22,7 @@ public class CageType {
 	@SequenceGenerator(name="cageType_seq",sequenceName="cageType_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cageType_seq")
     @Column(name="idCageType")
-	private @NonNull Long id;
+	private @NonNull Long cageTypeId;
 	private  String nameCageType;
 	
 
@@ -31,7 +31,7 @@ public class CageType {
 
     }
 
-    public CageType(Long id,String nameCageType){
+    public CageType(Long cageTypeId,String nameCageType){
         this.nameCageType = nameCageType;
         
     }
