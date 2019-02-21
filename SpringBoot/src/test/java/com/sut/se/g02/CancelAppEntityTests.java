@@ -37,7 +37,13 @@ import com.sut.se.g02.entity.*;
 public class CancelAppEntityTests {
 
 	@Autowired
-	private  CancelAppRepository cancelAppRepository;
+	private CancelAppRepository cancelAppRepository;
+	@Autowired
+	private AppointmentRepository appointmentRepository;
+	@Autowired
+	private NurseRepository nurseRepository;
+	@Autowired
+	private Status1Repository status1Repository;
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -54,8 +60,14 @@ public class CancelAppEntityTests {
 	//---------------------------------- Test Sprint2------------------------------------------------------
 	//Test Not Null
 	@Test
-	public void testSprint2_NotNull() {
+	public void testSprint2_NotNull_Note() {
 		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(s);
+		c.setNurse(n);
 		c.setNote(null);
 
 		try {
@@ -66,18 +78,101 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			System.out.println();
-			System.out.println("--------------- Note Sprint2 Not Null --------------------");
+			System.out.println("--------------- Note Sprint2 NotNull_Note --------------------");
 			System.out.println(e.getMessage());
 			System.out.println();
 		}
+	}
+	@Test
+	public void testSprint2_NotNull_App() {
+		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(null);
+		c.setStatus1(s);
+		c.setNurse(n);
+		c.setNote("00Soon พา00");
 
+		try {
+			entityManager.persist(c);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("--------------- Note Sprint2 NotNull_App --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+	}
+	@Test
+	public void testSprint2_NotNull_Status() {
+		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(null);
+		c.setNurse(n);
+		c.setNote("00Soon พา00");
+
+		try {
+			entityManager.persist(c);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("--------------- Note Sprint2 NotNull_Status --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
+	}
+	@Test
+	public void testSprint2_NotNull_Nurse() {
+		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(s);
+		c.setNurse(null);
+		c.setNote("00Soon พา00");
+
+		try {
+			entityManager.persist(c);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("--------------- Note Sprint2 NotNull_Nurse --------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+		}
 	}
 	//Test OverSize
 	@Test
 	public void testSprint2_OverSize() {
 		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(s);
+		c.setNurse(n);
 		c.setNote("00พาSoon00 00พาSoon00 00พาSoon00 00พาSoon00");
 
 		try {
@@ -88,7 +183,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 Over Size --------------------");
 			System.out.println(e.getMessage());
@@ -99,6 +194,12 @@ public class CancelAppEntityTests {
 	@Test
 	public void testSprint2_Patten() {
 		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(s);
+		c.setNurse(n);
 		c.setNote("&&Soon&&");
 
 		try {
@@ -109,7 +210,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 2);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 Patten --------------------");
 			System.out.println(e.getMessage());
@@ -120,6 +221,12 @@ public class CancelAppEntityTests {
 	@Test
 	public void testSprint2_SaveAll() {
 		CancelApp c = new CancelApp();
+		Appointment a = this.appointmentRepository.findByAppointmentId(1L);
+		Status1 s = this.status1Repository.findByStatusId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		c.setAppointment(a);
+		c.setStatus1(s);
+		c.setNurse(n);
 		c.setNote("00Soon พา00");
 
 		try {
