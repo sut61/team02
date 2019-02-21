@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.Optional;
 import java.sql.Timestamp;
 
+import java.util.List;
+
 @RestController 
 @CrossOrigin(origins = "http://localhost:4200")
 public class RecuperateController {
@@ -33,60 +35,25 @@ public class RecuperateController {
 
 
 
-    @GetMapping(path = "Recuperate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Recuperate> Recuperate() {
+     @GetMapping("/Recuperate")
+    public List<Recuperate> Recuperate(){
         return recuperateRepository.findAll().stream().collect(Collectors.toList());
     }
-    @GetMapping("/Recuperate/{id}")
-    public Optional<Recuperate> recuperate(@PathVariable Long id) {
-        Optional<Recuperate> a = recuperateRepository.findById(id);
-        return a;
-    }
 
-    /*@GetMapping(path = "PetInfo", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<PetInfo> PetInfo() {
-        return petInfoRepository.findAll().stream().collect(Collectors.toList());
-    }
-    
-     @GetMapping("/PetInfo/{id}")
-    public Optional<PetInfo> petInfo(@PathVariable Long id)  {
-        Optional<PetInfo> pa = petInfoRepository.findById(id);
-        return pa;
-    }*/
 
-    @GetMapping(path = "Cage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Cage> Cage() {
+     @GetMapping("/Cage")
+    public List<Cage> Cage(){
         return cageRepository.findAll().stream().collect(Collectors.toList());
     }
-    
-    @GetMapping("/Cage/{id}")
-    public Optional<Cage> cage(@PathVariable Long id) {
-        Optional<Cage> d = cageRepository.findById(id);
-        return d;
-    }
-  
 
-    @GetMapping(path = "CageType", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<CageType> CageType() {
+
+     @GetMapping("/CageType")
+    public List<CageType> CageType(){
         return cageTypeRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @GetMapping("/CageType/{id}")
-    public Optional<CageType> cageType(@PathVariable Long id)  {
-        Optional<CageType> pe = cageTypeRepository.findById(id);
-        return pe;
-    }
 
-    /*@GetMapping(path = "Nurse", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Nurse> Nurse() {
-        return nurseRepository.findAll().stream().collect(Collectors.toList());
-    }
-    
-    @GetMapping("/Nurse/{id}")
-    public Optional<Nurse> nurse(@PathVariable Long id) {
-        Optional<Nurse> c = nurseRepository.findById(id);
-        return c;
-    }*/
+  
 
     @PostMapping(path ="/Recuperate/{nameCageSelect}/{nameCageTypeSelect}/{treatSelect}/{note}/{nameNurseSelect}")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -101,10 +68,10 @@ public class RecuperateController {
 
 
            
-            Cage cage = cageRepository.findById(nameCageSelect).get();
-            CageType cageType = cageTypeRepository.findById(nameCageTypeSelect).get();
-                Treatment treatment = treatmentRepository.findById(treatSelect).get();
-            Nurse nurse = nurseRepository.findById(nameNurseSelect).get();
+            Cage cage = cageRepository.findByCageId(nameCageSelect);
+            CageType cageType = cageTypeRepository.findByCageTypeId(nameCageTypeSelect);
+                Treatment treatment = treatmentRepository.findByTreatmentId(treatSelect);
+            Nurse nurse = nurseRepository.findByNurseId(nameNurseSelect);
         
         Recuperate recuperate = new Recuperate();
        
