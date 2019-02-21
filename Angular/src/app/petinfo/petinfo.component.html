@@ -51,7 +51,7 @@
 
         <mat-form-field>
           <mat-select [(ngModel)]="breedNameSelect" placeholder ="สายพันธุ์:" name="BreN">
-            <mat-option *ngFor="let breed of breedNames" [value]="breed.id">
+            <mat-option *ngFor="let breed of breedNames" [value]="breed.breedId">
               {{breed.breedName}}
             </mat-option>
           </mat-select>
