@@ -10,7 +10,7 @@ public class Breed {
     @SequenceGenerator(name="BREED_seq",sequenceName="BREED_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BREED_seq")
     @Column(name = "IdBreed")
-    private @NonNull Long iD;
+    private @NonNull Long breedId;
     private@NonNull String type;
     public void setBreedName(String type){
         this.type=type;
