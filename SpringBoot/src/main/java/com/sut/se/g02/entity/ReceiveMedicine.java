@@ -23,11 +23,12 @@ public class ReceiveMedicine {
     @SequenceGenerator(name="receiveMedicine_seq",sequenceName="receiveMedicine_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="receiveMedicine_seq")
     @Column(name="idReceiveMedicine")
-    private @NotNull Long id;
-
+    @NotNull
+    private  Long receiveMedicineId;
+    @NotNull
     @Pattern(regexp = "[-0-9ก-๛]+")
     @Size (min = 1,max = 30)
-    private @NotNull String noteNew;
+    private  String noteNew;
 
 
     public void setNoteNew(String noteNew){
@@ -45,15 +46,18 @@ public class ReceiveMedicine {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDCheckStatus",insertable = true)
+    @NotNull
     private CheckStatus checkStatus;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDNurse",insertable = true)
+    @NotNull
     private Nurse nurse;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IDOrderMedicine",insertable = true)
+    @NotNull
     private OrderMedicine orderMedicine;
 
     public void setOrderMedicine(OrderMedicine orderMedicine) {
@@ -79,7 +83,7 @@ public class ReceiveMedicine {
 
 
 
-    public ReceiveMedicine(Long id,CheckStatus checkStatus, String noteNew,
+    public ReceiveMedicine(Long receiveMedicineId,CheckStatus checkStatus, String noteNew,
                          Nurse nurse, OrderMedicine orderMedicine){
         this.orderMedicine = orderMedicine;
         this.checkStatus = checkStatus;
