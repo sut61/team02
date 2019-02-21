@@ -17,18 +17,25 @@ import java.util.stream.Collectors;
 import java.util.Date;
 import java.util.Optional;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class OwnerController {
 
     @Autowired
     private  OwnerRepository ownerRepository;
-    //private final OwnerRepository ownerRepository;
 
     public OwnerController(OwnerRepository ownerRepository) {
         this.ownerRepository = ownerRepository;
     }
-    @GetMapping(path = "Owner", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Owner> Owner() {
+
+
+ 
+
+    @GetMapping("/Owner")
+    public List<Owner> Owner(){
         return ownerRepository.findAll().stream().collect(Collectors.toList());
-    } }
+    }
+
+ }
