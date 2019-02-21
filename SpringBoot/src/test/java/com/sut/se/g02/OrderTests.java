@@ -38,6 +38,12 @@ public class OrderTests {
 
 	@Autowired
 	private OrderMedicineRepository orderMedicineRepository;
+	@Autowired
+    private NurseRepository nurseRepository;
+    @Autowired
+    private MedicineRepository medicineRepository;
+    @Autowired
+    private CompanyRepository companyRepository;
 
 
 	@Autowired
@@ -53,6 +59,14 @@ public class OrderTests {
 	@Test
 	public void FinishOrder() {
 		OrderMedicine orderMedicine = new OrderMedicine();
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
 		orderMedicine.setNote("กะป๋อง123-456");
 		orderMedicine.setNumber(10);
 
@@ -69,7 +83,7 @@ public class OrderTests {
 		} catch (javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
+			assertEquals(violations.size(), 3);
 
 		}
 
@@ -77,6 +91,14 @@ public class OrderTests {
 	@Test
 	public void CannotNullNoteOrder() {
 		OrderMedicine orderMedicine = new OrderMedicine();
+		
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
 		orderMedicine.setNote(null);
 		orderMedicine.setNumber(10);
 
@@ -98,11 +120,119 @@ public class OrderTests {
 		}
 
 	}
+
+		@Test
+	public void CannotNullMedicine() {
+		OrderMedicine orderMedicine = new OrderMedicine();
+		
+		//Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(null);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
+		orderMedicine.setNote("123654");
+		orderMedicine.setNumber(10);
+
+
+		try {
+			entityManager.persist(orderMedicine);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("----------> Notnull Medicine<--------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+
+	}
+
+		@Test
+	public void CannotNullCompany() {
+		OrderMedicine orderMedicine = new OrderMedicine();
+		
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		//Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(null);
+		orderMedicine.setNurse(n);
+		
+		orderMedicine.setNote("123654");
+		orderMedicine.setNumber(10);
+
+		try {
+			entityManager.persist(orderMedicine);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("----------> Notnull Company<--------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+
+	}
+
+		@Test
+	public void CannotNullNurse() {
+		OrderMedicine orderMedicine = new OrderMedicine();
+		
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		//Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(null);
+		
+		orderMedicine.setNote("123654");
+		orderMedicine.setNumber(10);
+
+
+		try {
+			entityManager.persist(orderMedicine);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("----------> Notnull Nurse<--------------------");
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println();
+		}
+
+	}
+
 	@Test
 	public void CannotNullNumOrder() {
 		OrderMedicine orderMedicine = new OrderMedicine();
-		orderMedicine.setNote("สำเร็จ123-456");
+
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
+		orderMedicine.setNote("123654");
 		orderMedicine.setNumber(null);
+
 
 
 		try {
@@ -125,8 +255,17 @@ public class OrderTests {
 	@Test
 	public void testPatternNoteOrder() {
 		OrderMedicine orderMedicine = new OrderMedicine();
-		orderMedicine.setNote("baby");
+		
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
+		orderMedicine.setNote("null");
 		orderMedicine.setNumber(10);
+
 
 		try {
 			entityManager.persist(orderMedicine);
@@ -146,8 +285,17 @@ public class OrderTests {
 	@Test
 	public void testSizeOrder() {
 		OrderMedicine orderMedicine = new OrderMedicine();
-		orderMedicine.setNote("หหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหหห");
+		
+		Medicine m = this.medicineRepository.findByMedicineId(1L);
+		Company c = this.companyRepository.findByCompanyId(1L);
+		Nurse n = this.nurseRepository.findByNurseId(1L);
+		orderMedicine.setMedicine(m);
+		orderMedicine.setCompany(c);
+		orderMedicine.setNurse(n);
+		
+		orderMedicine.setNote("11111111111111111111111111111111111111111111111111111111111");
 		orderMedicine.setNumber(10);
+
 
 		try {
 			entityManager.persist(orderMedicine);
