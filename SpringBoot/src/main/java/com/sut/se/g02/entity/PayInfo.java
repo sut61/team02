@@ -25,7 +25,8 @@ public class PayInfo {
     @SequenceGenerator(name="payInfo_seq",sequenceName="payInfo_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="payInfo_seq")
     @Column(name="PayInfo_ID")
-    private @NotNull Long id;
+    
+    private @NotNull Long payInfoId;
     private @NotNull Timestamp dateandtime;
     
     @NotNull
@@ -38,18 +39,22 @@ public class PayInfo {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Nurse_ID", insertable = true)
+    @NotNull
     private  Nurse nurse;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "OWNER_ID", insertable = true)
+    @NotNull
     private  Owner owner;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Treatment_ID", insertable = true)
+    @NotNull
     private  Treatment treatment;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Medicine_ID", insertable = true)
+    @NotNull
     private  Medicine medicine;
 
 
@@ -104,7 +109,7 @@ public class PayInfo {
         return medicine; 
     }
 
-    public PayInfo (Long id, Timestamp dateandtime, Owner owner, Treatment treatment, Medicine medicine,String note,  Nurse nurse){
+    public PayInfo (Long payInfoId, Timestamp dateandtime, Owner owner, Treatment treatment, Medicine medicine,String note,  Nurse nurse){
             this.dateandtime = dateandtime;
             this.owner = owner;
             this.treatment = treatment;
