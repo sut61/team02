@@ -20,7 +20,7 @@
     ชื่อเจ้าของ &nbsp; &nbsp; : &nbsp; <mat-form-field  appearance="outline" class="example-width">
     <mat-label>Owner</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder ="" name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.owner.ownerName}}
       </mat-option>
     </mat-select>
@@ -29,7 +29,7 @@
     เบอร์ติดต่อ &nbsp; : &nbsp; <mat-form-field  appearance="outline" class="example-width">
     <mat-label>Telephone</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder ="" name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.owner.ownerTel}}
       </mat-option>
     </mat-select>
@@ -38,7 +38,7 @@
     ชื่อสัตว์เลี้ยง &nbsp; : &nbsp; <mat-form-field appearance="outline"  class="example-width" >
     <mat-label>Pet</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder ="" name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.petInfo.petName}}
       </mat-option>
     </mat-select>
@@ -49,7 +49,7 @@
     สัตว์แพทย์ &nbsp; &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
     <mat-label>Veterinary</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder ="" name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.doctor.nameDoctor}}
       </mat-option>
     </mat-select>
@@ -58,7 +58,7 @@
     วัน/เดือน/ปี &nbsp; &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
     <mat-label>Date</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder =""name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.date}}
       </mat-option>
     </mat-select>
@@ -67,7 +67,7 @@
     ช่วงเวลา &nbsp; &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
     <mat-label>Period</mat-label>
     <mat-select [(ngModel)]="nameAppointSelect" placeholder =""name="appointment">
-      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.id">
+      <mat-option *ngFor="let Appointment of appointment" [value]="Appointment.appointmentId">
         {{Appointment.period.periods}}
       </mat-option>
     </mat-select>
