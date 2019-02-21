@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:4200")
 public
 interface Status1Repository extends JpaRepository<Status1,Long> {
+	Status1 findByStatusId(Long statusId);
 }
