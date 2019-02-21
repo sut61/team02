@@ -69,7 +69,7 @@
     ช่วงเวลา &nbsp; : &nbsp; <mat-form-field appearance="outline" class="example-width">
     <mat-label>Period</mat-label>
     <mat-select [(ngModel)]="periodsSelect" placeholder =""name="periods">
-      <mat-option *ngFor="let Period of periods" [value]="Period.id">
+      <mat-option *ngFor="let Period of periods" [value]="Period.periodId">
         {{Period.periods}}
       </mat-option>
     </mat-select>
