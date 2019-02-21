@@ -38,6 +38,15 @@ public class MoveTests {
 	
     @Autowired
     private MoveRepository moveRepository;
+    @Autowired
+    private RecuperateRepository recuperateRepository;
+    @Autowired
+    private OwnerRepository ownerRepository;
+    @Autowired
+    private CageRepository cageRepository;
+    
+    @Autowired
+    private NurseRepository nurseRepository;
 
 
 	@Autowired
@@ -56,8 +65,18 @@ public class MoveTests {
     @Test
     public void testSaveAll() {
         Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(c);
         move.setDate(new Date());
         move.setNote("ย้าย");
+        move.setNurse(n);
+
+
         try {
             entityManager.persist(move);
             entityManager.flush();
@@ -69,19 +88,27 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
             
         }
         
     }
 
 
-	// ทดสอบ Move เป็น notnull
+	// ทดสอบ Move เป็น Date : notnull
     @Test
-    public void testMoveNotNull() {
-       Move move = new Move();
-       move.setDate(new Date());
-        move.setNote(null);
+    public void testMoveDateNotNull() {
+        Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(c);
+        move.setDate(null);
+        move.setNote("null");
+        move.setNurse(n);
         try {
             entityManager.persist(move);
             entityManager.flush();
@@ -89,22 +116,58 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 3);
             System.out.println();
-            System.out.println("=================== Move เป็น notnull ======================");
+            System.out.println("=================== Move เป็น Date : notnull ======================");
+            System.out.println(e.getMessage());
+            System.out.println();
+        }
+    }
+
+    // ทดสอบ Move เป็น Recuperate : notnull
+    @Test
+    public void testMoveRecuperateNotNull() {
+        Move move = new Move();
+        //Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(null);
+        move.setOwner(o);
+        move.setCage(c);
+        move.setDate(new Date());
+        move.setNote("hgffiutg");
+        move.setNurse(n);
+        try {
+            entityManager.persist(move);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("=================== Move เป็น Recuperate : notnull ======================");
             System.out.println(e.getMessage());
             System.out.println();
         }
     }
 
 
-    
- 	// ทดสอบ Move ความยาวเกิน
+    // ทดสอบ Move เป็น Owner : notnull
     @Test
-    public void testMoveSizeOver() {
+    public void testMoveOwnerNotNull() {
         Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        //Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(null);
+        move.setCage(c);
         move.setDate(new Date());
-        move.setNote("ย้ายอีกกกกกกกกกกกกกกกกกกกกกกกกกกกกกกก");
+        move.setNote("null");
+        move.setNurse(n);
         try {
             entityManager.persist(move);
             entityManager.flush();
@@ -112,7 +175,98 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("=================== Move เป็น Owner : notnull ======================");
+            System.out.println(e.getMessage());
+            System.out.println();
+        }
+    }
+
+
+    // ทดสอบ Move เป็น Cage : notnull
+    @Test
+    public void testMoveCageNotNull() {
+        Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        //Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(null);
+        move.setDate(new Date());
+        move.setNote("null");
+        move.setNurse(n);
+        try {
+            entityManager.persist(move);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+            System.out.println();
+            System.out.println("=================== Move เป็น Cage : notnull ======================");
+            System.out.println(e.getMessage());
+            System.out.println();
+        }
+    }
+
+    // ทดสอบ Move เป็น Nurse : notnull
+    @Test
+    public void testMoveNurseNotNull() {
+        Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        //Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(c);
+        move.setDate(new Date());
+        move.setNote("null");
+        move.setNurse(null);
+        try {
+            entityManager.persist(move);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+            System.out.println();
+            System.out.println("=================== Move เป็น Nurse : notnull ======================");
+            System.out.println(e.getMessage());
+            System.out.println();
+        }
+    }
+
+
+
+    
+ 	// ทดสอบ Move ความยาวเกิน
+    @Test
+    public void testMoveSizeOver() {
+         Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(c);
+        move.setDate(new Date());
+        move.setNote("ย้ายยยยยยยยยยยยยยยยยยยยยยยยยยยยยยยยยย");
+        move.setNurse(n);
+        try {
+            entityManager.persist(move);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
             System.out.println();
             System.out.println("================= Move SizeOver =========================");
             System.out.println(e.getMessage());
@@ -123,9 +277,17 @@ public class MoveTests {
     // ทดสอบ Move ไม่ตรง Pattern
    @Test
     public void testMoveNotPattern() {
-        Move move = new Move();
-       move.setDate(new Date());
-        move.setNote("----");
+         Move move = new Move();
+        Recuperate r = this.recuperateRepository.findByRecuperateId(1L);
+        Owner o = this.ownerRepository.findByOwnerId(1L);
+        Cage c = this.cageRepository.findByCageId(1L);
+        Nurse n = this.nurseRepository.findByNurseId(1L);
+        move.setRecuperate(r);
+        move.setOwner(o);
+        move.setCage(c);
+        move.setDate(new Date());
+        move.setNote("123456");
+        move.setNurse(n);
         try {
             entityManager.persist(move);
             entityManager.flush();
@@ -133,7 +295,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 3);
             System.out.println();
             System.out.println("================== Move not ===========================");
             System.out.println(e.getMessage());
@@ -141,23 +303,7 @@ public class MoveTests {
         }
     }
 
-    // ทดสอบ sป้องกัน id ซ้ำ
-    /*@Test
-    public void testId() {
-        Pay pay = new Pay();
-        pay.setId(1L);
-        pay.setDateandtime(new Timestamp(System.currentTimeMillis()));
-        pay.setNote("มีเงินA");
-        try {
-            entityManager.persist(pay);
-            entityManager.flush();
-            fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-        }
-    }*/
+    
 }
 
 
