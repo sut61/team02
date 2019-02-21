@@ -69,11 +69,9 @@ public class Serve {
 
 
     public Serve(String comment, Nurse nurse,  Type type,Owner owner) {
-
         this.comment=comment;
         this.owner=owner;
         this.nurse=nurse;
-
         this.type=type;
 
 

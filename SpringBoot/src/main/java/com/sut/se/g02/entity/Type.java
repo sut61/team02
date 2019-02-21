@@ -25,16 +25,10 @@ public class Type {
 
     @NonNull
     private String List;
-
-
-
-
     public Type() {}
 
     public Type (Long typeId, String List){
-        this.List = List;
-
-    }
+        this.List = List;  }
 
 
     public void setList(String List) {
