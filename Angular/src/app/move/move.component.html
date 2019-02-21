@@ -15,7 +15,7 @@
               &nbsp; <font size="4">ข้อมูลสัตว์ : </font> &nbsp;  
               <mat-form-field >
                         <mat-select width="80%" placeholder="" [(ngModel)]="recSelect" name="namerec">
-                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.id"> 
+                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.recuperateId"> 
                              {{Recuperate.treatment.petInfo.petName}} &nbsp;&nbsp;
                             
                           </mat-option>
@@ -27,7 +27,7 @@
               &nbsp; <font size="4">ประเภทกรง : </font> &nbsp;  
               <mat-form-field >
                         <mat-select width="80%" placeholder="" [(ngModel)]="recSelect" name="namerec">
-                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.id"> 
+                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.recuperateId"> 
                              {{Recuperate.cageType.nameCageType}} &nbsp;&nbsp;
                             
                           </mat-option>
@@ -39,7 +39,7 @@
               &nbsp; <font size="4">กรงเก่า : </font> &nbsp;  
               <mat-form-field >
                         <mat-select width="80%" placeholder="" [(ngModel)]="recSelect" name="namerec">
-                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.id"> 
+                          <mat-option *ngFor="let Recuperate of namerec" [value]="Recuperate.recuperateId"> 
                              {{Recuperate.cage.nameCage}} &nbsp;&nbsp;
                             
                           </mat-option>
@@ -62,7 +62,7 @@
               &nbsp;  
               <mat-form-field >
                        <mat-select placeholder="" [(ngModel)]="nameCageSelect" name="nameCage">
-                          <mat-option *ngFor="let Cage of nameCage" [value]="Cage.id"> {{Cage.nameCage}}
+                          <mat-option *ngFor="let Cage of nameCage" [value]="Cage.cageId"> {{Cage.nameCage}}
                           </mat-option>
                     </mat-select>
          </mat-form-field>
