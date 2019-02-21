@@ -15,6 +15,7 @@ public class Triage {
     @Id
     @SequenceGenerator(name="triage_seq",sequenceName="triage_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="triage_seq")
+    @NotNull
     private   Long triageId;
 
     @NotNull
@@ -28,14 +29,17 @@ public class Triage {
     }
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdTriageLevel",insertable = true)
+    @NotNull
     private TriageLevel triageLevel;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdPetInfo",insertable = true)
+    @NotNull
     private PetInfo petInfo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "IdNurse",insertable = true)
+    @NotNull
     private Nurse nurse;
 
     
