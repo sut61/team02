@@ -78,7 +78,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 NotNull_Note --------------------");
 			System.out.println(e.getMessage());
@@ -130,7 +130,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 NotNull_Status --------------------");
 			System.out.println(e.getMessage());
@@ -156,7 +156,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 NotNull_Nurse --------------------");
 			System.out.println(e.getMessage());
@@ -183,7 +183,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 Over Size --------------------");
 			System.out.println(e.getMessage());
@@ -210,7 +210,7 @@ public class CancelAppEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint2 Patten --------------------");
 			System.out.println(e.getMessage());
