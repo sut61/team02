@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NachaService } from '../nacha.service';
 import {HttpClient} from '@angular/common/http';
+import {MatSnackBar} from '@angular/material';
 
 
 
@@ -28,7 +29,7 @@ export class MoveComponent implements OnInit {
     date='';
   	note='';
 
-	constructor(private app : NachaService, private httpClient: HttpClient) { }
+	constructor(private app : NachaService, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
 
 
@@ -57,18 +58,29 @@ export class MoveComponent implements OnInit {
 
 
     save() {
-      if (this.recSelect === '' || this.nameOwnerSelect === '' || this.nameCageSelect == '' ||  this.date === '' || this.note === '' || this.nameNurseSelect === '') {
-        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-      } else {
+    if (this.recSelect === ""){
+      this.snackBar.open('กรุณาเลือกข้อมูลพักฟื้นสัตว์', 'OK', {});
+      }else if(this.nameOwnerSelect === "") {
+      this.snackBar.open('กรุณาเลือกชื่อเจ้าของสัตว์', 'OK', {});
+      }else if(this.nameCageSelect === "") {
+      this.snackBar.open('กรุณาเลือกกรง', 'OK', {});
+      }else if(this.date === "") {
+      this.snackBar.open('กรุณากรอกวันที่', 'OK', {});
+      }else if(this.note === "") {
+      this.snackBar.open('กรุณาหมายเหตุ', 'OK', {});
+      }else if(this.nameNurseSelect === "") {
+      this.snackBar.open('กรุณาเลือกชื่อพยาบาล', 'OK', {});
+    } else {
+
       this.httpClient.post('http://localhost:8080/Move/' + this.recSelect + '/' + this.nameOwnerSelect + '/' + this.nameCageSelect + '/' +  this.date + '/' + this.note + '/' + this.nameNurseSelect, {})
        .subscribe(
         data =>{
-         console.log('PUT Request is successful', data);alert('บันทึกข้อมูลเรียบร้อย');
+         console.log('PUT Request is successful', data);this.snackBar.open('บันทึกข้อมูลเรียบร้อย');
         },
 
         error => {
           console.log('Error', error);
-          alert('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษและภาษาไทย');
+          this.snackBar.open('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษและภาษาไทย 1-20 ตัว');
         }
 
        );
