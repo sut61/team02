@@ -15,6 +15,7 @@ public class Triage {
     @Id
     @SequenceGenerator(name="triage_seq",sequenceName="triage_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="triage_seq")
+    @Column(name="Triage_ID",unique = true, nullable = false)
     @NotNull
     private   Long triageId;
 
