@@ -68,7 +68,7 @@ public class OrderTests {
 		orderMedicine.setNurse(n);
 		
 		orderMedicine.setNote("กะป๋อง123-456");
-		orderMedicine.setNumber(10);
+		orderMedicine.setNumber(20);
 
 
 		try {
