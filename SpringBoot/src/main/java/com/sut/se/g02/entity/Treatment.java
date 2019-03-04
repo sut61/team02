@@ -18,6 +18,7 @@ public class Treatment {
     @Id
     @SequenceGenerator(name = "treatment_seq",sequenceName = "treatment_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "treatment_seq")
+    @Column(name="Treatment_ID",unique = true, nullable = false)
     @NotNull  
     private  Long treatmentId;
 
