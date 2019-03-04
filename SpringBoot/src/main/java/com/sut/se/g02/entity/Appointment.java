@@ -24,7 +24,7 @@ public class Appointment {
     @Id
     @SequenceGenerator(name="appointment_seq",sequenceName="appointment_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="appointment_seq")
-    @Column(name="Appointment_ID")
+    @Column(name="Appointment_ID",unique = true, nullable = false)
     @NotNull
     private    Long appointmentId;
     @NotNull
