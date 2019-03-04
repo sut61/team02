@@ -82,7 +82,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note ความยาวเกิน<--------------------");
             System.out.println(e.getMessage());
@@ -113,7 +113,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note notnull   Owner<--------------------");
             System.out.println(e.getMessage());
@@ -144,7 +144,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note notnull   Treatment<--------------------");
             System.out.println(e.getMessage());
@@ -175,7 +175,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note notnull   Medicine<--------------------");
             System.out.println(e.getMessage());
@@ -206,7 +206,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note notnull  Nurse<--------------------");
             System.out.println(e.getMessage());
@@ -237,7 +237,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note notnull<--------------------");
             System.out.println(e.getMessage());
@@ -269,7 +269,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Note ไม่ตรง Pattern<--------------------");
             System.out.println(e.getMessage());
@@ -303,7 +303,7 @@ public class PayInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             
         }
         
