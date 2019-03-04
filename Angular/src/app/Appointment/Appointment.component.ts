@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AppointmentService } from 'src/app/Appointment.service';
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-Appointment',
   templateUrl: './Appointment.component.html',
@@ -28,7 +29,8 @@ export class AppointmentComponent implements OnInit {
     date='';
 
   constructor(private appointmentService: AppointmentService,
-              private httpClient: HttpClient) {
+              private httpClient: HttpClient,
+              private snackBar: MatSnackBar) {
 
   }
 
@@ -60,30 +62,30 @@ export class AppointmentComponent implements OnInit {
     }
   insert() {
   if (this.nameOwnerSelect === '') {
-        alert('กรุณาเลือกชื่อเจ้าของสัตว์เลี้ยง');
+        this.snackBar.open ('กรุณาเลือกชื่อเจ้าของสัตว์เลี้ยง','OK', {});
     }else if (this.namePetSelect === '') {
-        alert('กรุณาเลือกชื่อสัตวืเลี้ยง');
+        this.snackBar.open ('กรุณาเลือกชื่อสัตวืเลี้ยง','OK', {});
     }else if (this.nameDoctorSelect === '') {
-        alert('กรุณาเลือกชื่อสัตว์แพทย์');
+        this.snackBar.open ('กรุณาเลือกชื่อสัตว์แพทย์','OK', {});
     }else if (this.date === '') {
-        alert('กรุณาเลือกวันเดือนปี');
+       this.snackBar.open ('กรุณาเลือกวันเดือนปี','OK', {});
     }else if (this.periodsSelect === '') {
-        alert('กรุณาเลือกช่วงเวลา');
+        this.snackBar.open ('กรุณาเลือกช่วงเวลา','OK', {});
     }else if (this.note === '') {
-        alert('กรุณากรอกหมายเหตุ');
+        this.snackBar.open ('กรุณากรอกหมายเหตุ','OK', {});
     }else if (this.nameNurseSelect === '') {
-        alert('กรุณาเลือกชื่อพยาบาล');
+        this.snackBar.open ('กรุณาเลือกชื่อพยาบาล','OK', {});
     } else {
          this.httpClient.post('http://localhost:8080/Appointment/' + this.nameOwnerSelect + '/' + this.namePetSelect +'/'
          + this.nameDoctorSelect +'/' + this.date +'/' +this.periodsSelect+'/'  +this.note+'/' +this.nameNurseSelect,{})
      .subscribe(
        data => {
          console.log('PUT Request is successful', data);
-          alert('บันทึกข้อมูลสำเร็จ');
+          this.snackBar.open ('บันทึกข้อมูลสำเร็จ','OK', {});
         },
         error => {
           console.log('Error', error);
-          alert('กรุณากรอกข้อมูลให้ถูกต้อง ต้องประกอบด้วย a-z, A-Z, 0-9, ก-ฮ');
+          this.snackBar.open ('กรุณากรอกข้อมูลให้ถูกต้อง ต้องประกอบด้วย a-z, A-Z, 0-9, ก-ฮ','OK', {});
         }
       );
 
