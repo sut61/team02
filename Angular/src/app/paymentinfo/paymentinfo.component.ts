@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { KaewService } from '../kaew.service';
+import {MatSnackBar} from '@angular/material';
 
 
 
@@ -34,7 +35,7 @@ export class PaymentinfoComponent implements OnInit {
 
 
     
-  	constructor(private app : KaewService, private httpClient: HttpClient) {
+  	constructor(private app : KaewService, private httpClient: HttpClient,private snackBar: MatSnackBar) {
 
       
     }
@@ -74,24 +75,19 @@ export class PaymentinfoComponent implements OnInit {
 
     save() {
       if (this.ownerNameSelect === "") {
-
-	      alert('กรุณาเลือกชื่อเจ้าของสัตว์');
+      		this.snackBar.open('กรุณาเลือกชื่อเจ้าของสัตว์', 'OK', {});
 
 	    } else if (this.treatmentIdSelect === "") {
-
-	      alert('กรุณาเลือกข้อมูลบันทึกอาการ');
+	    	this.snackBar.open('กรุณาเลือกข้อมูลบันทึกอาการ', 'OK', {});
 
 	    } else if (this.priceSelect === "") {
-
-	      alert('กรุณาเลือกราคายา');
+	    	this.snackBar.open('กรุณาเลือกราคายา', 'OK', {});
 
 	    } else if (this.note === "") {
-
-	      alert('กรุณากรอกหมายเหตุ');
+	    	this.snackBar.open('กรุณากรอกหมายเหตุ', 'OK', {});
 
 	    } else if (this.nameNurseSelect === "") {
-
-	      alert('กรุณาเลือกชื่อพยาบาล');
+	    	this.snackBar.open('กรุณาเลือกชื่อพยาบาล', 'OK', {});
 
 	  } else {
 
@@ -99,13 +95,13 @@ export class PaymentinfoComponent implements OnInit {
 	       .subscribe(
 	        data =>{
 	         console.log('PUT Request is successful', data);
-	         	alert('บันทึกสำเร็จ');
+	         	this.snackBar.open('บันทึกสำเร็จ', 'OK', {});
 	        },
 
 	        error => {
 	          console.log('Error', error);
-
-	          	alert('ช่องหมายเหตุ ต้องเป็นภาษาไทย หรือ ภาษาอังกฤษ หรือ 0-9 หรือ - จำนวน 1-30 ตัวเท่านั้น');
+	          	this.snackBar.open('ช่องหมายเหตุ ต้องเป็นภาษาไทย หรือ ภาษาอังกฤษ หรือ 0-9 หรือ - จำนวน 1-30 ตัวเท่านั้น', 'OK', {});
+	          	
 	        }
 
 	       ); 
