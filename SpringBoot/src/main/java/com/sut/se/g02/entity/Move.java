@@ -24,7 +24,7 @@ public class Move {
 	@Id
 	@SequenceGenerator(name="move_seq",sequenceName="move_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="move_seq")
-	@Column(name="idMove")
+	@Column(name="idMove",unique = true, nullable = false)
     @NotNull
 	private  Long moveId;
     @NotNull
