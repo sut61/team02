@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TriageService } from '../triage.service';
-
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-triage',
   templateUrl: './triage.component.html',
@@ -20,7 +20,7 @@ export class TriageComponent implements OnInit {
 
   symptom :any = '';
 
-  constructor(private triage:TriageService, private httpClient: HttpClient) { }
+  constructor(private triage:TriageService, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.triage.getNurse().subscribe(data=>{
@@ -41,24 +41,24 @@ export class TriageComponent implements OnInit {
 
   save(){
     if(this.nameNurseSelect === ""){
-      alert('กรุณาเลือกชื่อพยาบาล');
+      this.snackBar.open('กรุณาเลือกชื่อพยาบาล', 'OK', {});
     }else if(this.namePetInfoSelect === "") {
-      alert('กรุณาเลือกชื่อสัตว์');
+      this.snackBar.open('กรุณาเลือกชื่อสัตว์', 'OK', {});
     }else if(this.symptom === "") {
-      alert('กรุณากรอกลักษณะอาการ');
+      this.snackBar.open('กรุณากรอกลักษณะอาการ', 'OK', {});
     }else if(this.triageLevelSelect === "") {
-      alert('กรุณาเลือกระดับความฉุกเฉิน');
+      this.snackBar.open('กรุณาเลือกระดับความฉุกเฉิน', 'OK', {});
     }else {
     this.httpClient.post('http://localhost:8080/Triage/' + this.nameNurseSelect + '/' + this.namePetInfoSelect  + '/' + this.symptom + '/' +this.triageLevelSelect, {})  
     .subscribe(
       data =>{
         console.log('PUT Rrquest successfull',data);
-        alert('บันทึกข้อมูลแล้ว');
+        this.snackBar.open('บันทึกข้อมูลแล้ว', 'OK', {});
       },
      
       error =>{
         console.log('Error',error);
-        alert('กรุณากรอกข้อมูลลักษณะอาการให้ถูกต้อง ขึ้นต้นด้วย a-z, A-Z, ก-ฮ และ ตัวเลข 0-9');
+        this.snackBar.open('กรุณากรอกข้อมูลลักษณะอาการให้ถูกต้อง ขึ้นต้นด้วย a-z, A-Z, ก-ฮ และ ตัวเลข 0-9', 'OK', {});
       }
       
     );
