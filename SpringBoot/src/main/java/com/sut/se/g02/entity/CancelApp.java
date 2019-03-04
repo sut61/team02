@@ -21,7 +21,7 @@ public class CancelApp {
     @Id
     @SequenceGenerator(name="cancel_seq",sequenceName="cancel_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="cancel_seq")
-    @Column(name="CancelApp_ID")
+    @Column(name="CancelApp_ID",unique = true, nullable = false)
     @NotNull
     private Long cancelId;
     @NotNull
