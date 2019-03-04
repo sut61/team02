@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { CancelService } from 'src/app/cancel.service';
-
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-cancel-app',
   templateUrl: './cancel-app.component.html',
@@ -21,7 +21,8 @@ export class CancelAppComponent implements OnInit {
     note='';
 
   constructor(private cancelService: CancelService,
-              private httpClient: HttpClient) {
+              private httpClient: HttpClient,
+              private snackBar: MatSnackBar) {
 
   }
 
@@ -44,23 +45,23 @@ export class CancelAppComponent implements OnInit {
   }
   insert1() {
   if (this.nameAppointSelect === '') {
-        alert('กรุณาเลือกข้อมูลการนัดหมาย');
+        this.snackBar.open ('กรุณาเลือกข้อมูลการนัดหมาย','OK', {});
   }else if (this.statusSelect === '') {
-        alert('กรุณาเลือกสถานะ');
+        this.snackBar.open ('กรุณาเลือกสถานะ','OK', {});
   }else if (this.note === '') {
-        alert('กรุณากรอกหมายเหตุ');
+        this.snackBar.open ('กรุณากรอกหมายเหตุ','OK', {});
   }else if (this.nameNurseSelect === '') {
-        alert('กรุณาเลือกชื่อพยาบาล');
+        this.snackBar.open ('กรุณาเลือกชื่อพยาบาล','OK', {});
     } else {
          this.httpClient.post('http://localhost:8080/CancelApp/' + this.nameAppointSelect + '/' + this.statusSelect +'/' +this.note+'/' +this.nameNurseSelect,{})
      .subscribe(
        data => {
          console.log('PUT Request is successful', data);
-          alert('บันทึกข้อมูลสำเร็จ');
+          this.snackBar.open ('บันทึกข้อมูลสำเร็จ','OK', {});
         },
         error => {
           console.log('Error', error);
-          alert('กรุณากรอกข้อมูลให้ถูกต้อง ต้องประกอบด้วย a-z, A-Z, 0-9, ก-ฮ');
+          this.snackBar.open ('กรุณากรอกข้อมูลให้ถูกต้อง ต้องประกอบด้วย a-z, A-Z, 0-9, ก-ฮ','OK', {});
         }
       );
   }
