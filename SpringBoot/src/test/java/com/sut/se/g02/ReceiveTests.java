@@ -109,7 +109,7 @@ public class ReceiveTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull NoteNew<--------------------");
             System.out.println(e.getMessage());
@@ -169,7 +169,7 @@ public class ReceiveTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull CheckStatus<--------------------");
             System.out.println(e.getMessage());
@@ -199,7 +199,7 @@ public class ReceiveTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Nurse<--------------------");
             System.out.println(e.getMessage());
@@ -220,7 +220,7 @@ public class ReceiveTests {
         receiveMedicine.setOrderMedicine(o);
         receiveMedicine.setCheckStatus(c);
         receiveMedicine.setNurse(n);
-        receiveMedicine.setNoteNew("กเดเ้าพ่้ีะร่ื");
+        receiveMedicine.setNoteNew("bkuuii");
 
         try {
             entityManager.persist(receiveMedicine);
@@ -257,7 +257,7 @@ public class ReceiveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment Sizelong Receive<--------------------");
             System.out.println(e.getMessage());
