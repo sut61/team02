@@ -88,7 +88,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             
         }
         
@@ -116,7 +116,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Move เป็น Date : notnull ======================");
             System.out.println(e.getMessage());
@@ -145,7 +145,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Move เป็น Recuperate : notnull ======================");
             System.out.println(e.getMessage());
@@ -175,7 +175,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Move เป็น Owner : notnull ======================");
             System.out.println(e.getMessage());
@@ -205,7 +205,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Move เป็น Cage : notnull ======================");
             System.out.println(e.getMessage());
@@ -234,7 +234,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Move เป็น Nurse : notnull ======================");
             System.out.println(e.getMessage());
@@ -266,7 +266,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("================= Move SizeOver =========================");
             System.out.println(e.getMessage());
@@ -295,7 +295,7 @@ public class MoveTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 3);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("================== Move not ===========================");
             System.out.println(e.getMessage());
