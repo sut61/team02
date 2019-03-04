@@ -87,7 +87,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Owner --------------------");
 			System.out.println(e.getMessage());
@@ -120,7 +120,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_PetInfo --------------------");
 			System.out.println(e.getMessage());
@@ -154,7 +154,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Doctor --------------------");
 			System.out.println(e.getMessage());
@@ -187,7 +187,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Period --------------------");
 			System.out.println(e.getMessage());
@@ -220,7 +220,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Nurse --------------------");
 			System.out.println(e.getMessage());
@@ -252,7 +252,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Date --------------------");
 			System.out.println(e.getMessage());
@@ -285,7 +285,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 NotNull_Note --------------------");
 			System.out.println(e.getMessage());
@@ -319,7 +319,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 Over Size --------------------");
 			System.out.println(e.getMessage());
@@ -352,7 +352,7 @@ public class AppointmentEntityTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("--------------- Note Sprint1 Patten --------------------");
 			System.out.println(e.getMessage());
