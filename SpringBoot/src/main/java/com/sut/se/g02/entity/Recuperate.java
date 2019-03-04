@@ -24,7 +24,7 @@ public class Recuperate {
 	@Id
 	@SequenceGenerator(name="recuperate_seq",sequenceName="recuperate_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="recuperate_seq")
-	@Column(name="idRecuperate")
+	@Column(name="idRecuperate",unique = true, nullable = false)
 	@NotNull
     private   Long recuperateId;
     @NotNull
