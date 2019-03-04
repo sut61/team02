@@ -116,7 +116,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull Nurse--------------------------");
 			System.out.println(e.getMessage());
@@ -173,7 +173,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull TriageLevel--------------------------");
 			System.out.println(e.getMessage());
@@ -202,7 +202,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check triageSymptomNotNull --------------------------");
 			System.out.println(e.getMessage());
@@ -233,7 +233,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check triageSymptomLongSize ------------------------");
 			System.out.println(e.getMessage());
@@ -265,7 +265,7 @@ public class TriageTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check triageSymptomไม่ตรงPattern ------------------------");
 			System.out.println(e.getMessage());
