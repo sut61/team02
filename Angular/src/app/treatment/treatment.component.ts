@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TreatmentService } from '../treatment.service';
-
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-treatment',
   templateUrl: './treatment.component.html',
@@ -26,7 +26,7 @@ export class TreatmentComponent implements OnInit {
   symptom :any = '';
   dcon :any = '';
 
-  constructor(private treatment:TreatmentService, private httpClient: HttpClient) { }
+  constructor(private treatment:TreatmentService, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
   ngOnInit() {
     this.treatment.getDoctor().subscribe(data=>{
         this.nameDoctor = data;
@@ -49,28 +49,28 @@ export class TreatmentComponent implements OnInit {
 
   save(){
     if(this.nameDoctorSelect === ""){
-      alert('กรุณาเลือกชื่อสัตวแพทย์');
+      this.snackBar.open('กรุณาเลือกชื่อสัตวแพทย์', 'OK', {});
     }else if(this.namePetInfoSelect === "") {
-      alert('กรุณาเลือกชื่อสัตว์');
+      this.snackBar.open('กรุณาเลือกชื่อสัตว์', 'OK', {});
     }else if(this.nameOwnerSelect === "") {
-      alert('กรุณาเลือกชื่อเจ้าของสัตว์');
+      this.snackBar.open('กรุณาเลือกชื่อเจ้าของสัตว์', 'OK', {});
     }else if(this.symptom === "") {
-      alert('กรุณากรอกอาการ');
+      this.snackBar.open('กรุณากรอกอาการ', 'OK', {});
     }else if(this.nameMedicineSelect === "") {
-      alert('กรุณาเลือกชื่อยา');
+      this.snackBar.open('กรุณาเลือกชื่อยา', 'OK', {});
     }else if(this.dcon === "") {
-      alert('กรุณากรอกวันพักฟื้น');
+      this.snackBar.open('กรุณากรอกวันพักฟื้น', 'OK', {});
     } else {
     this.httpClient.post('http://localhost:8080/Treatment/' + this.nameDoctorSelect + '/' + this.namePetInfoSelect  + '/' +this.nameOwnerSelect+'/'+this.nameMedicineSelect+'/'+this.symptom+'/'+this.dcon, {})  
     .subscribe(
       data =>{
         console.log('PUT Rrquest successfull',data);
-        alert('บันทึกข้อมูลสำเร็จ');
+        this.snackBar.open('บันทึกข้อมูลสำเร็จ', 'OK', {});
       },
      
       error =>{
         console.log('Error',error);
-        alert('กรุณากรอกข้อมูลอาการให้ถูกต้อง ประกอบด้วย a-z, A-Z, ก-ฮ และ ตัวเลข 0-9');
+        this.snackBar.open('กรุณากรอกข้อมูลอาการให้ถูกต้อง ประกอบด้วย a-z, A-Z, ก-ฮ และ ตัวเลข 0-9', 'OK', {});
       }
       
     );
