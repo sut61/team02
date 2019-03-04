@@ -118,7 +118,7 @@ public class RecupTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Recuperate เป็น notnull ======================");
             System.out.println(e.getMessage());
@@ -148,7 +148,7 @@ public class RecupTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Recuperate เป็น Date : notnull ======================");
             System.out.println(e.getMessage());
@@ -208,7 +208,7 @@ public class RecupTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Recuperate เป็น Cage : notnull ======================");
             System.out.println(e.getMessage());
@@ -238,7 +238,7 @@ public class RecupTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Recuperate เป็น CageType : notnull ======================");
             System.out.println(e.getMessage());
@@ -268,7 +268,7 @@ public class RecupTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("=================== Recuperate เป็น Nurse : notnull ======================");
             System.out.println(e.getMessage());
