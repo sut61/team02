@@ -24,7 +24,7 @@ public class Pay {
     @Id
     @SequenceGenerator(name="pay_seq",sequenceName="pay_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pay_seq")
-    @Column(name="Pay_ID")
+    @Column(name="Pay_ID",unique = true, nullable = false)
     private @NotNull Long payId;
     private @NotNull Timestamp dateandtime;
 
