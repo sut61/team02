@@ -97,7 +97,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			
 		}
 	}
@@ -125,7 +125,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull Doctor --------------------------");
 			System.out.println(e.getMessage());
@@ -158,7 +158,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull PetInfo --------------------------");
 			System.out.println(e.getMessage());
@@ -190,7 +190,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull Owner--------------------------");
 			System.out.println(e.getMessage());
@@ -224,7 +224,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check NotNull Medicine--------------------------");
 			System.out.println(e.getMessage());
@@ -260,7 +260,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentพักฟื้นNotNull --------------------------");
 			System.out.println(e.getMessage());
@@ -294,7 +294,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomNotNull --------------------------");
 			System.out.println(e.getMessage());
@@ -329,7 +329,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomLongSize ------------------------");
 			System.out.println(e.getMessage());
@@ -365,7 +365,7 @@ public class TreatmentTests {
 		}catch(javax.validation.ConstraintViolationException e){
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 3);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("------------------------ Check treatmentSymptomไม่ตรงPattern ------------------------");
 			System.out.println(e.getMessage());
