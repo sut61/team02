@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { HelloService } from '../hello.service';
 import {HttpClient} from '@angular/common/http';
+import {MatSnackBar} from '@angular/material';
 
 
 
@@ -26,7 +27,7 @@ export class RecuperateComponent implements OnInit {
 
     note='';
     date='';
-  constructor(private app : HelloService, private httpClient: HttpClient) { }
+  constructor(private app : HelloService, private httpClient: HttpClient,private snackBar: MatSnackBar) { }
 
 
 
@@ -52,18 +53,28 @@ export class RecuperateComponent implements OnInit {
     }
 
     save() {
-    if (this.nameCageSelect === ''      || this.nameCageTypeSelect === '' || this.treatSelect === '' || this.note === '' ||  this.nameNurseSelect === '') {
-      alert('กรอกข้อมูลให้ครบถ้วน');
+    if (this.nameCageSelect === ""){
+      this.snackBar.open('กรุณาเลือกกรง', 'OK', {});
+      }else if(this.nameCageTypeSelect === "") {
+      this.snackBar.open('กรุณาเลือกประเภทกรง', 'OK', {});
+      }else if(this.treatSelect === "") {
+      this.snackBar.open('กรุณาเลือกข้อมูลบันทึกอาการ', 'OK', {});
+      }else if(this.note === "") {
+      this.snackBar.open('กรุณาหมายเหตุ', 'OK', {});
+      }else if(this.nameNurseSelect === "") {
+      this.snackBar.open('กรุณาเลือกชื่อพยาบาล', 'OK', {});
     } else {
+
     this.httpClient.post('http://localhost:8080/Recuperate/' + this.nameCageSelect + '/' +
       this.nameCageTypeSelect  +'/' + this.treatSelect +'/' + this.note + '/' + this.nameNurseSelect,{})
      .subscribe(
        data => {
-         console.log('PUT Request is successful', data);alert('บันทึกข้อมูลเรียบร้อย');
+         console.log('PUT Request is successful', data);
+         this.snackBar.open('บันทึกข้อมูลเรียบร้อย');
         },
         error => {
           console.log('Error', error);
-          alert('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษเท่านั้น');
+          this.snackBar.open('บันทึกไม่สำเร็จเพราะช่องหมายเหตุกรอกได้แค่ ภาษาอังกฤษ 1-20 ตัวเท่านั้น');
         }
       );
 
