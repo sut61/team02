@@ -8,6 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 import java.util.stream.Stream;
 
@@ -28,14 +31,34 @@ public class CpeApplication {
     }
 
     @Bean
-    ApplicationRunner init(NurseRepository nurseRepository, DoctorRepository doctorRepository,
-                           BreedRepository breedRepository,MedicineRepository medicineRepository,
-                           PeriodRepository periodRepository,Status1Repository status1Repository,
-                           CageRepository cageRepository,CageTypeRepository cageTypeRepository,
-                           CompanyRepository companyRepository, StatusPayRepository statusPayRepository
-            ,TypeRepository typeRepository,TriageLevelRepository triageLevelRepository,CheckStatusRepository checkStatusRepository ) {
+    ApplicationRunner init(NurseRepository nurseRepository, 
+    						DoctorRepository doctorRepository,
+                           BreedRepository breedRepository,
+                           MedicineRepository medicineRepository,
+                           PeriodRepository periodRepository,
+                           Status1Repository status1Repository,
+                           CageRepository cageRepository,
+                           CageTypeRepository cageTypeRepository,
+                           CompanyRepository companyRepository, 
+                           StatusPayRepository statusPayRepository,
+                           TypeRepository typeRepository,
+                           TriageLevelRepository triageLevelRepository,
+                           CheckStatusRepository checkStatusRepository,
+             			   PayInfoRepository payInfoRepository,
+             			   OwnerRepository ownerRepository,
+             			   TreatmentRepository treatmentRepository,
+             			   PetInfoRepository petInfoRepository,
+             			   RecuperateRepository recuperateRepository,
+             			   AppointmentRepository appointmentRepository,
+             			   OrderMedicineRepository orderMedicineRepository,
+             			   CancelAppRepository cancelAppRepository,
+             			   TriageRepository triageRepository,
+             			   MoveRepository moveRepository,
+             			   PayRepository payRepository,
+             			   ReceiveMedicineRepository receiveMedicineRepository) {
         return args ->{
 
+        //-------Nurse--------------------------------
             Nurse nurse = new Nurse();
             Nurse nurse1 = new Nurse();
             Nurse nurse2 = new Nurse();
@@ -57,6 +80,7 @@ public class CpeApplication {
             nurseRepository.save(nurse3);
             nurseRepository.save(nurse5);
 
+        //-------Doctor--------------------------------
 
             Doctor doctor = new Doctor();
             Doctor doctor1 = new Doctor();
@@ -66,6 +90,8 @@ public class CpeApplication {
             doctor1.setPasswordDoctor("D02");
             doctorRepository.save(doctor);
             doctorRepository.save(doctor1);
+
+        //-------Breed--------------------------------
 
             Breed breed = new Breed();
             breed.setBreedName("กระต่าย");
@@ -82,6 +108,8 @@ public class CpeApplication {
             breedRepository.save(breed2);
             breedRepository.save(breed3);
             breedRepository.save(breed4);
+
+        //-------Medicine--------------------------------
 
             Medicine medicine = new Medicine();
             Medicine medicine1 = new Medicine();
@@ -120,12 +148,16 @@ public class CpeApplication {
             medicineRepository.save(medicine3);
             medicineRepository.save(medicine4);
 
+        //-------Period--------------------------------    
+
             Period period = new Period();
             Period period1 = new Period();
             period.setPeriods("10.00-12.00");
             period1.setPeriods("13.00-15.00");
             periodRepository.save(period);
             periodRepository.save(period1);
+
+        //-------CageType--------------------------------
 
             CageType cageType = new CageType();
             CageType cageType1 = new CageType();
@@ -134,7 +166,8 @@ public class CpeApplication {
             cageTypeRepository.save(cageType);
             cageTypeRepository.save(cageType1);
              
-             
+        //-------Cage--------------------------------
+
             Cage cage = new Cage();
             Cage cage1 = new Cage();
             Cage cage2 = new Cage();
@@ -151,6 +184,7 @@ public class CpeApplication {
             cageRepository.save(cage3);
             cageRepository.save(cage4);
 
+        //-------Company--------------------------------
 
             Company company = new Company();
             Company company1 = new Company();
@@ -165,7 +199,7 @@ public class CpeApplication {
             companyRepository.save(company2);
             companyRepository.save(company3);
 
-
+        //-------StatusPay--------------------------------
 
             StatusPay statusPay = new StatusPay();
             StatusPay statusPay1 = new StatusPay();
@@ -174,6 +208,7 @@ public class CpeApplication {
             statusPayRepository.save(statusPay);
             statusPayRepository.save(statusPay1);
 
+        //-------Type--------------------------------
 
             Type type = new Type();
             type.setList("หมอน");
@@ -190,6 +225,9 @@ public class CpeApplication {
             typeRepository.save(type2);
             typeRepository.save(type3);
             typeRepository.save(type4);
+
+
+        //-------TriageLevel--------------------------------
             
             TriageLevel triagelevel = new TriageLevel();
            TriageLevel triagelevel1 = new TriageLevel();
@@ -209,6 +247,9 @@ public class CpeApplication {
            triageLevelRepository.save(triagelevel3);
            triageLevelRepository.save(triagelevel4);
 
+
+        //-------Status1--------------------------------
+
             Status1 status1 = new Status1();
             Status1 status11 = new Status1();
             status1.setStatus1("ไม่ยกเลิก");
@@ -216,12 +257,253 @@ public class CpeApplication {
             status1Repository.save(status1);
             status1Repository.save(status11);
 
+        //-------CheckStatus--------------------------------
+
             CheckStatus checkStatus = new CheckStatus();
             CheckStatus checkStatus1 = new CheckStatus();
             checkStatus.setCheckStatus("รับยาเรียบร้อย");
             checkStatus1.setCheckStatus("ยังไม่ได้รับยา");
             checkStatusRepository.save(checkStatus);
             checkStatusRepository.save(checkStatus1);
+
+
+
+//////////////////// Sprint 1 /////////////////////////////////////////////////////
+
+            //--------Owner------------
+
+            Owner owner = new Owner();
+            Owner owner1 = new Owner();
+            owner.setOwnerName("แก้ว");
+			owner.setOwnerTel("0806195098");
+
+            owner1.setOwnerName("ฟิว");
+			owner1.setOwnerTel("0909999999");
+
+			ownerRepository.save(owner);
+            ownerRepository.save(owner1);
+
+			System.out.println("");
+			ownerRepository.findAll().forEach(System.out::println);
+			System.out.println("");
+
+            //--------PetInfo------------
+
+            PetInfo petInfo = new PetInfo();
+            PetInfo petInfo1 = new PetInfo();
+            petInfo.setPetName("nini");
+            petInfo.setOwner(owner);
+            petInfo.setAge(5);
+            petInfo.setWeight(20.0);
+            petInfo.setHeight(30.0);
+			petInfo.setBreed(breed1);
+            petInfo.setNurse(nurse);
+
+            petInfo1.setPetName("lili");
+            petInfo1.setOwner(owner1);
+            petInfo1.setAge(5);
+            petInfo1.setWeight(20.0);
+            petInfo1.setHeight(30.0);
+			petInfo1.setBreed(breed1);
+            petInfo1.setNurse(nurse);
+
+            petInfoRepository.save(petInfo);
+            petInfoRepository.save(petInfo1);
+
+
+
+            //--------Treatment------------
+
+            Treatment treatment = new Treatment();
+            treatment.setDate(new Timestamp(System.currentTimeMillis()));
+            treatment.setDoctor(doctor);
+	        treatment.setPetInfo(petInfo);
+	        treatment.setOwner(owner);
+	        treatment.setMedicine(medicine);
+	        treatment.setSymptom("ป่วย");
+	        treatment.setDCon(3);
+	        treatmentRepository.save(treatment);
+
+
+
+
+
+            //--------PaymentInfo------------
+
+            PayInfo payInfo = new PayInfo();
+            payInfo.setDateandtime(new Timestamp(System.currentTimeMillis()));
+	        payInfo.setOwner(owner);
+	        payInfo.setTreatment(treatment);
+	        payInfo.setMedicine(medicine);
+	        payInfo.setNote("มีเงินจ่าย");
+	        payInfo.setNurse(nurse3);
+	        payInfoRepository.save(payInfo);
+
+
+
+
+
+            //--------Recuperate------------
+
+            Recuperate recuperate = new Recuperate();
+            recuperate.setCage(cage);
+	        recuperate.setDate(new Timestamp(System.currentTimeMillis()));
+	        recuperate.setCageType(cageType);
+	        recuperate.setTreatment(treatment);
+	        recuperate.setNote("Sick");
+	        recuperate.setNurse(nurse2);
+	        recuperateRepository.save(recuperate);
+
+
+
+
+            //--------Appointment------------
+
+            Appointment appointment = new Appointment();
+	        appointment.setOwner(owner);
+	        appointment.setPetInfo(petInfo);
+	        appointment.setDoctor(doctor);
+	        appointment.setDate(new Date());
+	        appointment.setPeriod(period);
+	        appointment.setNote("ป่วย");
+	        appointment.setNurse(nurse1);
+
+        	appointmentRepository.save(appointment);;
+
+
+
+
+            //--------OrderMedicine------------
+
+            OrderMedicine orderMedicine = new OrderMedicine();
+	        orderMedicine.setCompany(company);
+	        orderMedicine.setMedicine(medicine);
+	        orderMedicine.setNumber(20);
+	        orderMedicine.setMedicine(medicine);
+	        orderMedicine.setNote("ยาหมด");
+	        orderMedicine.setNurse(nurse5);
+
+	        orderMedicineRepository.save(orderMedicine);
+
+
+            OrderMedicine orderMedicine2 = new OrderMedicine();
+            orderMedicine2.setCompany(company);
+            orderMedicine2.setMedicine(medicine);
+            orderMedicine2.setNumber(20);
+            orderMedicine2.setMedicine(medicine);
+            orderMedicine2.setNote("ยาหมด");
+            orderMedicine2.setNurse(nurse5);
+
+            orderMedicineRepository.save(orderMedicine2);
+
+
+
+//////////////////// Sprint 2 /////////////////////////////////////////////////////
+
+            //--------CancelApp------------
+
+            CancelApp cancelApp = new CancelApp();
+	        cancelApp.setAppointment(appointment);
+	        cancelApp.setStatus1(status1);
+	        cancelApp.setNote("ไม่ว่าง");
+	        cancelApp.setNurse(nurse1);
+
+	        cancelAppRepository.save(cancelApp);
+
+
+
+
+            CancelApp cancelApp1 = new CancelApp();
+	        cancelApp1.setAppointment(appointment);
+	        cancelApp1.setStatus1(status11);
+	        cancelApp1.setNote("-");
+	        cancelApp1.setNurse(nurse1);
+
+	        cancelAppRepository.save(cancelApp1);
+
+
+
+
+             //--------Triage------------
+
+            Triage triage = new Triage();
+        
+	        triage.setNurse(nurse);
+	        triage.setPetInfo(petInfo);
+	        triage.setSymptom("ป่วยหนักมาก");
+	        triage.setTriageLevel(triagelevel);
+
+	        triageRepository.save(triage);
+
+
+
+
+            //--------Move------------
+
+            Move move = new Move();
+	        move.setRecuperate(recuperate);
+	        move.setOwner(owner);
+	        move.setCage(cage);
+	        move.setDate(new Date());
+	        move.setNote("ABCD");
+	        move.setNurse(nurse2);
+
+	        moveRepository.save(move);
+
+
+
+
+            //--------Pay------------
+
+            Pay pay = new Pay();
+	        pay.setDateandtime(new Timestamp(System.currentTimeMillis()));
+	        pay.setPayInfo(payInfo);
+	        pay.setStatusPay(statusPay);
+	        pay.setNote("รวยมาก");
+	        pay.setNurse(nurse3);
+	        
+	        payRepository.save(pay);
+
+
+
+            Pay pay1 = new Pay();
+	        pay1.setDateandtime(new Timestamp(System.currentTimeMillis()));
+	        pay1.setPayInfo(payInfo);
+	        pay1.setStatusPay(statusPay1);
+	        pay1.setNote("รวยมาก");
+	        pay1.setNurse(nurse3);
+	        
+	        payRepository.save(pay1);
+
+
+
+
+	        //--------ReceiveMedicine------------
+
+            ReceiveMedicine receiveMedicine = new ReceiveMedicine();
+	        receiveMedicine.setOrderMedicine(orderMedicine);
+	        receiveMedicine.setNoteNew("โอเค");
+	        receiveMedicine.setCheckStatus(checkStatus);
+	        receiveMedicine.setNurse(nurse5);
+
+
+	        receiveMedicineRepository.save(receiveMedicine);
+
+
+
+            ReceiveMedicine receiveMedicine1 = new ReceiveMedicine();
+	        receiveMedicine1.setOrderMedicine(orderMedicine);
+	        receiveMedicine1.setNoteNew("ไม่รู็สิ");
+	        receiveMedicine1.setCheckStatus(checkStatus1);
+	        receiveMedicine1.setNurse(nurse5);
+
+
+	        receiveMedicineRepository.save(receiveMedicine);
+
+
+
+
+
         };
     }
 
