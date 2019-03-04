@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from '../page.service';
 import {HttpClient} from '@angular/common/http';
-
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-medical',
@@ -23,7 +23,7 @@ export class MedicalComponent implements OnInit {
     nurseNameSelect='';
 
 
-  constructor(private pageService : PageService, private httpClient: HttpClient) { }
+  constructor(private pageService : PageService, private httpClient: HttpClient, private snackBar: MatSnackBar) { }
 
 
 
@@ -49,20 +49,27 @@ export class MedicalComponent implements OnInit {
     }
 
     save() {
-                 if (this.nameCompanySelect === '' || this.nameMedicineSelect === ''  || this.number === '' || this.note === ''
-                  || this.nurseNameSelect === '') {
-                   alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-                 } else {
+                 if(this.nameCompanySelect === ""){
+                       this.snackBar.open('กรุณาเลือกชื่อบริษัท', 'OK', {});
+                     }else if(this.nameMedicineSelect === "") {
+                       this.snackBar.open('กรุณาเลือกชื่อยา', 'OK', {});
+                     }else if(this.number === "") {
+                       this.snackBar.open('กรุณากรอกจำนวนยา', 'OK', {});
+                     }else if(this.note === "") {
+                       this.snackBar.open('กรุณากรอกหมายเหตุ', 'OK', {});
+                     }else if(this.nurseNameSelect === "") {
+                       this.snackBar.open('กรุณาเลือกชื่อพยาบาล', 'OK', {});
+                     } else {
                  this.httpClient.post('http://localhost:8080/OrderMedicine/' + this.nameCompanySelect + '/' + this.nameMedicineSelect + '/' +
                      this.number +  '/' + this.note + '/' + this.nurseNameSelect,{})
                       .subscribe(
                         data => {
                           console.log('PUT Request is successful', data);
-                          alert('บันทึกสำเร็จ');
+                          this.snackBar.open ('บันทึกข้อมูลสำเร็จ','OK', {});
                          },
                          error => {
                                    console.log('Error', error);
-                                   alert('บันทึกไม่สำเร็จเพราะช่องnoteใส่ได้แค่ภาษาไทย0-9 และ - จำนวน1-30ตัวเท่านั้น');
+                                   this.snackBar.open('บันทึกไม่สำเร็จเพราะช่องnoteใส่ได้แค่ภาษาไทย0-9 และ - จำนวน1-30ตัวเท่านั้น','OK', {});
                          }
                        );
                  }
