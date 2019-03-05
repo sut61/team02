@@ -107,7 +107,7 @@ public class ServeEntityTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Comment<--------------------");
             System.out.println(e.getMessage());
@@ -135,7 +135,7 @@ public class ServeEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment Pattern Serve <--------------------");
             System.out.println(e.getMessage());
@@ -164,7 +164,7 @@ public class ServeEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment Sizelong Serve<--------------------");
             System.out.println(e.getMessage());
@@ -217,7 +217,7 @@ public class ServeEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment testServeNursenull Serve<--------------------");
             System.out.println(e.getMessage());
@@ -244,7 +244,7 @@ public class ServeEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment testServeTypenull Serve<--------------------");
             System.out.println(e.getMessage());
