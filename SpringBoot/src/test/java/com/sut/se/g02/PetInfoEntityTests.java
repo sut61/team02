@@ -112,7 +112,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Name PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -141,7 +141,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Weight PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -170,7 +170,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Height PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -199,7 +199,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Notnull Age PetInfo<--------------------");
             System.out.println(e.getMessage());
@@ -228,7 +228,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment Sizelong PetInfoName<--------------------");
             System.out.println(e.getMessage());
@@ -257,7 +257,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("----------> Comment Pattern PetInfoName <--------------------");
             System.out.println(e.getMessage());
@@ -286,7 +286,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
             System.out.println("----------> fail nullNurse PetInfo<--------------------");
@@ -317,7 +317,7 @@ public class PetInfoEntityTests {
         } catch (javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println();
             System.out.println("----------> fail nullBreed PetInfo<--------------------");
